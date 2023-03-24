@@ -10,7 +10,7 @@ const app: Express = express();
 app.use(express.json());
 app.use(cors());
 
-app.get('/', (req: Request, res: Response) => {
+app.get('/xx', (req: Request, res: Response) => {
   res.send('Hello World From the Typescript Server!');
 });
 
