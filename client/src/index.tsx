@@ -4,6 +4,7 @@ import { Reset } from 'styled-reset';
 import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import GlobalStyle from './style/globalStyle';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -11,6 +12,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <Reset />
+    <GlobalStyle />
     <BrowserRouter>
       <App />
     </BrowserRouter>
