@@ -1,26 +1,16 @@
 import { FunctionComponentElement, ReactElement } from 'react';
 import { NavLink } from 'react-router-dom';
+import HeaderStyle from '../style/headerStyle.js';
+import Navbar from './navbar';
 
 const Header = (): FunctionComponentElement<ReactElement> => {
   return (
-    <>
-      <div className='me'>
-        <NavLink to='/about'>
-          <h1>Aline Gonce</h1>
-        </NavLink>
-      </div>
-      <nav>
-        <NavLink to='/about'>ABOUT</NavLink>
-        <NavLink to='/projects'>
-          PROJECTS
-          <ul>
-            <NavLink to='/rock-paper-or-scissors'>PROJECT #1</NavLink>
-            <NavLink to='/modeling-gallery'>PROJECT #2</NavLink>
-            <NavLink to='/stickers-shop'>PROJECT #3</NavLink>
-          </ul>
-        </NavLink>
-      </nav>
-    </>
+    <HeaderStyle>
+      <NavLink to='/about' className='me link'>
+        <h1>Aline Gonce</h1>
+      </NavLink>
+      <Navbar />
+    </HeaderStyle>
   );
 };
 export default Header;
