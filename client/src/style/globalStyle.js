@@ -10,10 +10,17 @@ const GlobalStyle = createGlobalStyle`
   --box-shadow: rgba(14,18,23, 0.5) 0px 2px 3px,
       rgba(14,18,23, 0.3) 0px 7px 7px -3px, rgba(14,18,23, 0.2) 0px -1px 0px inset;
 }
-.body{
+body {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
 }
+main {
+  display: flex;
+  height: 75vh;
+}
+
 h1,h2,h3,h4,h5,h6, p, li{
   font-family: var(--font-family);
 }
@@ -33,16 +40,24 @@ h1 {
     font-size: 1.3rem;
     line-height: 1.8rem;
   }
-  main {
-    display: flex;
-  }
-    @media screen and (max-width: 700px) {
-      .body{
-        flex-wrap: nowrap;
-      }
-      h2 {
-      font-size: 2rem;
+
+  @media screen and (max-width: 700px) {
+    body {
+    flex-direction: column;
+    width: 100vw;
+    align-items: center;
+}
+    main {
+      display: flex;
+      flex-direction: column;
     }
+    h2 {
+    font-size: 2rem;
+    line-height: 2.5rem;
   }
+  h4 {
+    font-size: 1.5rem;
+  }
+}
 `;
 export default GlobalStyle;
