@@ -1,4 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
+import Footer from './components/footer';
 import Header from './components/header';
 import About from './pages/about';
 import Project1 from './pages/project1';
@@ -17,6 +18,7 @@ function App() {
         <Route path='/modeling-gallery' element={<Project2 />} />
         <Route path='/stickers-shop' element={<Project3 />} />
       </Routes>
+      <Footer />
     </main>
   );
 }
