@@ -3,8 +3,6 @@ import styled from 'styled-components';
 export default styled.footer`
   height: 10vh;
   width: 100vw;
-  position: fixed;
-  bottom: 0;
   background-color: #cccc66;
   display: flex;
   .left {
@@ -19,22 +17,20 @@ export default styled.footer`
   }
   a {
     margin-left: 1vw;
-    height: 6vh;
-    aspect-ratio: 1/1;
     align-items: center;
+    img {
+      height: 6vh;
+      aspect-ratio: 1/1;
+      background-size: contain;
+    }
   }
-  img {
-    height: 6vh;
-    aspect-ratio: 1/1;
-    background-size: contain;
-  }
+
   @media screen and (max-width: 700px) {
     position: fixed;
     height: 9vh;
-    top: 91vh;
-
-    display: flex;
-    justify-content: left;
+    width: 100%;
+    bottom: 0;
+    left: 0;
     a {
       margin-left: 4vw;
     }
