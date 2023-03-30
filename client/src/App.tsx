@@ -8,18 +8,20 @@ import Project3 from './pages/project3';
 
 function App() {
   return (
-    <main>
+    <>
       <Header />
-      <Routes>
-        <Route path='*' element={<About />} />
-        <Route path='/about' element={<About />} />
-        <Route path='/projects' element={<Project1 />} />
-        <Route path='/rock-paper-or-scissors' element={<Project1 />} />
-        <Route path='/modeling-gallery' element={<Project2 />} />
-        <Route path='/stickers-shop' element={<Project3 />} />
-      </Routes>
+      <main>
+        <Routes>
+          <Route path='*' element={<About />} />
+          <Route path='/about' element={<About />} />
+          <Route path='/projects' element={<Project1 />} />
+          <Route path='/rock-paper-or-scissors' element={<Project1 />} />
+          <Route path='/modeling-gallery' element={<Project2 />} />
+          <Route path='/stickers-shop' element={<Project3 />} />
+        </Routes>
+      </main>
       <Footer />
-    </main>
+    </>
   );
 }
 
