@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export default styled.header`
-  position: fixed;
   width: 100vw;
   height: 15vh;
   background-color: #cccc66;
