@@ -1,5 +1,6 @@
 import { FunctionComponentElement, ReactElement } from 'react';
 import Left from '../components/left';
+import Game from '../components/project1/game';
 import ProjectTitle from '../components/projectTitle';
 import pageData from '../data/pages';
 import DataPage from '../interfaces/dataPage';
@@ -18,6 +19,7 @@ const Project1 = (): FunctionComponentElement<ReactElement> => {
       />
       <Project1Style color={projectData.backgroundColor}>
         <ProjectTitle title={projectData.title} />
+        <Game />
       </Project1Style>
     </>
   );
