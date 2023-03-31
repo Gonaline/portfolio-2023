@@ -32,6 +32,7 @@ h1 {
   }
   h3 {
     font-size: 2.5rem;
+    line-height: 3.5rem;
   }
   h4 {
     font-size: 2rem;
@@ -42,18 +43,22 @@ h1 {
   }
 
   @media screen and (max-width: 700px) {
-    body {
+  body {
     flex-direction: column;
     width: 100vw;
     align-items: center;
-}
-    main {
-      display: flex;
-      flex-direction: column;
-    }
-    h2 {
+  }
+  main {
+    display: flex;
+    flex-direction: column;
+  }
+  h2 {
     font-size: 2rem;
-    line-height: 2.5rem;
+    line-height: 3rem;
+  }
+  h3 {
+    font-size: 2rem;
+    line-height: 3rem;
   }
   h4 {
     font-size: 1.5rem;
