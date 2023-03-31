@@ -19,7 +19,10 @@ const Project1 = (): FunctionComponentElement<ReactElement> => {
       />
       <Project1Style color={projectData.backgroundColor}>
         <ProjectTitle title={projectData.title} />
-        <Game />
+        <Game
+          buttonColor={projectData.textColor}
+          onHoverButtonColor={projectData.otherColor}
+        />
       </Project1Style>
     </>
   );
