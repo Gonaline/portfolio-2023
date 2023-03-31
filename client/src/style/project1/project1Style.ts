@@ -6,10 +6,10 @@ export default styled.section`
   background-color: ${(props: any): string | undefined => {
     return `${props.color}`;
   }};
-  display: flex;
 
   @media screen and (max-width: 700px) {
     width: 100vw;
     min-height: 77vh;
+    padding-bottom: 9vh;
   }
 `;
