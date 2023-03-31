@@ -3,7 +3,7 @@ import Left from '../components/left';
 import ProjectTitle from '../components/projectTitle';
 import pageData from '../data/pages';
 import DataPage from '../interfaces/dataPage';
-import RightStyle from '../style/rightStyle';
+import Project1Style from '../style/project1/project1Style';
 
 const Project1 = (): FunctionComponentElement<ReactElement> => {
   const projectData: DataPage = pageData.filter((e) => e.id === 'PROJECT1')[0];
@@ -16,9 +16,9 @@ const Project1 = (): FunctionComponentElement<ReactElement> => {
         description={projectData.description}
         textColor={projectData.textColor}
       />
-      <RightStyle color={projectData.backgroundColor}>
+      <Project1Style color={projectData.backgroundColor}>
         <ProjectTitle title={projectData.title} />
-      </RightStyle>
+      </Project1Style>
     </>
   );
 };
