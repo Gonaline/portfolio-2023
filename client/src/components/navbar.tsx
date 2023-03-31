@@ -11,7 +11,7 @@ const Navbar = (): FunctionComponentElement<ReactElement> => {
       </li>
 
       <li>
-        <NavLink to='/rock-paper-or-scissors' className='link mainLink'>
+        <div className='link mainLink'>
           PROJECTS
           <ul>
             <NavLink to='/rock-paper-or-scissors' className='link'>
@@ -24,7 +24,7 @@ const Navbar = (): FunctionComponentElement<ReactElement> => {
               PROJECT#3
             </NavLink>
           </ul>
-        </NavLink>
+        </div>
       </li>
     </nav>
   );
