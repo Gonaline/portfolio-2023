@@ -17,7 +17,8 @@ export default styled.div`
     margin-bottom: 3vh;
     h2 {
       text-align: center;
-      padding: 0;
+      padding-left: 0;
+      padding-top: 2vh;
       font-size: 2.5em;
     }
   }
