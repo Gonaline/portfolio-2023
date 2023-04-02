@@ -3,7 +3,7 @@ import ResultStyle from '../../style/project1/resultStyle';
 import project1Ctx from '../../context/project1Ctx';
 import styled from 'styled-components';
 
-interface CounterProps {
+interface ResultProps {
   color: string | undefined;
   otherColor: string | undefined;
   message: string | undefined;
@@ -16,7 +16,7 @@ const Result = ({
   message,
   userPoint,
   computerPoint,
-}: CounterProps): FunctionComponentElement<ReactElement> => {
+}: ResultProps): FunctionComponentElement<ReactElement> => {
   const { userChoice, computer } = useContext(project1Ctx);
 
   const UserDiv = styled.div`
