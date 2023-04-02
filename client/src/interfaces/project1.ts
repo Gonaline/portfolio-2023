@@ -1,4 +1,4 @@
-export default interface Project1 {
+export default interface IProject1 {
   userChoice: string;
   setUserChoice: (c: string) => void;
   computer: string;
