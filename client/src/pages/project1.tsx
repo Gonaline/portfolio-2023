@@ -12,21 +12,21 @@ import ProjectTitle from '../components/projectTitle';
 import project1Ctx from '../context/project1Ctx';
 import pageData from '../data/pages';
 import dataGame from '../data/project1';
-import DataPage from '../interfaces/dataPage';
 import Project1Style from '../style/project1/project1Style';
 import Result from '../components/project1/result';
 import Replay from '../components/project1/replay';
+import pagesCtx from '../context/pagesCtx';
+import { PAGE } from '../enums/page.enum';
 
 const Project1 = (): FunctionComponentElement<ReactElement> => {
   const { userChoice, computer } = useContext(project1Ctx);
+  const { dataPage, setDataPage } = useContext(pagesCtx);
 
   const [computerCounter, setComputerCounter] = useState<number>(0);
   const [userCounter, setUserCounter] = useState<number>(0);
   const [message, setMessage] = useState<string>('');
   const [userPoint, setUserPoint] = useState<number>(0);
   const [computerPoint, setComputerPoint] = useState<number>(0);
-
-  const projectData: DataPage = pageData.filter((e) => e.id === 'PROJECT1')[0];
 
   useEffect(() => {
     if (!userChoice || !computer) return;
@@ -39,33 +39,38 @@ const Project1 = (): FunctionComponentElement<ReactElement> => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [computer, userChoice]);
 
+  useEffect(() => {
+    setDataPage(pageData[PAGE.PROJECT1]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <>
       <Left
-        title={projectData.title}
-        subtitle={projectData.subtitle}
-        description={projectData.description}
-        textColor={projectData.textColor}
+        title={dataPage.title}
+        subtitle={dataPage.subtitle}
+        description={dataPage.description}
+        textColor={dataPage.textColor}
       />
-      <Project1Style color={projectData.backgroundColor}>
-        <ProjectTitle title={projectData.title} />
+      <Project1Style color={dataPage.backgroundColor}>
+        <ProjectTitle title={dataPage.title} />
         <Game
-          buttonColor={projectData.textColor}
-          onHoverButtonColor={projectData.otherColor}
+          buttonColor={dataPage.buttonColor}
+          buttonOnHoverColor={dataPage.buttonOnHoverColor}
         />
         <Counter
-          color={projectData.textColor}
+          color={dataPage.buttonColor}
           userCounter={userCounter}
           computerCounter={computerCounter}
         />
         <Result
-          otherColor={projectData.otherColor}
-          color={projectData.textColor}
+          otherColor={dataPage.otherColor}
+          color={dataPage.textColor}
           message={message}
           userPoint={userPoint}
           computerPoint={computerPoint}
         />
-        <Replay color={projectData.textColor} />
+        <Replay color={dataPage.otherColor} />
       </Project1Style>
     </>
   );
