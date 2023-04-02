@@ -1,6 +1,6 @@
 import { createContext, useState } from 'react';
 import IPage from '../interfaces/pages';
-import page from '../data/page';
+import page from '../data/pages';
 import IDataPage from '../interfaces/dataPage';
 
 const pagesCtx = createContext<IPage>({
