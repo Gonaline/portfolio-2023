@@ -15,6 +15,7 @@ import dataGame from '../data/project1';
 import DataPage from '../interfaces/dataPage';
 import Project1Style from '../style/project1/project1Style';
 import Result from '../components/project1/result';
+import Replay from '../components/project1/replay';
 
 const Project1 = (): FunctionComponentElement<ReactElement> => {
   const { userChoice, computer } = useContext(project1Ctx);
@@ -64,6 +65,7 @@ const Project1 = (): FunctionComponentElement<ReactElement> => {
           userPoint={userPoint}
           computerPoint={computerPoint}
         />
+        <Replay color={projectData.textColor} />
       </Project1Style>
     </>
   );
