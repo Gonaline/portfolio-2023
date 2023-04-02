@@ -5,7 +5,7 @@ interface LeftProps {
   title: string;
   subtitle: string;
   description: string;
-  textColor?: string | undefined;
+  textColor: string;
 }
 
 const Left = ({
