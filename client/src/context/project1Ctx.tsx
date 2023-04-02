@@ -11,7 +11,7 @@ const project1Ctx = createContext<Project1>({
 
 export default project1Ctx;
 
-export function CtxProvider({ children }: any): JSX.Element {
+export function Project1CtxProvider({ children }: any): JSX.Element {
   const [userChoice, setUserChoice] = useState('');
   const [computer, setComputer] = useState('');
 
