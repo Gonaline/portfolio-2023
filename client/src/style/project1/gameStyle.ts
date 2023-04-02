@@ -22,6 +22,13 @@ export default styled.section`
     align-items: center;
     box-shadow: var(--box-shadow);
     background-size: 100%;
+    :hover,
+    :focus,
+    :active {
+      background-color: ${(props: any): string | undefined => {
+        return `${props.color}`;
+      }};
+    }
   }
   button:hover {
     -ms-transform: scale(1.1); /* IE 9 */

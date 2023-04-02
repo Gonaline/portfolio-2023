@@ -6,17 +6,18 @@ import GameStyle from '../../style/project1/gameStyle';
 const Button = styled.button`
   background: ${(props: any) =>
       `url(${require(`../../assets/pictures/project1/${props.value}.png`)})`},
-    green;
-  &:hover,
-  &:focus {
-    background-color: palevioletred;
-  }
-  &:active {
-    background-color: red;
-  }
+    ${(props) => props.color};
 `;
 
-const Game = (): FunctionComponentElement<ReactElement> => {
+interface GameProps {
+  buttonColor: string | undefined;
+  onHoverButtonColor: string | undefined;
+}
+
+const Game = ({
+  buttonColor,
+  onHoverButtonColor,
+}: GameProps): FunctionComponentElement<ReactElement> => {
   const game = ['rock', 'paper', 'scissors'];
   const { setUserChoice, setComputer } = useContext(project1Ctx);
 
@@ -25,10 +26,11 @@ const Game = (): FunctionComponentElement<ReactElement> => {
   };
 
   return (
-    <GameStyle>
+    <GameStyle color={onHoverButtonColor}>
       <div className='userChoice'>
         {game.map((choice) => (
           <Button
+            color={buttonColor}
             className='b'
             type='button'
             key={choice}
