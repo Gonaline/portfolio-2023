@@ -1,3 +1,4 @@
+import { useContext } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Footer from './components/footer';
 import Header from './components/header';
@@ -5,11 +6,14 @@ import About from './pages/about';
 import Project1 from './pages/project1';
 import Project2 from './pages/project2';
 import Project3 from './pages/project3';
+import pagesCtx from './context/pagesCtx';
 
-function App() {
+const App = () => {
+  const { dataPage } = useContext(pagesCtx);
+
   return (
     <>
-      <Header />
+      <Header color={dataPage.headerAndFooterColor} />
       <main>
         <Routes>
           <Route path='*' element={<About />} />
@@ -20,9 +24,9 @@ function App() {
           <Route path='/stickers-shop' element={<Project3 />} />
         </Routes>
       </main>
-      <Footer />
+      <Footer color={dataPage.headerAndFooterColor} />
     </>
   );
-}
+};
 
 export default App;

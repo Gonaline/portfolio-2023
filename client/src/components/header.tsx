@@ -1,11 +1,17 @@
 import { FunctionComponentElement, ReactElement } from 'react';
 import { NavLink } from 'react-router-dom';
-import HeaderStyle from '../style/headerStyle.js';
 import Navbar from './navbar';
+import HeaderStyle from '../style/headerStyle';
 
-const Header = (): FunctionComponentElement<ReactElement> => {
+interface HeaderProps {
+  color: string;
+}
+
+const Header = ({
+  color,
+}: HeaderProps): FunctionComponentElement<ReactElement> => {
   return (
-    <HeaderStyle>
+    <HeaderStyle color={color}>
       <NavLink to='/about' className='me link'>
         <h1>Aline Gonce</h1>
       </NavLink>
