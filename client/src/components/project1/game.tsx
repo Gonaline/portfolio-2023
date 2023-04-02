@@ -11,12 +11,12 @@ const Button = styled.button`
 
 interface GameProps {
   buttonColor: string | undefined;
-  onHoverButtonColor: string | undefined;
+  buttonOnHoverColor: string | undefined;
 }
 
 const Game = ({
   buttonColor,
-  onHoverButtonColor,
+  buttonOnHoverColor,
 }: GameProps): FunctionComponentElement<ReactElement> => {
   const game = ['rock', 'paper', 'scissors'];
   const { setUserChoice, setComputer } = useContext(project1Ctx);
@@ -26,12 +26,11 @@ const Game = ({
   };
 
   return (
-    <GameStyle color={onHoverButtonColor}>
+    <GameStyle color={buttonOnHoverColor}>
       <div className='userChoice'>
         {game.map((choice) => (
           <Button
             color={buttonColor}
-            className='b'
             type='button'
             key={choice}
             value={choice}
