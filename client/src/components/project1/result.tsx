@@ -4,9 +4,9 @@ import project1Ctx from '../../context/project1Ctx';
 import styled from 'styled-components';
 
 interface ResultProps {
-  color: string | undefined;
+  color: string;
   otherColor: string | undefined;
-  message: string | undefined;
+  message: string;
   userPoint: number;
   computerPoint: number;
 }
