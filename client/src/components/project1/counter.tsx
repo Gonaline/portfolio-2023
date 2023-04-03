@@ -2,17 +2,15 @@ import { FunctionComponentElement, ReactElement } from 'react';
 import CounterStyle from '../../style/project1/counterStyle';
 
 interface CounterProps {
-  color: string | undefined;
   userCounter: number;
   computerCounter: number;
 }
 const Counter = ({
-  color,
   userCounter,
   computerCounter,
 }: CounterProps): FunctionComponentElement<ReactElement> => {
   return (
-    <CounterStyle color={color}>
+    <CounterStyle>
       <div className='you'>
         <h4>YOU</h4>
         <div className='points'>

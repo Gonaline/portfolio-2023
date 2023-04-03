@@ -5,17 +5,15 @@ interface LeftProps {
   title: string;
   subtitle: string;
   description: string;
-  textColor: string;
 }
 
 const Left = ({
   title,
   subtitle,
   description,
-  textColor,
 }: LeftProps): FunctionComponentElement<ReactElement> => {
   return (
-    <LeftStyle color={textColor}>
+    <LeftStyle>
       <div>
         <h4 className='subTitle'>{subtitle}</h4>
         <h2>{title}</h2>
