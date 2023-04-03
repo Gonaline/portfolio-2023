@@ -20,7 +20,15 @@ import { PAGE } from '../enums/page.enum';
 
 const Project1 = (): FunctionComponentElement<ReactElement> => {
   const { userChoice, computer } = useContext(project1Ctx);
-  const { dataPage, setDataPage } = useContext(pagesCtx);
+  const {
+    title,
+    setTitle,
+    subtitle,
+    setSubtitle,
+    description,
+    setDescription,
+    setTheme,
+  } = useContext(pagesCtx);
 
   const [computerCounter, setComputerCounter] = useState<number>(0);
   const [userCounter, setUserCounter] = useState<number>(0);
@@ -40,37 +48,26 @@ const Project1 = (): FunctionComponentElement<ReactElement> => {
   }, [computer, userChoice]);
 
   useEffect(() => {
-    setDataPage(pageData[PAGE.PROJECT1]);
+    setTheme(pageData[PAGE.PROJECT1].theme);
+    setTitle(pageData[PAGE.PROJECT1].title);
+    setSubtitle(pageData[PAGE.PROJECT1].subtitle);
+    setDescription(pageData[PAGE.PROJECT1].description);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <>
-      <Left
-        title={dataPage.title}
-        subtitle={dataPage.subtitle}
-        description={dataPage.description}
-        textColor={dataPage.textColor}
-      />
-      <Project1Style color={dataPage.backgroundColor}>
-        <ProjectTitle title={dataPage.title} />
-        <Game
-          buttonColor={dataPage.buttonColor}
-          buttonOnHoverColor={dataPage.buttonOnHoverColor}
-        />
-        <Counter
-          color={dataPage.buttonColor}
-          userCounter={userCounter}
-          computerCounter={computerCounter}
-        />
+      <Left title={title} subtitle={subtitle} description={description} />
+      <Project1Style>
+        <ProjectTitle title={title} />
+        <Game />
+        <Counter userCounter={userCounter} computerCounter={computerCounter} />
         <Result
-          otherColor={dataPage.otherColor}
-          color={dataPage.textColor}
           message={message}
           userPoint={userPoint}
           computerPoint={computerPoint}
         />
-        <Replay color={dataPage.otherColor} />
+        <Replay />
       </Project1Style>
     </>
   );
