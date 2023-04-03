@@ -26,9 +26,7 @@ export default styled.div`
     width: 5vw;
     aspect-ratio: 2/1;
     border-radius: var(--border-radius);
-    background-color: ${(props: any): string | undefined => {
-      return `${props.color}`;
-    }};
+    background-color: var(--otherColor);
     color: var(--white);
     display: flex;
     justify-content: center;

@@ -11,9 +11,7 @@ export default styled.button`
   text-align: center;
   color: var(--white);
   border-radius: var(--border-radius);
-  background-color: ${(props) => {
-    return `${props.color}`;
-  }};
+  background-color: var(--otherColor);
   font-family: var(--font-family);
   margin-bottom: 1vh;
 

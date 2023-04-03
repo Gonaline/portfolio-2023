@@ -3,9 +3,7 @@ import styled from 'styled-components';
 export default styled.header`
   width: 100vw;
   height: 15vh;
-  background-color: ${(props: any): string => {
-    return `${props.color}`;
-  }};
+  background-color: var(--headerAndFooterColor);
   display: flex;
   flex-wrap: nowrap;
   justify-content: space-between;
@@ -76,9 +74,7 @@ export default styled.header`
         font-size: 1.5rem;
       }
       .link:hover {
-        color: ${(props: any): string => {
-          return `${props.color}`;
-        }};
+        color: var(--textColor);
         background: var(--white-opacity50);
       }
     }

@@ -3,9 +3,7 @@ import styled from 'styled-components';
 export default styled.footer`
   height: 10vh;
   width: 100vw;
-  background-color: ${(props: any): string => {
-    return `${props.color}`;
-  }};
+  background-color: var(--headerAndFooterColor);
   display: flex;
   .left {
     height: 10vh;
