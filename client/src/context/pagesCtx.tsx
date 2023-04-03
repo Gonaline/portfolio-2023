@@ -1,23 +1,38 @@
 import { createContext, useState } from 'react';
-import IPage from '../interfaces/pages';
 import page from '../data/pages';
-import IDataPage from '../interfaces/dataPage';
+import { ITheme } from '../interfaces/theme';
+import IPage from '../interfaces/page';
 
 const pagesCtx = createContext<IPage>({
-  dataPage: page.about,
-  setDataPage: () => {},
+  title: '',
+  setTitle: () => {},
+  subtitle: '',
+  setSubtitle: () => {},
+  description: '',
+  setDescription: () => {},
+  theme: page.about.theme,
+  setTheme: () => {},
 });
 
 export default pagesCtx;
 
 export function PagesCtxProvider({ children }: any): JSX.Element {
-  const [dataPage, setDataPage] = useState<IDataPage>(page.about);
+  const [title, setTitle] = useState('');
+  const [subtitle, setSubtitle] = useState('');
+  const [description, setDescription] = useState('');
+  const [theme, setTheme] = useState<ITheme>(page.about.theme);
 
   return (
     <pagesCtx.Provider
       value={{
-        dataPage,
-        setDataPage,
+        title,
+        setTitle,
+        subtitle,
+        setSubtitle,
+        description,
+        setDescription,
+        theme,
+        setTheme,
       }}
     >
       {children}
