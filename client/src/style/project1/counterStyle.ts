@@ -23,7 +23,7 @@ export default styled.div`
     padding-left: 1vw;
   }
   .points {
-    width: 5vw;
+    min-height: 2vw;
     aspect-ratio: 2/1;
     border-radius: var(--border-radius);
     background-color: var(--otherColor);

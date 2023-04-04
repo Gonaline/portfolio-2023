@@ -3,7 +3,6 @@ import styled from 'styled-components';
 export const ButtonGame = styled.button`
   aspect-ratio: 1/1;
   height: 28%;
-  margin: 0 4vw 0 6vw;
   border: none;
   border-radius: var(--border-radius);
   display: flex;
@@ -26,19 +25,19 @@ export const ButtonGame = styled.button`
 `;
 
 export const GameStyle = styled.section`
-  height: 46vh;
+  height: 45vh;
   width: 55vw;
-  margin: auto;
-  margin-bottom: 10vh;
   display: flex;
+  justify-content: center;
+
   .userChoice {
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
   }
-
   .text {
+    margin: 0 9vw 0 3vw;
     display: flex;
     flex-direction: column;
     align-items: left;

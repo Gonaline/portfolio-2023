@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const ResultStyle = styled.section`
-  height: 46vh;
+  height: 45vh;
   width: 55vw;
   display: flex;
   flex-direction: column;
