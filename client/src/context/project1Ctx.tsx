@@ -8,7 +8,6 @@ const project1Ctx = createContext<Project1>({
   setComputer: () => {},
   isClick: false,
   setIsClick: () => {},
-  reset: () => {},
 });
 
 export default project1Ctx;
@@ -17,11 +16,6 @@ export function Project1CtxProvider({ children }: any): JSX.Element {
   const [userChoice, setUserChoice] = useState('');
   const [computer, setComputer] = useState('');
   const [isClick, setIsClick] = useState<boolean>(false);
-
-  const reset = () => {
-    setUserChoice('');
-    setComputer('');
-  };
 
   useEffect(() => {
     isClick &&
@@ -39,7 +33,6 @@ export function Project1CtxProvider({ children }: any): JSX.Element {
         setComputer,
         isClick,
         setIsClick,
-        reset,
       }}
     >
       {children}

@@ -5,5 +5,4 @@ export default interface IProject1 {
   setComputer: (c: string) => void;
   isClick: boolean;
   setIsClick: (c: boolean) => void;
-  reset: () => void;
 }
