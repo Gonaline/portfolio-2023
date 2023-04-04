@@ -23,7 +23,7 @@ export default styled.section`
     color: var(--white);
   }
   h2 {
-    color: var(--textColor);
+    color: var(--mainColor);
     margin-bottom: 6vh;
   }
   @media screen and (max-width: 700px) {

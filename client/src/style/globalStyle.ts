@@ -12,11 +12,10 @@ const GlobalStyle = createGlobalStyle`
   --border-radius: 10px;
   --box-shadow: rgba(14,18,23, 0.5) 0px 2px 3px,
       rgba(14,18,23, 0.3) 0px 7px 7px -3px, rgba(14,18,23, 0.2) 0px -1px 0px inset;
-  --textColor: ${({ theme }: ThemeProps<ITheme>): any => theme.textColor};
+  --mainColor: ${({ theme }: ThemeProps<ITheme>): any => theme.mainColor};
+  --opacityColor: ${({ theme }: ThemeProps<ITheme>): any => theme.opacityColor};
   --backgroundColor: ${({ theme }: ThemeProps<ITheme>): any =>
     theme.backgroundColor};
-  --headerAndFooterColor: ${({ theme }: ThemeProps<ITheme>): any =>
-    theme.headerAndFooterColor};
   --buttonColor: ${({ theme }: ThemeProps<ITheme>): any => theme.buttonColor};
   --buttonOnHoverColor: ${({ theme }: ThemeProps<ITheme>): any =>
     theme.buttonOnHoverColor};

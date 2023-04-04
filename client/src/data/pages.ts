@@ -5,9 +5,9 @@ const page = {
     description:
       'is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&rsquo;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
     theme: {
-      textColor: 'red',
+      mainColor: 'orange',
+      opacityColor: 'purple',
       backgroundColor: 'pink',
-      headerAndFooterColor: 'yellow',
       buttonColor: '',
       buttonOnHoverColor: '',
       otherColor: '',
@@ -19,12 +19,12 @@ const page = {
     description:
       'is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&rsquo;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
     theme: {
-      textColor: '#00cc99',
+      mainColor: '#00cc99',
+      opacityColor: '#00cc9973',
       backgroundColor: '#97EAD5',
-      headerAndFooterColor: '#00cc99',
       buttonColor: '#00cc99',
       buttonOnHoverColor: '#F36653',
-      otherColor: '#F36653',
+      otherColor: '#ED3A2B',
     },
   },
 };

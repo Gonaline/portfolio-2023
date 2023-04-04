@@ -1,7 +1,7 @@
 export interface ITheme {
-  textColor: string;
+  mainColor: string;
+  opacityColor: string;
   backgroundColor: string;
-  headerAndFooterColor: string;
   buttonColor: string | undefined;
   buttonOnHoverColor: string | undefined;
   otherColor: string | undefined;
