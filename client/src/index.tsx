@@ -5,7 +5,7 @@ import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { CombineComponents } from './shared/combineComponents';
-import { PagesCtxProvider } from './context/pagesCtx';
+import { GlobalCtxProvider } from './context/globalCtx';
 import { Project1CtxProvider } from './context/project1Ctx';
 
 const root = ReactDOM.createRoot(
@@ -13,7 +13,7 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <CombineComponents components={[PagesCtxProvider, Project1CtxProvider]}>
+    <CombineComponents components={[GlobalCtxProvider, Project1CtxProvider]}>
       <Reset />
       <BrowserRouter>
         <App />

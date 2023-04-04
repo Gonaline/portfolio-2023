@@ -6,12 +6,12 @@ import About from './pages/about';
 import Project1 from './pages/project1';
 import Project2 from './pages/project2';
 import Project3 from './pages/project3';
-import pagesCtx from './context/pagesCtx';
+import GlobalCtx from './context/globalCtx';
 import { ThemeProvider } from 'styled-components';
 import GlobalStyle from './style/globalStyle';
 
 const App = () => {
-  const { theme } = useContext(pagesCtx);
+  const { theme } = useContext(GlobalCtx);
 
   return (
     <>

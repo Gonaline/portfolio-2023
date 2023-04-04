@@ -1,9 +1,9 @@
 import { FunctionComponentElement, ReactElement, useContext } from 'react';
 import ProjectTitleStyle from '../style/projectTitleStyle';
-import pagesCtx from '../context/pagesCtx';
+import GlobalCtx from '../context/globalCtx';
 
 const ProjectTitle = (): FunctionComponentElement<ReactElement> => {
-  const { title } = useContext(pagesCtx);
+  const { title } = useContext(GlobalCtx);
 
   return (
     <ProjectTitleStyle>

@@ -1,6 +1,6 @@
 import { ITheme } from './theme';
 
-export default interface IPage {
+export default interface IGlobalCtx {
   pageData: {};
   setPageData: (c: any) => void;
   title: string;

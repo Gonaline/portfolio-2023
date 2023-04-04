@@ -1,9 +1,9 @@
 import { FunctionComponentElement, ReactElement, useContext } from 'react';
 import LeftStyle from '../style/leftStyle';
-import pagesCtx from '../context/pagesCtx';
+import GlobalCtx from '../context/globalCtx';
 
 const Left = (): FunctionComponentElement<ReactElement> => {
-  const { title, subtitle, description } = useContext(pagesCtx);
+  const { title, subtitle, description } = useContext(GlobalCtx);
 
   return (
     <LeftStyle>

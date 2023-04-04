@@ -1,9 +1,9 @@
 import { createContext, useMemo, useState } from 'react';
 import page from '../data/pages';
 import { ITheme } from '../interfaces/theme';
-import IPage from '../interfaces/page';
+import IGlobalCtx from '../interfaces/globalCtx';
 
-const pagesCtx = createContext<IPage>({
+const GlobalCtx = createContext<IGlobalCtx>({
   pageData: page.about,
   setPageData: () => {},
   title: page.about.title,
@@ -16,9 +16,9 @@ const pagesCtx = createContext<IPage>({
   setTheme: () => {},
 });
 
-export default pagesCtx;
+export default GlobalCtx;
 
-export function PagesCtxProvider({ children }: any): JSX.Element {
+export function GlobalCtxProvider({ children }: any): JSX.Element {
   const [pageData, setPageData] = useState<any>(page.about);
   const [title, setTitle] = useState<string>(page.about.title);
   const [subtitle, setSubtitle] = useState<string>(page.about.subtitle);
@@ -35,7 +35,7 @@ export function PagesCtxProvider({ children }: any): JSX.Element {
   }, [pageData]);
 
   return (
-    <pagesCtx.Provider
+    <GlobalCtx.Provider
       value={{
         pageData,
         setPageData,
@@ -50,6 +50,6 @@ export function PagesCtxProvider({ children }: any): JSX.Element {
       }}
     >
       {children}
-    </pagesCtx.Provider>
+    </GlobalCtx.Provider>
   );
 }
