@@ -14,13 +14,13 @@ import pageData from '../data/pages';
 import dataGame from '../data/project1';
 import Project1Style from '../style/project1/project1Style';
 import Result from '../components/project1/result';
-import pagesCtx from '../context/pagesCtx';
+import GlobalCtx from '../context/globalCtx';
 import { PAGE } from '../enums/page.enum';
 import ReplayButton from '../style/project1/replayStyle';
 
 const Project1 = (): FunctionComponentElement<ReactElement> => {
   const { userChoice, computer, isClick, setIsClick } = useContext(project1Ctx);
-  const { setPageData } = useContext(pagesCtx);
+  const { setPageData } = useContext(GlobalCtx);
 
   const [computerCounter, setComputerCounter] = useState<number>(0);
   const [userCounter, setUserCounter] = useState<number>(0);
