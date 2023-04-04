@@ -19,7 +19,7 @@ import pagesCtx from '../context/pagesCtx';
 import { PAGE } from '../enums/page.enum';
 
 const Project1 = (): FunctionComponentElement<ReactElement> => {
-  const { userChoice, computer } = useContext(project1Ctx);
+  const { userChoice, computer, isClick } = useContext(project1Ctx);
   const { setPageData } = useContext(pagesCtx);
 
   const [computerCounter, setComputerCounter] = useState<number>(0);
@@ -49,14 +49,22 @@ const Project1 = (): FunctionComponentElement<ReactElement> => {
       <Left />
       <Project1Style>
         <ProjectTitle />
-        <Game />
-        <Counter userCounter={userCounter} computerCounter={computerCounter} />
-        <Result
-          message={message}
-          userPoint={userPoint}
-          computerPoint={computerPoint}
-        />
-        <Replay />
+        {!isClick ? (
+          <Game />
+        ) : (
+          <>
+            <Counter
+              userCounter={userCounter}
+              computerCounter={computerCounter}
+            />
+            <Result
+              message={message}
+              userPoint={userPoint}
+              computerPoint={computerPoint}
+            />
+            <Replay />
+          </>
+        )}
       </Project1Style>
     </>
   );

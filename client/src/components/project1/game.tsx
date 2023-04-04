@@ -5,7 +5,7 @@ import { findImage } from '../../shared/project1/findImage';
 
 const Game = (): FunctionComponentElement<ReactElement> => {
   const game = ['rock', 'paper', 'scissors'];
-  const { setUserChoice, setComputer } = useContext(project1Ctx);
+  const { setUserChoice, setComputer, setIsClick } = useContext(project1Ctx);
 
   const computerAnswer = () => {
     return game[Math.floor(Math.random() * 3)];
@@ -22,6 +22,7 @@ const Game = (): FunctionComponentElement<ReactElement> => {
             onClick={() => {
               setUserChoice(choice);
               setComputer(computerAnswer());
+              setIsClick(true);
             }}
           >
             <img src={findImage(choice)} alt={choice} />

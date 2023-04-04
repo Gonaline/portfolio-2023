@@ -3,5 +3,7 @@ export default interface IProject1 {
   setUserChoice: (c: string) => void;
   computer: string;
   setComputer: (c: string) => void;
+  isClick: boolean;
+  setIsClick: (c: boolean) => void;
   reset: () => void;
 }
