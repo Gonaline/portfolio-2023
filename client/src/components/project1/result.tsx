@@ -1,38 +1,23 @@
 import { FunctionComponentElement, ReactElement, useContext } from 'react';
-import ResultStyle from '../../style/project1/resultStyle';
 import project1Ctx from '../../context/project1Ctx';
-import styled from 'styled-components';
+import { ResultStyle } from '../../style/project1/resultStyle';
+import { findImage } from '../../shared/project1/findImage';
 
 interface ResultProps {
-  color: string | undefined;
-  otherColor: string | undefined;
-  message: string | undefined;
+  message: string;
   userPoint: number;
   computerPoint: number;
 }
+
 const Result = ({
-  color,
-  otherColor,
   message,
   userPoint,
   computerPoint,
 }: ResultProps): FunctionComponentElement<ReactElement> => {
   const { userChoice, computer } = useContext(project1Ctx);
 
-  const UserDiv = styled.div`
-    background: ${computer !== '' &&
-      `url(${require(`../../assets/pictures/project1/${userChoice}.png`)})`},
-      ${color};
-  `;
-
-  const ComputerDiv = styled.div`
-    background: ${computer !== '' &&
-      `url(${require(`../../assets/pictures/project1/${computer}.png`)})`},
-      ${color};
-  `;
-
   return (
-    <ResultStyle color={otherColor}>
+    <ResultStyle>
       <div className='result'>
         {userPoint === 0 ? (
           <div className='onePoint none' />
@@ -41,18 +26,25 @@ const Result = ({
             <p>+1</p>
           </div>
         )}
-        <UserDiv
-          className={`choice user ${
+
+        <div
+          className={`user choice ${
             userPoint === 0 && computerPoint === 1 ? 'delete' : ''
           } 
             `}
-        />
-        <ComputerDiv
-          className={`choice computer ${
+        >
+          <img src={findImage(userChoice)} alt='userChoice' />
+        </div>
+
+        <div
+          className={`computer choice ${
             userPoint === 1 && computerPoint === 0 ? 'delete' : ''
           } 
             `}
-        />
+        >
+          <img src={findImage(computer)} alt='computer' />
+        </div>
+
         {computerPoint === 0 ? (
           <div className='onePoint none' />
         ) : (

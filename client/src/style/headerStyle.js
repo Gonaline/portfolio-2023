@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export default styled.header`
   width: 100vw;
   height: 15vh;
-  background-color: #cccc66;
+  background-color: var(--mainColor);
   display: flex;
   flex-wrap: nowrap;
   justify-content: space-between;
@@ -74,8 +74,8 @@ export default styled.header`
         font-size: 1.5rem;
       }
       .link:hover {
-        color: #cccc66;
-        background: #ffffff50;
+        color: var(--mainColor);
+        background: var(--white-opacity50);
       }
     }
   }

@@ -4,7 +4,7 @@ export default styled.div`
   display: flex;
   justify-content: left;
   align-items: center;
-  height: 15vh;
+  height: 12vh;
   width: 100%;
   h2 {
     font-weight: bold;
@@ -17,7 +17,8 @@ export default styled.div`
     margin-bottom: 3vh;
     h2 {
       text-align: center;
-      padding: 0;
+      padding-left: 0;
+      padding-top: 2vh;
       font-size: 2.5em;
     }
   }

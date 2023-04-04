@@ -1,45 +1,32 @@
 import { FunctionComponentElement, ReactElement, useContext } from 'react';
-import styled from 'styled-components';
 import project1Ctx from '../../context/project1Ctx';
-import GameStyle from '../../style/project1/gameStyle';
+import { ButtonGame, GameStyle } from '../../style/project1/gameStyle';
+import { findImage } from '../../shared/project1/findImage';
 
-const Button = styled.button`
-  background: ${(props: any) =>
-      `url(${require(`../../assets/pictures/project1/${props.value}.png`)})`},
-    ${(props) => props.color};
-`;
-
-interface GameProps {
-  buttonColor: string | undefined;
-  onHoverButtonColor: string | undefined;
-}
-
-const Game = ({
-  buttonColor,
-  onHoverButtonColor,
-}: GameProps): FunctionComponentElement<ReactElement> => {
+const Game = (): FunctionComponentElement<ReactElement> => {
   const game = ['rock', 'paper', 'scissors'];
-  const { setUserChoice, setComputer } = useContext(project1Ctx);
+  const { setUserChoice, setComputer, setIsClick } = useContext(project1Ctx);
 
   const computerAnswer = () => {
     return game[Math.floor(Math.random() * 3)];
   };
 
   return (
-    <GameStyle color={onHoverButtonColor}>
+    <GameStyle>
       <div className='userChoice'>
         {game.map((choice) => (
-          <Button
-            color={buttonColor}
-            className='b'
+          <ButtonGame
             type='button'
             key={choice}
             value={choice}
             onClick={() => {
               setUserChoice(choice);
               setComputer(computerAnswer());
+              setIsClick(true);
             }}
-          />
+          >
+            <img src={findImage(choice)} alt={choice} />
+          </ButtonGame>
         ))}
       </div>
       <div className='text'>

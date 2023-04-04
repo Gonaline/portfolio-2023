@@ -23,9 +23,7 @@ export default styled.section`
     color: var(--white);
   }
   h2 {
-    color: ${(props: any): string | undefined => {
-      return `${props.color}`;
-    }};
+    color: var(--mainColor);
     margin-bottom: 6vh;
   }
   @media screen and (max-width: 700px) {

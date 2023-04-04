@@ -1,7 +1,7 @@
 import { FunctionComponentElement, ReactElement } from 'react';
 import { NavLink } from 'react-router-dom';
-import HeaderStyle from '../style/headerStyle.js';
 import Navbar from './navbar';
+import HeaderStyle from '../style/headerStyle';
 
 const Header = (): FunctionComponentElement<ReactElement> => {
   return (

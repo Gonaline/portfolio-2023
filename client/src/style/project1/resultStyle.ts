@@ -1,55 +1,35 @@
 import styled from 'styled-components';
 
-export default styled.section`
-  height: 46vh;
+export const ResultStyle = styled.section`
+  height: 45vh;
   width: 55vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
-  .choice {
-    margin: 0 1vw 0 1vw;
-    border-radius: var(--border-radius);
-    background-size: contain;
-    background-repeat: no-repeat;
-    height: 35vh;
-    aspect-ratio: 1/1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .computer {
-    transform: scaleX(-1);
-  }
-
   .result {
     height: 35vh;
     display: flex;
     align-items: center;
     justify-content: left;
   }
-  .onePoint {
-    height: 4vh;
-    aspect-ratio: 1.5/1;
-    margin: auto;
+  .choice {
+    margin: 0 1vw 0 1vw;
     border-radius: var(--border-radius);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: ${(props: any): string | undefined => {
-      return `${props.color}`;
-    }};
-    color: var(--white);
-    text-align: center;
-    animation-duration: 2s;
-    animation-iteration-count: 1;
-    font-weight: bold;
+    background-color: var(--buttonColor);
+    height: 35vh;
+    aspect-ratio: 1/1;
+    img {
+      width: 100%;
+    }
   }
+  .computer {
+    transform: scaleX(-1);
+  }
+
   .delete {
-    opacity: 0.2;
     animation-name: deleteLoser;
-    animation-duration: 3s;
+    animation-duration: 5s;
     animation-iteration-count: none;
   }
   @keyframes deleteLoser {
@@ -60,29 +40,50 @@ export default styled.section`
       opacity: 0.2;
     }
   }
-
-  .computerWin {
-    animation-name: computerSlide;
-  }
-  @keyframes computerSlide {
-    from {
-      transform: translate(-50px, 0px);
-    }
-    to {
-      transform: translate(0px, 0);
-    }
+  .onePoint {
+    height: 4vh;
+    aspect-ratio: 1.5/1;
+    margin: auto;
+    border-radius: var(--border-radius);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--otherColor);
+    color: var(--white);
+    text-align: center;
+    animation-duration: 2s;
+    animation-iteration-count: 1;
+    font-weight: bold;
   }
   .userWin {
-    animation-name: userSlide;
+    animation-name: userWin;
+    animation-duration: 3s;
   }
-  @keyframes userSlide {
+  @keyframes userWin {
     from {
-      transform: translate(50px, 0px);
+      transform: translate(5vw, 0px);
+      opacity: 0;
     }
     to {
       transform: translate(0px, 0);
+      opacity: 1;
     }
   }
+  .computerWin {
+    animation-name: computerWin;
+    animation-duration: 3s;
+  }
+  @keyframes computerWin {
+    from {
+      transform: translate(-5vw, 0px);
+      opacity: 0;
+    }
+    to {
+      transform: translate(0px, 0);
+      opacity: 1;
+    }
+  }
+
   .none {
     background: none;
   }
@@ -93,12 +94,15 @@ export default styled.section`
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    animation-name: appear;
     animation-duration: 3s;
-    animation-iteration-count: 1;
-    animation-name: h3Slide;
-  }
+    animation-iteration-count: none;
 
-  @keyframes h3Slide {
+    h3 {
+      font-weight: bold;
+    }
+  }
+  @keyframes appear {
     from {
       opacity: 0;
     }
@@ -106,9 +110,7 @@ export default styled.section`
       opacity: 1;
     }
   }
-  h3 {
-    font-weight: bold;
-  }
+
   @media screen and (max-width: 700px) {
     height: 30vh;
     width: 100vw;
