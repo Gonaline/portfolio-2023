@@ -29,7 +29,7 @@ export const ResultStyle = styled.section`
 
   .delete {
     animation-name: deleteLoser;
-    animation-duration: 3s;
+    animation-duration: 5s;
     animation-iteration-count: none;
   }
   @keyframes deleteLoser {
@@ -96,16 +96,18 @@ export const ResultStyle = styled.section`
     justify-content: center;
     animation-name: appear;
     animation-duration: 3s;
+    animation-iteration-count: none;
+
     h3 {
       font-weight: bold;
     }
   }
   @keyframes appear {
     from {
-      opacity: 1;
+      opacity: 0;
     }
     to {
-      opacity: 0.2;
+      opacity: 1;
     }
   }
 

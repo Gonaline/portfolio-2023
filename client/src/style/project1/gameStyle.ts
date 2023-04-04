@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const ButtonGame = styled.button`
   aspect-ratio: 1/1;
   height: 28%;
-  margin: 0 4vw 0 4vw;
+  margin: 0 4vw 0 6vw;
   border: none;
   border-radius: var(--border-radius);
   display: flex;
