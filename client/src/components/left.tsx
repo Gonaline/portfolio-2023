@@ -1,21 +1,12 @@
-import { FunctionComponentElement, ReactElement } from 'react';
+import { FunctionComponentElement, ReactElement, useContext } from 'react';
 import LeftStyle from '../style/leftStyle';
+import pagesCtx from '../context/pagesCtx';
 
-interface LeftProps {
-  title: string;
-  subtitle: string;
-  description: string;
-  textColor?: string | undefined;
-}
+const Left = (): FunctionComponentElement<ReactElement> => {
+  const { title, subtitle, description } = useContext(pagesCtx);
 
-const Left = ({
-  title,
-  subtitle,
-  description,
-  textColor,
-}: LeftProps): FunctionComponentElement<ReactElement> => {
   return (
-    <LeftStyle color={textColor}>
+    <LeftStyle>
       <div>
         <h4 className='subTitle'>{subtitle}</h4>
         <h2>{title}</h2>

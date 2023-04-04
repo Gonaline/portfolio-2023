@@ -4,21 +4,21 @@ import { Reset } from 'styled-reset';
 import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import GlobalStyle from './style/globalStyle';
-import { CtxProvider } from './context/project1Ctx';
+import { CombineComponents } from './shared/combineComponents';
+import { PagesCtxProvider } from './context/pagesCtx';
+import { Project1CtxProvider } from './context/project1Ctx';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <CtxProvider>
+    <CombineComponents components={[PagesCtxProvider, Project1CtxProvider]}>
       <Reset />
-      <GlobalStyle />
       <BrowserRouter>
         <App />
       </BrowserRouter>
-    </CtxProvider>
+    </CombineComponents>
   </React.StrictMode>
 );
 
