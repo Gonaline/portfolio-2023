@@ -1,12 +1,10 @@
-import { FunctionComponentElement, ReactElement } from 'react';
+import { FunctionComponentElement, ReactElement, useContext } from 'react';
 import ProjectTitleStyle from '../style/projectTitleStyle';
+import pagesCtx from '../context/pagesCtx';
 
-interface ProjectTitleProps {
-  title: string;
-}
-const ProjectTitle = ({
-  title,
-}: ProjectTitleProps): FunctionComponentElement<ReactElement> => {
+const ProjectTitle = (): FunctionComponentElement<ReactElement> => {
+  const { title } = useContext(pagesCtx);
+
   return (
     <ProjectTitleStyle>
       <h2>{title}</h2>

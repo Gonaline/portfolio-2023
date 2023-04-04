@@ -20,15 +20,7 @@ import { PAGE } from '../enums/page.enum';
 
 const Project1 = (): FunctionComponentElement<ReactElement> => {
   const { userChoice, computer } = useContext(project1Ctx);
-  const {
-    title,
-    setTitle,
-    subtitle,
-    setSubtitle,
-    description,
-    setDescription,
-    setTheme,
-  } = useContext(pagesCtx);
+  const { setPageData } = useContext(pagesCtx);
 
   const [computerCounter, setComputerCounter] = useState<number>(0);
   const [userCounter, setUserCounter] = useState<number>(0);
@@ -48,18 +40,15 @@ const Project1 = (): FunctionComponentElement<ReactElement> => {
   }, [computer, userChoice]);
 
   useEffect(() => {
-    setTheme(pageData[PAGE.PROJECT1].theme);
-    setTitle(pageData[PAGE.PROJECT1].title);
-    setSubtitle(pageData[PAGE.PROJECT1].subtitle);
-    setDescription(pageData[PAGE.PROJECT1].description);
+    setPageData(pageData[PAGE.PROJECT1]);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <>
-      <Left title={title} subtitle={subtitle} description={description} />
+      <Left />
       <Project1Style>
-        <ProjectTitle title={title} />
+        <ProjectTitle />
         <Game />
         <Counter userCounter={userCounter} computerCounter={computerCounter} />
         <Result
