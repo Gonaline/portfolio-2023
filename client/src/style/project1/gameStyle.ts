@@ -1,6 +1,31 @@
 import styled from 'styled-components';
 
-export default styled.section`
+export const ButtonGame = styled.button`
+  aspect-ratio: 1/1;
+  height: 28%;
+  margin: 0 4vw 0 4vw;
+  border: none;
+  border-radius: var(--border-radius);
+  display: flex;
+  align-items: center;
+  box-shadow: var(--box-shadow);
+  background-size: 100%;
+  background-color: var(--buttonColor);
+  img {
+    width: 100%;
+    aspect-ratio: 1/1;
+  }
+  :hover {
+    -ms-transform: scale(1.1); /* IE 9 */
+    -webkit-transform: scale(1.1); /* Safari 3-8 */
+    transform: rotate(20deg) scale(1.1);
+    background-color: var(--otherColor);
+  }
+  @media screen and (max-width: 700px) {
+  }
+`;
+
+export const GameStyle = styled.section`
   height: 46vh;
   width: 55vw;
   margin: auto;
@@ -12,29 +37,7 @@ export default styled.section`
     flex-direction: column;
     justify-content: space-between;
   }
-  button {
-    aspect-ratio: 1/1;
-    height: 28%;
-    margin: 0 4vw 0 4vw;
-    border: none;
-    border-radius: var(--border-radius);
-    display: flex;
-    align-items: center;
-    box-shadow: var(--box-shadow);
-    background-size: 100%;
-    :hover,
-    :focus,
-    :active {
-      background-color: ${(props: any): string | undefined => {
-        return `${props.color}`;
-      }};
-    }
-  }
-  button:hover {
-    -ms-transform: scale(1.1); /* IE 9 */
-    -webkit-transform: scale(1.1); /* Safari 3-8 */
-    transform: rotate(20deg) scale(1.1);
-  }
+
   .text {
     display: flex;
     flex-direction: column;
