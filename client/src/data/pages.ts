@@ -27,6 +27,20 @@ const page = {
       otherColor: '#ED3A2B',
     },
   },
+  project2: {
+    title: 'MODELING GALLERY',
+    subtitle: 'PROJECT #2',
+    description:
+      'is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&rsquo;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
+    theme: {
+      mainColor: '#E0B62B',
+      opacityColor: '#E0B62B73',
+      backgroundColor: '#f9dea3',
+      buttonColor: '#E0B62B',
+      buttonOnHoverColor: '',
+      otherColor: '',
+    },
+  },
 };
 
 export default page;
