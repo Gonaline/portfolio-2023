@@ -21,7 +21,7 @@ class ProductManager {
     }
     findAll() {
         return __awaiter(this, void 0, void 0, function* () {
-            const sql = `SELECT * FROM ${product} ORDER BY product_order`;
+            const sql = `SELECT id, product_name, first_image FROM ${product} ORDER BY product_order`;
             const [rows] = yield this.connection.execute(sql);
             return rows;
         });

@@ -24,6 +24,11 @@ class ProductController {
                     res.sendStatus(404);
                 }
                 else {
+                    const product = result.forEach((e) => {
+                        if (!e.first_image) {
+                            e.first_image = e.id + '.png';
+                        }
+                    });
                     res.status(200).json(result);
                 }
             })
