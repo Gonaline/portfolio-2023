@@ -1,4 +1,4 @@
-import IProduct from '../../interfaces/product';
+import IProduct from '../interfaces/product';
 import connection from '../database';
 import { Pool } from 'mysql2/promise';
 import { TABLE } from '../enums/table.enum';
