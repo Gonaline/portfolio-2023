@@ -17,8 +17,20 @@ class ProductController {
     constructor(productManager = new product_manager_1.default()) {
         this.productManager = productManager;
         this.getProducts = (_req, res) => __awaiter(this, void 0, void 0, function* () {
-            const result = yield this.productManager.findAll();
-            res.status(200).json(result);
+            return yield this.productManager
+                .findAll()
+                .then((result) => {
+                if (!result) {
+                    res.sendStatus(404);
+                }
+                else {
+                    res.status(200).json(result);
+                }
+            })
+                .catch((err) => {
+                console.error(err);
+                res.sendStatus(500);
+            });
         });
         this.getProductById = (req, res) => __awaiter(this, void 0, void 0, function* () {
             const id = req.params.id;
@@ -29,7 +41,7 @@ class ProductController {
                     res.sendStatus(404);
                 }
                 else {
-                    res.status(200).json(result);
+                    res.status(200).json(result[0]);
                 }
             })
                 .catch((err) => {

@@ -28,7 +28,7 @@ class ProductController {
         if (!result) {
           res.sendStatus(404);
         } else {
-          res.status(200).json(result);
+          res.status(200).json(result[0]);
         }
       })
       .catch((err: any) => {
