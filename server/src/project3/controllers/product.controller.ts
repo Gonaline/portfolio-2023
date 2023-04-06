@@ -1,18 +1,41 @@
 import { Request, Response } from 'express';
-import ProductService from '../services/product.service';
+import ProductManager from '../models/product.manager';
 
 class ProductController {
-  constructor(private productService = new ProductService()) {}
+  constructor(private productManager = new ProductManager()) {}
 
   public getProducts = async (_req: Request, res: Response) => {
-    const result = await this.productService.findAll();
-    res.status(200).json(result);
+    return await this.productManager
+      .findAll()
+      .then((result) => {
+        if (!result) {
+          res.sendStatus(404);
+        } else {
+          res.status(200).json(result);
+        }
+      })
+      .catch((err: any) => {
+        console.error(err);
+        res.sendStatus(500);
+      });
   };
 
-  // public getProductById = async (_req: Request, res: Response) => {
-  //   const result = await this.productService.getAll();
-  //   res.status(200).json(result);
-  // };
+  public getProductById = async (req: Request, res: Response) => {
+    const id: string = req.params.id;
+    return await this.productManager
+      .findOne(id)
+      .then((result) => {
+        if (!result) {
+          res.sendStatus(404);
+        } else {
+          res.status(200).json(result);
+        }
+      })
+      .catch((err: any) => {
+        console.error(err);
+        res.sendStatus(500);
+      });
+  };
 }
 
 export default ProductController;
