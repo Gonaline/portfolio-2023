@@ -1,33 +1,18 @@
-// pour test
 import { Request, Response } from 'express';
-import { TABLE } from '../enums/table.enum';
+import ProductService from '../services/product.service';
 
-const database = require('../database');
 class ProductController {
-  static getProducts = (req: Request, res: Response) => {
-    database
-      .query(`select * from ${TABLE.PRODUCT}`)
-      .then(([result]: any[]) => {
-        res.send(result);
-      })
-      .catch((err: any) => {
-        console.error(err);
-        res.status(500).send('Error retrieving data from database');
-      });
+  constructor(private productService = new ProductService()) {}
+
+  public getProducts = async (_req: Request, res: Response) => {
+    const result = await this.productService.findAll();
+    res.status(200).json(result);
   };
 
-  static getProductById = (req: Request, res: Response) => {
-    const id = req.params.id;
-    database
-      .query(`SELECT * FROM ${TABLE.PRODUCT} WHERE id = ?`, [id])
-      .then(([result]: any[]) => {
-        res.send(result);
-      })
-      .catch((err: any) => {
-        console.error(err);
-        res.status(500).send('Error retrieving data from database');
-      });
-  };
+  // public getProductById = async (_req: Request, res: Response) => {
+  //   const result = await this.productService.getAll();
+  //   res.status(200).json(result);
+  // };
 }
 
-module.exports = ProductController;
+export default ProductController;
