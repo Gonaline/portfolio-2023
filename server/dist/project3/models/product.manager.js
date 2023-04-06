@@ -13,16 +13,25 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const database_1 = __importDefault(require("../database"));
-class ProductService {
+const table_enum_1 = require("../enums/table.enum");
+const product = table_enum_1.TABLE.PRODUCT;
+class ProductManager {
     constructor() {
         this.connection = database_1.default;
     }
     findAll() {
         return __awaiter(this, void 0, void 0, function* () {
-            const result = yield this.connection.execute('SELECT * FROM product');
-            const [rows] = result;
+            const sql = `SELECT * FROM ${product} ORDER BY product_order`;
+            const [rows] = yield this.connection.execute(sql);
+            return rows;
+        });
+    }
+    findOne(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const sql = `SELECT * FROM ${product} WHERE id = ?`;
+            const [rows] = yield this.connection.execute(sql, [id]);
             return rows;
         });
     }
 }
-exports.default = ProductService;
+exports.default = ProductManager;

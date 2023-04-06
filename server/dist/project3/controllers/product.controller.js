@@ -12,13 +12,30 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const product_service_1 = __importDefault(require("../services/product.service"));
+const product_manager_1 = __importDefault(require("../models/product.manager"));
 class ProductController {
-    constructor(productService = new product_service_1.default()) {
-        this.productService = productService;
+    constructor(productManager = new product_manager_1.default()) {
+        this.productManager = productManager;
         this.getProducts = (_req, res) => __awaiter(this, void 0, void 0, function* () {
-            const result = yield this.productService.findAll();
+            const result = yield this.productManager.findAll();
             res.status(200).json(result);
+        });
+        this.getProductById = (req, res) => __awaiter(this, void 0, void 0, function* () {
+            const id = req.params.id;
+            return yield this.productManager
+                .findOne(id)
+                .then((result) => {
+                if (!result) {
+                    res.sendStatus(404);
+                }
+                else {
+                    res.status(200).json(result);
+                }
+            })
+                .catch((err) => {
+                console.error(err);
+                res.sendStatus(500);
+            });
         });
     }
 }
