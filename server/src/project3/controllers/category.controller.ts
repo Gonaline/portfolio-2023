@@ -6,10 +6,7 @@ import ICategory from '../interfaces/category';
 class CategoryController {
   constructor(private categoryManager = new CategoryManager()) {}
 
-  public findAllCategoriesWithConvertName = async (
-    _req: Request,
-    res: Response
-  ) => {
+  public findAllCategoriesWithConvertName = async () => {
     return await this.categoryManager.findAll().then((result) => {
       result.forEach((e: ICategory) => {
         e.convert_category_name = convertText(e.category_name);
@@ -19,15 +16,11 @@ class CategoryController {
   };
 
   public getCategories = async (_req: Request, res: Response) => {
-    return await this.categoryManager
-      .findAll()
+    return await this.findAllCategoriesWithConvertName()
       .then((result) => {
         if (!result) {
           res.sendStatus(404);
         } else {
-          result.forEach((e: ICategory) => {
-            e.convert_category_name = convertText(e.category_name);
-          });
           res.status(200).json(result);
         }
       })
@@ -39,7 +32,7 @@ class CategoryController {
 
   public getProductsByCategory = async (req: Request, res: Response) => {
     const convertName = req.params.convertName;
-    const categories = await this.findAllCategoriesWithConvertName(req, res);
+    const categories = await this.findAllCategoriesWithConvertName();
 
     if (!categories || categories.length === 0) {
       return [];
@@ -54,7 +47,7 @@ class CategoryController {
         id = category.id.toString();
       }
       return await this.categoryManager
-        .findProductsByCategory(id)
+        .findProductsByCategory(id, convertName)
         .then((result) => {
           if (!result) {
             res.sendStatus(404);
