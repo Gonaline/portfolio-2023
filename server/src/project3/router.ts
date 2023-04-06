@@ -1,5 +1,5 @@
 const project3Router = require('express').Router();
-const product = require('./controllers/product');
+const product = require('./controllers/product.controller');
 
 project3Router.get('/products', product.getProducts);
 project3Router.get('/product/:id', product.getProductById);
