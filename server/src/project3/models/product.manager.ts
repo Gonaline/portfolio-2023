@@ -11,7 +11,7 @@ class ProductManager {
   }
 
   public async findAll(): Promise<IProduct[]> {
-    const sql = `SELECT * FROM ${product} ORDER BY product_order`;
+    const sql = `SELECT id, product_name, first_image FROM ${product} ORDER BY product_order`;
     const [rows] = await this.connection.execute(sql);
     return rows as IProduct[];
   }
