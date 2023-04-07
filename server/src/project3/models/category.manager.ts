@@ -28,7 +28,8 @@ class CategoryManager {
     let sql = '';
 
     if (convertName === COLLECTION.ALL_COLLECTIONS_CONVERT_NAME) {
-      sql = `SELECT DISTINCT(pc.product_id), c.id AS category_id, c.category_name, p.product_name, IFNULL(p.first_image, CONCAT(pc.product_id, ".png")) AS first_image
+      sql = `SELECT pc.product_id, c.id AS category_id, c.category_name, p.product_name,
+      IFNULL(p.first_image, CONCAT(pc.product_id, ".png")) AS first_image, p.price, p.price_option
       FROM ${product_category} AS pc
       INNER JOIN ${category} AS c
       ON pc.category_id = c.id
@@ -39,7 +40,8 @@ class CategoryManager {
       const [rows] = await this.connection.execute(sql);
       return rows as IProductsByCategory[];
     } else {
-      sql = `SELECT pc.product_id, c.id AS category_id, c.category_name, p.product_name, IFNULL(p.first_image, CONCAT(pc.product_id, ".png")) AS first_image
+      sql = `SELECT pc.product_id, c.id AS category_id, c.category_name, p.product_name,
+      IFNULL(p.first_image, CONCAT(pc.product_id, ".png")) AS first_image, p.price, p.price_option
       FROM ${product_category} AS pc
       INNER JOIN ${category} AS c
       ON pc.category_id = c.id
