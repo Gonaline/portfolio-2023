@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
 export default styled.header`
+  position: relative;
+  z-index: 1;
   width: 100vw;
   height: 15vh;
   background-color: var(--mainColor);
