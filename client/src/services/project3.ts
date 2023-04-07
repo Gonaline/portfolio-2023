@@ -6,4 +6,11 @@ export const Project3Service = {
       `${process.env.REACT_APP_BACKEND_URL}/stickers-shop/categories`
     );
   },
+
+  getProductsByCategory: async (categoryConvertName: string) => {
+    const data = await axios.get(
+      `${process.env.REACT_APP_BACKEND_URL}/stickers-shop/category/${categoryConvertName}`
+    );
+    return data;
+  },
 };
