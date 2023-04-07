@@ -11,6 +11,7 @@ import { ThemeProvider } from 'styled-components';
 import GlobalStyle from './style/globalStyle';
 import Project3Category from './pages/project3Category';
 import { PAGE } from './enums/page.enum';
+import Project3Product from './pages/project3Product';
 
 const App = () => {
   const { theme } = useContext(GlobalCtx);
@@ -29,6 +30,7 @@ const App = () => {
               <Route path={PAGE.PROJECT3_PATH}>
                 <Route index element={<Project3 />} />
                 <Route path=':category' element={<Project3Category />} />
+                <Route path=':category/:id' element={<Project3Product />} />
               </Route>
             </Routes>
           </main>
