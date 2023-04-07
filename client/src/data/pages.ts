@@ -41,6 +41,20 @@ const page = {
       otherColor: '',
     },
   },
+  project3: {
+    title: 'STICKERS SHOP',
+    subtitle: 'PROJECT #3',
+    description:
+      'is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&rsquo;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
+    theme: {
+      mainColor: '#CCCC66',
+      opacityColor: '#CCCC6673',
+      backgroundColor: '#dfdf9f',
+      buttonColor: '#CCCC66',
+      buttonOnHoverColor: '#F36653',
+      otherColor: '',
+    },
+  },
 };
 
 export default page;
