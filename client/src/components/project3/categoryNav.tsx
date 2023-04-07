@@ -13,6 +13,7 @@ import {
 import { Project3Service } from '../../services/project3';
 import { NavLink } from 'react-router-dom';
 import ICategory from '../../interfaces/project3/category';
+import { PAGE } from '../../enums/page.enum';
 
 const CategoryNav = (): FunctionComponentElement<ReactElement> => {
   const [categories, setCategories] = useState<ICategory[]>([]);
@@ -42,7 +43,7 @@ const CategoryNav = (): FunctionComponentElement<ReactElement> => {
           <SubmenuStyle className='submenu'>
             {categories.map((e) => (
               <NavLink
-                to={`/project3/${e.convert_category_name}`}
+                to={`/${PAGE.PROJECT3_PATH}/${e.convert_category_name}`}
                 className='link'
                 key={e.id.toString()}
               >
