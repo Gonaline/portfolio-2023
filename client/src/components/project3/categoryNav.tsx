@@ -44,9 +44,9 @@ const CategoryNav = (): FunctionComponentElement<ReactElement> => {
               <NavLink
                 to={`/project3/${e.convert_category_name}`}
                 className='link'
-                id={e.id.toString()}
+                key={e.id.toString()}
               >
-                <CategoryStyle>
+                <CategoryStyle key={e.convert_category_name}>
                   <img
                     src={require(`../../assets/pictures/project3/categories/${e.img}`)}
                     alt={e.category_name}
