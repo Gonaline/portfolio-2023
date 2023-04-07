@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import CategoryManager from '../models/category.manager';
 import { convertText } from '../../utils/convertText';
 import ICategory from '../interfaces/category';
+import IProductsByCategory from '../interfaces/productsByCategory';
 
 class CategoryController {
   constructor(private categoryManager = new CategoryManager()) {}
@@ -52,7 +53,18 @@ class CategoryController {
           if (!result) {
             res.sendStatus(404);
           } else {
-            res.status(200).json(result);
+            const data = result.filter(
+              (data, index, self) =>
+                index ===
+                self.findIndex((t) => t.product_id === data.product_id)
+            );
+
+            data.forEach((e: IProductsByCategory) => {
+              e.convert_category_name = convertText(e.category_name);
+              e.convert_product_name = convertText(e.product_name);
+            });
+
+            res.status(200).json(data);
           }
         })
         .catch((err: any) => {
