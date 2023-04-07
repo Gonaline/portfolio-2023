@@ -4,6 +4,7 @@ import {
   useContext,
   useEffect,
 } from 'react';
+import { Outlet } from 'react-router-dom';
 import Left from '../components/left';
 import GlobalCtx from '../context/globalCtx';
 import pageData from '../data/pages';
@@ -24,6 +25,7 @@ const Project3 = (): FunctionComponentElement<ReactElement> => {
       <Left />
       <Project3Style>
         <CategoryNav />
+        <Outlet />
       </Project3Style>
     </>
   );
