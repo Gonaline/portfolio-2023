@@ -42,6 +42,7 @@ const Project2 = (): FunctionComponentElement<ReactElement> => {
           {imgList.map((image) => (
             <div className='box'>
               <img
+                key={image}
                 src={require(`../assets/pictures/project2/${image}`)}
                 alt={image}
               />

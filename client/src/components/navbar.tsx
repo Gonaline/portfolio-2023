@@ -1,27 +1,28 @@
 import { FunctionComponentElement, ReactElement } from 'react';
 import { NavLink } from 'react-router-dom';
+import { PAGE } from '../enums/page.enum';
 
 const Navbar = (): FunctionComponentElement<ReactElement> => {
   return (
     <nav>
       <li>
-        <NavLink to='/about' className='link mainLink'>
-          ABOUT
+        <NavLink to={PAGE.ABOUT_PATH} className='link mainLink'>
+          {[PAGE.ABOUT.toLocaleUpperCase()]}
         </NavLink>
       </li>
 
       <li>
         <div className='link mainLink'>
-          PROJECTS
+          {[PAGE.PROJECTS.toLocaleUpperCase()]}
           <ul>
-            <NavLink to='/rock-paper-or-scissors' className='link'>
-              PROJECT#1
+            <NavLink to={PAGE.PROJECT1_PATH} className='link'>
+              {[PAGE.PROJECT1.toLocaleUpperCase()]}
             </NavLink>
-            <NavLink to='/modeling-gallery' className='link'>
-              PROJECT#2
+            <NavLink to={PAGE.PROJECT2_PATH} className='link'>
+              {[PAGE.PROJECT2.toLocaleUpperCase()]}
             </NavLink>
-            <NavLink to='/stickers-shop' className='link'>
-              PROJECT#3
+            <NavLink to={PAGE.PROJECT3_PATH} className='link'>
+              {[PAGE.PROJECT3.toLocaleUpperCase()]}
             </NavLink>
           </ul>
         </div>

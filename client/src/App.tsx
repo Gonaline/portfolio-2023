@@ -9,6 +9,7 @@ import Project3 from './pages/project3';
 import GlobalCtx from './context/globalCtx';
 import { ThemeProvider } from 'styled-components';
 import GlobalStyle from './style/globalStyle';
+import { PAGE } from './enums/page.enum';
 
 const App = () => {
   const { theme } = useContext(GlobalCtx);
@@ -21,12 +22,10 @@ const App = () => {
           <Header />
           <main>
             <Routes>
-              <Route path='*' element={<About />} />
-              <Route path='/about' element={<About />} />
-              <Route path='/projects' element={<Project1 />} />
-              <Route path='/rock-paper-or-scissors' element={<Project1 />} />
-              <Route path='/modeling-gallery' element={<Project2 />} />
-              <Route path='/stickers-shop' element={<Project3 />} />
+              <Route path={PAGE.ABOUT_PATH} element={<About />} />
+              <Route path={PAGE.PROJECT1_PATH} element={<Project1 />} />
+              <Route path={PAGE.PROJECT2_PATH} element={<Project2 />} />
+              <Route path={PAGE.PROJECT3_PATH} element={<Project3 />} />
             </Routes>
           </main>
           <Footer />
