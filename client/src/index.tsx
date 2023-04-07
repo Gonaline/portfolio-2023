@@ -7,13 +7,16 @@ import reportWebVitals from './reportWebVitals';
 import { CombineComponents } from './shared/combineComponents';
 import { GlobalCtxProvider } from './context/globalCtx';
 import { Project1CtxProvider } from './context/project1Ctx';
+import { Project3CtxProvider } from './context/project3Ctx';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <CombineComponents components={[GlobalCtxProvider, Project1CtxProvider]}>
+    <CombineComponents
+      components={[GlobalCtxProvider, Project1CtxProvider, Project3CtxProvider]}
+    >
       <Reset />
       <BrowserRouter>
         <App />
