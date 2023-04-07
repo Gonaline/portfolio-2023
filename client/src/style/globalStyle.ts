@@ -9,6 +9,7 @@ const GlobalStyle = createGlobalStyle`
   --activeLink: #0e121754;
   --white: rgb(245, 244, 242);
   --white-opacity50: #ffffff50;
+  --white-opacity80: #ffffff80;
   --border-radius: 10px;
   --box-shadow: rgba(14,18,23, 0.5) 0px 2px 3px,
       rgba(14,18,23, 0.3) 0px 7px 7px -3px, rgba(14,18,23, 0.2) 0px -1px 0px inset;
@@ -37,19 +38,22 @@ h1,h2,h3,h4,h5,h6, p, li{
 }
 h1 {
     font-size: 3.5rem;
+    font-weight: 500;
   }
   h2 {
     font-size: 3rem;
+    font-weight: 500;
   }
   h3 {
     font-size: 2.5rem;
+    font-weight: 500;
     line-height: 3.5rem;
   }
   h4 {
     font-size: 2rem;
   }
   p {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     line-height: 1.8rem;
   }
 
@@ -73,6 +77,9 @@ h1 {
   }
   h4 {
     font-size: 1.5rem;
+  }
+  p {
+    font-size: 1rem;
   }
 }
 `;
