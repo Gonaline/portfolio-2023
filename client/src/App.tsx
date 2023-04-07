@@ -24,6 +24,7 @@ const App = () => {
           <Header />
           <main>
             <Routes>
+              <Route path='/' element={<About />} />
               <Route path={PAGE.ABOUT_PATH} element={<About />} />
               <Route path={PAGE.PROJECT1_PATH} element={<Project1 />} />
               <Route path={PAGE.PROJECT2_PATH} element={<Project2 />} />
