@@ -12,7 +12,6 @@ export default styled.header`
   align-items: center;
   .link {
     color: var(--white);
-    text-decoration: none;
   }
   nav {
     display: flex;
@@ -26,7 +25,7 @@ export default styled.header`
     justify-content: left;
     align-items: flex-end;
     h1 {
-      margin: 0 15%;
+      margin: 0 2.5vw;
       width: 100%;
       text-align: left;
       padding-bottom: 1.5vh;
@@ -44,8 +43,6 @@ export default styled.header`
       display: flex;
       justify-content: center;
       align-items: center;
-      font-size: 2.2rem;
-      font-weight: 400;
     }
     ul {
       display: none;
@@ -73,7 +70,7 @@ export default styled.header`
         justify-content: center;
         align-items: center;
         border-radius: 10px;
-        font-size: 1.5rem;
+        font-size: 1.4rem;
       }
       .link:hover {
         color: var(--mainColor);

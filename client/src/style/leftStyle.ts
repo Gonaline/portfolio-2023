@@ -11,7 +11,8 @@ export default styled.section`
   }
   p,
   h2,
-  h4 {
+  h4,
+  h5 {
     margin: 0 2.5vw 0 2.5vw;
   }
   .subTitle {
@@ -19,7 +20,8 @@ export default styled.section`
     opacity: 0.5;
   }
   p,
-  h4 {
+  h4,
+  h5 {
     color: var(--white);
   }
   h2 {

@@ -10,7 +10,7 @@ const Left = (): FunctionComponentElement<ReactElement> => {
       <div>
         <h4 className='subTitle'>{subtitle}</h4>
         <h2>{title}</h2>
-        <p>{description}</p>
+        <h5>{description}</h5>
       </div>
     </LeftStyle>
   );
