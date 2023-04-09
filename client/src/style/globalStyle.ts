@@ -35,8 +35,8 @@ main {
 a, li, ul {
     text-decoration: none;
     color: var(--darkColor);
-    font-size: 1.8rem;
-      font-weight: 400;
+    font-size: 1.6rem;
+      font-weight: 300;
 }
 h1,h2,h3,h4,h5,h6, p, li{
   font-family: var(--font-family);

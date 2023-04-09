@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export default styled.header`
-  position: relative;
+  position: fixed;
   z-index: 1;
   width: 100vw;
   height: 15vh;
@@ -33,6 +33,11 @@ export default styled.header`
   }
 
   li {
+    text-decoration: none;
+    color: var(--white);
+    font-size: 1.6rem;
+    font-weight: 300;
+    text-align: center;
     height: 15vh;
     width: 15vw;
     display: flex;

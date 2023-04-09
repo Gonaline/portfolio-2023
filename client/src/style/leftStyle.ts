@@ -2,10 +2,12 @@ import styled from 'styled-components';
 
 export default styled.section`
   background-color: var(--darkColor);
-  width: 30vw;
+  max-width: 30vw;
   height: 75vh;
   display: flex;
   align-items: center;
+  position: fixed;
+  top: 15vh;
   div {
     margin-bottom: 10vh;
   }

@@ -5,6 +5,8 @@ export default styled.footer`
   width: 100vw;
   background-color: var(--mainColor);
   display: flex;
+  position: fixed;
+  bottom: 0;
   .left {
     height: 10vh;
     width: 30vw;

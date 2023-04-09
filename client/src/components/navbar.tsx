@@ -13,23 +13,21 @@ const Navbar = (): FunctionComponentElement<ReactElement> => {
       </li>
 
       <li>
-        <div className='link mainLink'>
-          {[PAGE.PROJECTS.toLocaleUpperCase()]}
-          <ul>
-            <NavLink to={PAGE.PROJECT1_PATH} className='link'>
-              {[PAGE.PROJECT1.toLocaleUpperCase()]}
-            </NavLink>
-            <NavLink to={PAGE.PROJECT2_PATH} className='link'>
-              {[PAGE.PROJECT2.toLocaleUpperCase()]}
-            </NavLink>
-            <NavLink
-              to={`${PAGE.PROJECT3_PATH}/${COLLECTION.ALL_COLLECTIONS_CONVERT_NAME}`}
-              className='link'
-            >
-              {[PAGE.PROJECT3.toLocaleUpperCase()]}
-            </NavLink>
-          </ul>
-        </div>
+        {[PAGE.PROJECTS.toLocaleUpperCase()]}
+        <ul>
+          <NavLink to={PAGE.PROJECT1_PATH} className='link'>
+            {[PAGE.PROJECT1.toLocaleUpperCase()]}
+          </NavLink>
+          <NavLink to={PAGE.PROJECT2_PATH} className='link'>
+            {[PAGE.PROJECT2.toLocaleUpperCase()]}
+          </NavLink>
+          <NavLink
+            to={`${PAGE.PROJECT3_PATH}/${COLLECTION.ALL_COLLECTIONS_CONVERT_NAME}`}
+            className='link'
+          >
+            {[PAGE.PROJECT3.toLocaleUpperCase()]}
+          </NavLink>
+        </ul>
       </li>
     </nav>
   );
