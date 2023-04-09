@@ -5,7 +5,8 @@ import { COLLECTION } from '../enums/project3/collection.enum';
 import project3Ctx from '../context/project3Ctx';
 
 const Navbar = (): FunctionComponentElement<ReactElement> => {
-  const { setCollectionConvertName } = useContext(project3Ctx);
+  const { setCollectionConvertName, setCollectionName } =
+    useContext(project3Ctx);
   return (
     <nav>
       <li>
@@ -28,6 +29,7 @@ const Navbar = (): FunctionComponentElement<ReactElement> => {
             className='link'
             onClick={() => {
               setCollectionConvertName(COLLECTION.ALL_COLLECTIONS_CONVERT_NAME);
+              setCollectionName(COLLECTION.ALL_COLLECTIONS);
             }}
           >
             {[PAGE.PROJECT3.toLocaleUpperCase()]}
