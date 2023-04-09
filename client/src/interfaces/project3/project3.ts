@@ -1,9 +1,11 @@
 import IProductsByCollection from './productsByCollection';
 
 export default interface IProject3 {
-  getCollectionData: () => void;
-  collectionData: IProductsByCollection[];
-  setCollectionData: (c: any) => void;
+  getProductsByCollection: () => void;
+  productsByCollection: IProductsByCollection[];
+  setProductsByCollection: (c: any) => void;
   collectionConvertName: string;
   setCollectionConvertName: (c: string) => void;
+  isOpen: boolean;
+  setIsOpen: (c: boolean) => void;
 }
