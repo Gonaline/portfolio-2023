@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const ButtonStyle = styled.button`
+export const CollectionButtonStyle = styled.button`
   height: 8vh;
   width: 15vw;
   display: flex;
@@ -18,26 +18,34 @@ export const ButtonStyle = styled.button`
   }
 `;
 
-export const CategoryStyle = styled.div`
+export const ChoiceButtonStyle = styled.button`
   height: 6vh;
   width: 12vw;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
+  background: var(--white-opacity80);
+  border: none;
+  border-radius: 10px;
+
   img {
     height: 5vh;
     aspect-ratio: 1/1;
     margin: 0 0.5vw;
   }
+  p {
+    text-align: left;
+  }
   :hover {
-    background: var(--white-opacity80);
-    border-radius: 10px;
+    background: var(--mainColor);
   }
   @media screen and (max-width: 700px) {
     min-height: 4vh;
     width: 100vw;
     background-color: none;
+    border-top: var(--mainColor) 2px solid;
+
     img {
       height: 3vh;
       margin: 0 5vw;
@@ -60,9 +68,6 @@ export const SubmenuStyle = styled.div`
 
   @media screen and (max-width: 700px) {
     flex-direction: column;
-    a {
-      border-top: var(--mainColor) 2px solid;
-    }
   }
 `;
 
