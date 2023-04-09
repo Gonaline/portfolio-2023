@@ -2,7 +2,6 @@ import {
   FunctionComponentElement,
   ReactElement,
   useEffect,
-  useState,
   useContext,
 } from 'react';
 import {
@@ -13,18 +12,21 @@ import {
 } from '../../style/project3/categoryNavStyle';
 import { Project3Service } from '../../services/project3';
 import { useNavigate } from 'react-router-dom';
-import ICategory from '../../interfaces/project3/category';
 import project3Ctx from '../../context/project3Ctx';
 
 const CategoryNav = (): FunctionComponentElement<ReactElement> => {
-  const [categories, setCategories] = useState<ICategory[]>([]);
-  const { isOpen, setIsOpen, setCollectionConvertName } =
-    useContext(project3Ctx);
+  const {
+    isOpen,
+    setIsOpen,
+    setCollectionConvertName,
+    allCollections,
+    setAllCollections,
+  } = useContext(project3Ctx);
   const navigate = useNavigate();
 
   const getData: any = async () => {
     const { data } = await Project3Service.getAllCategories();
-    setCategories(data);
+    setAllCollections(data);
   };
 
   const updateCollection: any = async (
@@ -37,6 +39,7 @@ const CategoryNav = (): FunctionComponentElement<ReactElement> => {
 
   useEffect(() => {
     void getData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -52,7 +55,7 @@ const CategoryNav = (): FunctionComponentElement<ReactElement> => {
         </CollectionButtonStyle>
         {isOpen && (
           <SubmenuStyle>
-            {categories.map((e) => (
+            {allCollections.map((e) => (
               <ChoiceButtonStyle
                 key={e.id.toString()}
                 type='button'
