@@ -6,10 +6,10 @@ import {
   ListOfProductsStyle,
 } from '../style/project3/listOfProductsStyle';
 import { PAGE } from '../enums/page.enum';
+import { CollectionTitleStyle } from '../style/project3/collectionTitleStyle';
 
 const Project3Category = (): FunctionComponentElement<ReactElement> => {
-  const { collectionConvertName } = useContext(project3Ctx);
-  const { productsByCollection } = useContext(project3Ctx);
+  const { productsByCollection, collectionName } = useContext(project3Ctx);
   const navigate = useNavigate();
 
   const updateData: any = async (
@@ -19,9 +19,13 @@ const Project3Category = (): FunctionComponentElement<ReactElement> => {
     navigate(`${PAGE.PROJECT3_PATH}/${value}`);
   };
 
+  window.scrollTo(0, 0);
+
   return (
     <>
-      <h4>{collectionConvertName}</h4>
+      <CollectionTitleStyle>
+        <h4>{collectionName}</h4>
+      </CollectionTitleStyle>
       <ListOfProductsStyle>
         {productsByCollection.map((e) => (
           <CardStyle
