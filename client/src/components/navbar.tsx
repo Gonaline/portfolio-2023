@@ -1,9 +1,11 @@
-import { FunctionComponentElement, ReactElement } from 'react';
+import { FunctionComponentElement, ReactElement, useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import { PAGE } from '../enums/page.enum';
 import { COLLECTION } from '../enums/project3/collection.enum';
+import project3Ctx from '../context/project3Ctx';
 
 const Navbar = (): FunctionComponentElement<ReactElement> => {
+  const { setCollectionConvertName } = useContext(project3Ctx);
   return (
     <nav>
       <li>
@@ -24,6 +26,9 @@ const Navbar = (): FunctionComponentElement<ReactElement> => {
           <NavLink
             to={`${PAGE.PROJECT3_PATH}/${COLLECTION.ALL_COLLECTIONS_CONVERT_NAME}`}
             className='link'
+            onClick={() => {
+              setCollectionConvertName(COLLECTION.ALL_COLLECTIONS_CONVERT_NAME);
+            }}
           >
             {[PAGE.PROJECT3.toLocaleUpperCase()]}
           </NavLink>
