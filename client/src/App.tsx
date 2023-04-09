@@ -28,10 +28,10 @@ const App = () => {
               <Route path={PAGE.ABOUT_PATH} element={<About />} />
               <Route path={PAGE.PROJECT1_PATH} element={<Project1 />} />
               <Route path={PAGE.PROJECT2_PATH} element={<Project2 />} />
-              <Route path={PAGE.PROJECT3_PATH}>
-                <Route index element={<Project3 />} />
-                <Route path=':category' element={<Project3Category />} />
-                <Route path=':category/:id' element={<Project3Product />} />
+              <Route path={PAGE.PROJECT3_PATH} element={<Project3 />}>
+                <Route path=':collection' element={<Project3Category />}>
+                  <Route path=':id' element={<Project3Product />} />
+                </Route>
               </Route>
             </Routes>
           </main>

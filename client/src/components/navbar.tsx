@@ -1,6 +1,7 @@
 import { FunctionComponentElement, ReactElement } from 'react';
 import { NavLink } from 'react-router-dom';
 import { PAGE } from '../enums/page.enum';
+import { COLLECTION } from '../enums/project3/collection.enum';
 
 const Navbar = (): FunctionComponentElement<ReactElement> => {
   return (
@@ -21,7 +22,10 @@ const Navbar = (): FunctionComponentElement<ReactElement> => {
             <NavLink to={PAGE.PROJECT2_PATH} className='link'>
               {[PAGE.PROJECT2.toLocaleUpperCase()]}
             </NavLink>
-            <NavLink to={PAGE.PROJECT3_PATH} className='link'>
+            <NavLink
+              to={`${PAGE.PROJECT3_PATH}/${COLLECTION.ALL_COLLECTIONS_CONVERT_NAME}`}
+              className='link'
+            >
               {[PAGE.PROJECT3.toLocaleUpperCase()]}
             </NavLink>
           </ul>
