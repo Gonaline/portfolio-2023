@@ -1,7 +1,7 @@
 export enum TABLE {
   CATEGORY = 'category',
   COLOR = 'color',
-  OPTION = 'option',
+  OPTION_GROUP = 'option_group',
   OPTION_DETAIL = 'option_detail',
   PRODUCT = 'product',
   PRODUCT_CATEGORY = 'product_category',
