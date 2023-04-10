@@ -51,6 +51,9 @@ const CategoryNav = (): FunctionComponentElement<ReactElement> => {
             setIsOpen(!isOpen);
           }}
         >
+          <div>
+            {isOpen ? <p className='off'>-</p> : <p className='on'>+</p>}
+          </div>
           <h4>COLLECTIONS</h4>
         </CollectionButtonStyle>
         {isOpen && (
