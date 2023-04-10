@@ -8,7 +8,8 @@ import {
 import { CollectionTitleStyle } from '../style/project3/collectionTitleStyle';
 
 const Project3Category = (): FunctionComponentElement<ReactElement> => {
-  const { productsByCollection, collectionName } = useContext(project3Ctx);
+  const { productsByCollection, collectionName, setProductId } =
+    useContext(project3Ctx);
   const navigate = useNavigate();
 
   window.scrollTo(0, 0);
@@ -23,8 +24,9 @@ const Project3Category = (): FunctionComponentElement<ReactElement> => {
           <CardStyle
             type='button'
             key={e.product_id}
-            value={e.convert_product_name}
+            value={[e.convert_product_name, e.product_id]}
             onClick={() => {
+              setProductId(e.product_id);
               navigate(e.convert_product_name);
             }}
           >
