@@ -3,31 +3,88 @@ import styled from 'styled-components';
 export const CardStyle = styled.button`
   padding: 0;
   border: none;
-  max-width: 14vw;
+  width: 14vw;
+  aspect-ratio: 1/1;
   margin: 1.5vw;
   border-radius: var(--border-radius);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: -26.5vh;
 
-  :hover {
-    background-color: var(--buttonOnHoverColor);
-  }
   img {
-    border-radius: var(--border-radius) var(--border-radius) 0 0;
+    border-radius: var(--border-radius);
     width: 100%;
     aspect-ratio: 1/1;
-    :hover {
-      opacity: 0.5;
-    }
   }
+
   .productName {
+    position: relative;
+    bottom: 14vw;
+    left: 0;
+    border-radius: var(--border-radius);
     width: 100%;
-    height: 6vh;
-    background-color: var(--buttonOnHoverColor);
+    aspect-ratio: 1/1;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    border-radius: 0 0 var(--border-radius) var(--border-radius);
-    p {
-      text-align: center;
+    color: var(--white);
+    text-align: center;
+    .name {
+      position: relative;
+      top: 2vh;
+      width: 80%;
+      height: 5vw;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      display: none;
+      h4 {
+        font-size: 1.3rem;
+      }
+    }
+    .add {
+      position: relative;
+      top: 9vh;
+      width: 2vw;
+      aspect-ratio: 1/1;
+      border-radius: 1vw;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: var(--buttonOnHoverColor);
+      display: none;
+
+      p {
+        font-size: 1.5rem;
+        padding-bottom: 0.2rem;
+      }
+    }
+  }
+
+  :hover {
+    border-radius: 7vw;
+
+    img {
+      border-radius: 7vw;
+    }
+    .productName {
+      border-radius: 7vw;
+      background-color: var(--otherColor);
+      .name,
+      .add {
+        display: flex;
+      }
+      .add {
+        :hover {
+          display: flex;
+          -ms-transform: scale(1.5);
+          -webkit-transform: scale(1.5);
+          transform: scale(1.5);
+        }
+      }
     }
   }
 `;

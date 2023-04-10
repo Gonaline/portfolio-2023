@@ -6,11 +6,33 @@ export const CollectionButtonStyle = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  background: var(--backgroundColor);
   border: none;
+  div {
+    width: 2vw;
+    aspect-ratio: 1/1;
+    background-color: var(--darkColor);
+    border-radius: 1vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 0.5vw;
+    .on {
+      color: var(--white);
+      font-size: 2rem;
+      padding-bottom: 0.2rem;
+    }
+    .off {
+      color: var(--white);
+      font-size: 2rem;
+      padding-bottom: 0.5rem;
+    }
+  }
 
   :hover {
-    background: var(--opacityColor);
+    color: var(--mainColor);
+    div {
+      background-color: var(--mainColor);
+    }
   }
 
   @media screen and (max-width: 700px) {
@@ -63,7 +85,7 @@ export const SubmenuStyle = styled.div`
   flex-wrap: wrap;
   width: 100%;
   min-height: 25vh;
-  background-color: var(--backgroundColor);
+  background-color: var(--opacityColor);
   box-shadow: var(--box-shadow);
 
   @media screen and (max-width: 700px) {
@@ -73,7 +95,7 @@ export const SubmenuStyle = styled.div`
 
 export const CategoryNavStyle = styled.section`
   width: 70vw;
-  background: var(--opacityColor);
+  background-color: var(--opacityColor);
   box-shadow: var(--box-shadow);
   display: flex;
   flex-wrap: nowrap;

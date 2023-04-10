@@ -47,12 +47,12 @@ const page = {
     description:
       'is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&rsquo;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
     theme: {
-      mainColor: '#CCCC66',
-      opacityColor: '#CCCC6673',
-      backgroundColor: '#dfdf9f',
-      buttonColor: '#CCCC66',
-      buttonOnHoverColor: '#F36653',
-      otherColor: '',
+      mainColor: '#C1C132',
+      opacityColor: '#CDCD5A',
+      backgroundColor: '#E0E0A3',
+      buttonColor: '#B2B200',
+      buttonOnHoverColor: '#5800b3',
+      otherColor: '#5800b380',
     },
   },
 };

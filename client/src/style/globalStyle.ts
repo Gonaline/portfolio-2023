@@ -32,6 +32,15 @@ main {
   display: flex;
   height: 75vh;
 }
+button, input[type='submit'], input[type='reset'] {
+	background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
 a, li, ul {
     text-decoration: none;
     color: var(--darkColor);
