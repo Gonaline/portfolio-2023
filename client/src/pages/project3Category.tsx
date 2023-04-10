@@ -5,19 +5,11 @@ import {
   CardStyle,
   ListOfProductsStyle,
 } from '../style/project3/listOfProductsStyle';
-import { PAGE } from '../enums/page.enum';
 import { CollectionTitleStyle } from '../style/project3/collectionTitleStyle';
 
 const Project3Category = (): FunctionComponentElement<ReactElement> => {
   const { productsByCollection, collectionName } = useContext(project3Ctx);
   const navigate = useNavigate();
-
-  const updateData: any = async (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    const { value } = event.currentTarget;
-    navigate(`${PAGE.PROJECT3_PATH}/${value}`);
-  };
 
   window.scrollTo(0, 0);
 
@@ -33,7 +25,7 @@ const Project3Category = (): FunctionComponentElement<ReactElement> => {
             key={e.product_id}
             value={e.convert_product_name}
             onClick={() => {
-              updateData();
+              navigate(e.convert_product_name);
             }}
           >
             <img
@@ -41,7 +33,13 @@ const Project3Category = (): FunctionComponentElement<ReactElement> => {
               alt={e.product_name}
             />
             <div className='productName'>
-              <p>{e.product_name}</p>
+              <div className='name'>
+                <h5>{e.product_name}</h5>
+              </div>
+
+              <div className='add'>
+                <p>+</p>
+              </div>
             </div>
           </CardStyle>
         ))}
