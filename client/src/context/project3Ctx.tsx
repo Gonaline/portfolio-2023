@@ -4,6 +4,7 @@ import IProductsByCollection from '../interfaces/project3/productsByCollection';
 import { Project3Service } from '../services/project3';
 import { COLLECTION } from '../enums/project3/collection.enum';
 import ICollection from '../interfaces/project3/collection';
+import IProduct from '../interfaces/project3/product';
 
 const project3Ctx = createContext<IProject3>({
   allCollections: [],
@@ -17,6 +18,10 @@ const project3Ctx = createContext<IProject3>({
   setCollectionName: () => {},
   isOpen: false,
   setIsOpen: () => {},
+  productId: '',
+  setProductId: () => {},
+  productData: [],
+  setProductData: () => {},
 });
 
 export default project3Ctx;
@@ -33,6 +38,8 @@ export function Project3CtxProvider({ children }: any): JSX.Element {
     IProductsByCollection[]
   >([]);
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [productId, setProductId] = useState<string>('');
+  const [productData, setProductData] = useState<IProduct[]>([]);
 
   const getCollectionName: any = async () => {
     const object = allCollections.filter(
@@ -48,6 +55,11 @@ export function Project3CtxProvider({ children }: any): JSX.Element {
     setProductsByCollection(data);
   };
 
+  const getProductById: any = async () => {
+    const { data } = await Project3Service.getProductById(productId);
+    setProductData(data);
+  };
+
   useEffect(() => {
     getProductsByCollection();
     setIsOpen(false);
@@ -59,6 +71,11 @@ export function Project3CtxProvider({ children }: any): JSX.Element {
     getCollectionName();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [productsByCollection]);
+
+  useEffect(() => {
+    getProductById();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [productId]);
 
   return (
     <project3Ctx.Provider
@@ -74,6 +91,10 @@ export function Project3CtxProvider({ children }: any): JSX.Element {
         setCollectionName,
         isOpen,
         setIsOpen,
+        productId,
+        setProductId,
+        productData,
+        setProductData,
       }}
     >
       {children}
