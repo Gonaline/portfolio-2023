@@ -13,11 +13,4 @@ export const Project3Service = {
     );
     return data;
   },
-
-  getProductById: async (id: string) => {
-    const data = await axios.get(
-      `${process.env.REACT_APP_BACKEND_URL}/stickers-shop/product/${id}`
-    );
-    return data;
-  },
 };
