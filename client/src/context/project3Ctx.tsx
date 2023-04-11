@@ -1,10 +1,14 @@
 import { createContext, useEffect, useState } from 'react';
+import { Project3Service } from '../services/project3';
+import axios from 'axios';
+import { COLLECTION } from '../enums/project3/collection.enum';
 import IProject3 from '../interfaces/project3/project3';
 import IProductsByCollection from '../interfaces/project3/productsByCollection';
-import { Project3Service } from '../services/project3';
-import { COLLECTION } from '../enums/project3/collection.enum';
 import ICollection from '../interfaces/project3/collection';
 import IProduct from '../interfaces/project3/product';
+import IColor from '../interfaces/project3/color';
+import ICategoryOfProduct from '../interfaces/project3/categoryOfProduct';
+import IOption from '../interfaces/project3/option';
 
 const project3Ctx = createContext<IProject3>({
   allCollections: [],
@@ -20,8 +24,23 @@ const project3Ctx = createContext<IProject3>({
   setIsOpen: () => {},
   productId: '',
   setProductId: () => {},
-  productData: [],
+  productData: {
+    product_id: '',
+    product_name: '',
+    text_introduction: '',
+    mirror: 0,
+    price: 0,
+    first_image: '',
+  },
   setProductData: () => {},
+  technicalFiles: [],
+  setTechnicalFiles: () => {},
+  colors: {},
+  setColors: () => {},
+  option: {},
+  setOption: () => {},
+  categoriesOfProduct: { main_category: '', detail: [] },
+  setcategoriesOfProduct: () => {},
 });
 
 export default project3Ctx;
@@ -39,7 +58,26 @@ export function Project3CtxProvider({ children }: any): JSX.Element {
   >([]);
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [productId, setProductId] = useState<string>('');
-  const [productData, setProductData] = useState<IProduct[]>([]);
+  const [productData, setProductData] = useState<IProduct>({
+    product_id: '',
+    product_name: '',
+    text_introduction: '',
+    mirror: 0,
+    price: 0,
+    first_image: '',
+  });
+  const [technicalFiles, setTechnicalFiles] = useState<string[]>([]);
+  const [colors, setColors] = useState<IColor>({
+    fixed_color: '',
+    first_group: [],
+    second_group: [],
+  });
+  const [option, setOption] = useState<IOption>({
+    name: '',
+    detail: [{ name: '', price: 0, img_code: '' }],
+  });
+  const [categoriesOfProduct, setcategoriesOfProduct] =
+    useState<ICategoryOfProduct>({ main_category: '', detail: [] });
 
   const getCollectionName: any = async () => {
     const object = allCollections.filter(
@@ -55,9 +93,33 @@ export function Project3CtxProvider({ children }: any): JSX.Element {
     setProductsByCollection(data);
   };
 
+  const urlParts = [
+    '/stickers-shop/product/',
+    '/stickers-shop/categories-by-product/',
+    '/stickers-shop/technical-files/',
+    '/stickers-shop/option/',
+    '/stickers-shop/color/',
+  ];
   const getProductById: any = async () => {
-    const { data } = await Project3Service.getProductById(productId);
-    setProductData(data);
+    Promise.all(
+      urlParts.map((urlPart) =>
+        axios.get(`${process.env.REACT_APP_BACKEND_URL}${urlPart}${productId}`)
+      )
+    ).then(
+      ([
+        { data: product },
+        { data: technicalFiles },
+        { data: colors },
+        { data: option },
+        { data: categories },
+      ]) => {
+        setProductData(product);
+        setTechnicalFiles(technicalFiles);
+        setColors(colors);
+        setOption(option);
+        setcategoriesOfProduct(categories);
+      }
+    );
   };
 
   useEffect(() => {
@@ -95,6 +157,14 @@ export function Project3CtxProvider({ children }: any): JSX.Element {
         setProductId,
         productData,
         setProductData,
+        technicalFiles,
+        setTechnicalFiles,
+        colors,
+        setColors,
+        option,
+        setOption,
+        categoriesOfProduct,
+        setcategoriesOfProduct,
       }}
     >
       {children}
