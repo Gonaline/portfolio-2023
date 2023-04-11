@@ -14,30 +14,26 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const database_1 = __importDefault(require("../database"));
 const table_enum_1 = require("../enums/table.enum");
-const product = table_enum_1.TABLE.PRODUCT;
-const product_category = table_enum_1.TABLE.PRODUCT_CATEGORY;
-const category = table_enum_1.TABLE.CATEGORY;
-class ProductManager {
+const product_option = table_enum_1.TABLE.PRODUCT_OPTION;
+const option_group = table_enum_1.TABLE.OPTION_GROUP;
+const option_detail = table_enum_1.TABLE.OPTION_DETAIL;
+class OptionManager {
     constructor() {
         this.connection = database_1.default;
     }
     findOne(productId) {
         return __awaiter(this, void 0, void 0, function* () {
-            // const sql = `SELECT p.id AS product_id, p.product_name, p.text_introduction, p.text_size, p.mirror, p.price,
-            // IFNULL(p.first_image, CONCAT(p.id, ".png")) AS first_image,
-            // IF(pc.main_category = 1, c.category_name,'') AS main_category
-            // FROM ${product} AS p
-            // LEFT JOIN ${product_category} AS pc ON pc.product_id = p.id
-            // LEFT JOIN ${category} AS c ON c.id = pc.category_id
-            // WHERE pc.main_category = 1
-            // AND p.id = ?`;
-            const sql = `SELECT p.id AS product_id, p.product_name, p.text_introduction, p.text_size, p.mirror, p.price,
-    IFNULL(p.first_image, CONCAT(p.id, ".png")) AS first_image
-    FROM ${product} AS p
-    WHERE p.id = ?`;
+            const sql = `SELECT og.option_name, od.option_detail_name, od.img_code,
+    IF(isnull(od.option_cost), 0, po.option_price) AS option_price
+    FROM ${product_option} AS po
+    INNER JOIN ${option_group} as og
+    ON og.id = po.option_id
+    INNER JOIN ${option_detail} as od
+    ON od.option_id = po.option_id
+    WHERE po.product_id = ?;`;
             const [rows] = yield this.connection.execute(sql, [productId]);
             return rows;
         });
     }
 }
-exports.default = ProductManager;
+exports.default = OptionManager;

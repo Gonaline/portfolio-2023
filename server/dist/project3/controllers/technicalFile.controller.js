@@ -12,20 +12,22 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const product_manager_1 = __importDefault(require("../models/product.manager"));
-class ProductController {
-    constructor(productManager = new product_manager_1.default()) {
-        this.productManager = productManager;
-        this.getProductById = (req, res) => __awaiter(this, void 0, void 0, function* () {
+const technicalFile_manager_1 = __importDefault(require("../models/technicalFile.manager"));
+class TechnicalFileController {
+    constructor(technicalFileManager = new technicalFile_manager_1.default()) {
+        this.technicalFileManager = technicalFileManager;
+        this.getTechnicalFiles = (req, res) => __awaiter(this, void 0, void 0, function* () {
             const productId = req.params.productId;
-            return yield this.productManager
-                .findOne(productId)
+            return yield this.technicalFileManager
+                .findAll(productId)
                 .then((result) => {
                 if (!result) {
                     res.sendStatus(404);
                 }
                 else {
-                    return res.status(200).json(result[0]);
+                    const files = [];
+                    result.forEach((e) => files.push(e.file_name));
+                    return res.status(200).json(files);
                 }
             })
                 .catch((err) => {
@@ -35,4 +37,4 @@ class ProductController {
         });
     }
 }
-exports.default = ProductController;
+exports.default = TechnicalFileController;

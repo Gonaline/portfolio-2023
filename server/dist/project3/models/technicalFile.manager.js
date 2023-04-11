@@ -12,27 +12,21 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const product_manager_1 = __importDefault(require("../models/product.manager"));
-class ProductController {
-    constructor(productManager = new product_manager_1.default()) {
-        this.productManager = productManager;
-        this.getProductById = (req, res) => __awaiter(this, void 0, void 0, function* () {
-            const productId = req.params.productId;
-            return yield this.productManager
-                .findOne(productId)
-                .then((result) => {
-                if (!result) {
-                    res.sendStatus(404);
-                }
-                else {
-                    return res.status(200).json(result[0]);
-                }
-            })
-                .catch((err) => {
-                console.error(err);
-                res.sendStatus(500);
-            });
+const database_1 = __importDefault(require("../database"));
+const table_enum_1 = require("../enums/table.enum");
+const technical_file = table_enum_1.TABLE.TECHNICAL_FILE;
+class TechnicalFileManager {
+    constructor() {
+        this.connection = database_1.default;
+    }
+    findAll(productId) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const sql = `SELECT file_name
+    FROM ${technical_file}
+    WHERE product_id = ?`;
+            const [rows] = yield this.connection.execute(sql, [productId]);
+            return rows;
         });
     }
 }
-exports.default = ProductController;
+exports.default = TechnicalFileManager;
