@@ -108,10 +108,10 @@ export function Project3CtxProvider({ children }: any): JSX.Element {
     ).then(
       ([
         { data: product },
-        { data: technicalFiles },
-        { data: colors },
-        { data: option },
         { data: categories },
+        { data: technicalFiles },
+        { data: option },
+        { data: colors },
       ]) => {
         setProductData(product);
         setTechnicalFiles(technicalFiles);
