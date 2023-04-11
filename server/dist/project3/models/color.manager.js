@@ -20,37 +20,24 @@ class ColorManager {
     constructor() {
         this.connection = database_1.default;
     }
-    findFixedColor(productId) {
+    // public async findFixedColor(productId: string): Promise<IColor[]> {
+    //   const sql = `SELECT IF(isnull(pc.fixed_color), "",c.color_name) AS fixed_color
+    //   FROM ${product_color} AS pc
+    //   INNER JOIN ${color} AS c ON c.id = pc.color_id
+    //   WHERE pc.fixed_color = 1
+    //   AND product_id = ?`;
+    //   const [rows] = await this.connection.execute(sql, [productId]);
+    //   return rows as IColor[];
+    // }
+    getColors(productId) {
         return __awaiter(this, void 0, void 0, function* () {
-            const sql = `SELECT IF(isnull(pc.fixed_color), "",c.color_name) AS fixed_color
-    FROM ${product_color} AS pc
-    INNER JOIN ${color} AS c ON c.id = pc.color_id
-    WHERE pc.fixed_color = 1
-    AND product_id = ?`;
-            const [rows] = yield this.connection.execute(sql, [productId]);
-            return rows;
-        });
-    }
-    findColorsOfFirstGroupByProductId(productId) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const sql = `SELECT c.color_name
-    FROM ${product_color} AS pc
-    INNER JOIN ${color} AS c ON c.id = pc.color_id
-    WHERE pc.first_group = 1
-    AND product_id = ?
-    ORDER BY c.display_order;`;
-            const [rows] = yield this.connection.execute(sql, [productId]);
-            return rows;
-        });
-    }
-    findColorsOfSecondGroupByProductId(productId) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const sql = `SELECT c.color_name
-    FROM ${product_color} AS pc
-    INNER JOIN ${color} AS c ON c.id = pc.color_id
-    WHERE pc.second_group = 1
-    AND product_id = ?
-    ORDER BY c.display_order;`;
+            const sql = `SELECT IF(isnull(pc.fixed_color), "",c.color_name) AS fixed_color,
+    IF(isnull(pc.first_group), "",c.color_name) AS first_group,
+    IF(isnull(pc.second_group), "",c.color_name) AS second_group
+        FROM ${product_color} AS pc
+        INNER JOIN ${color} AS c ON c.id = pc.color_id
+        WHERE pc.product_id = ?
+        ORDER BY c.display_order;`;
             const [rows] = yield this.connection.execute(sql, [productId]);
             return rows;
         });

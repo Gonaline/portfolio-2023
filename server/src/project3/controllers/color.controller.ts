@@ -4,53 +4,33 @@ import ColorManager from '../models/color.manager';
 class ColorController {
   constructor(private colorManager = new ColorManager()) {}
 
-  public getFixedColor = async (req: Request, res: Response) => {
+  public getColors = async (req: Request, res: Response) => {
     const productId: string = req.params.productId;
     return await this.colorManager
-      .findFixedColor(productId)
-      .then((result) => {
-        if (result.length === 0) {
-          return res.status(200).json(null);
-        } else {
-          return res.status(200).json(result[0].fixed_color);
-        }
-      })
-      .catch((err: any) => {
-        console.error(err);
-        res.sendStatus(500);
-      });
-  };
-
-  public getColorsOfFirstGroup = async (req: Request, res: Response) => {
-    const productId: string = req.params.productId;
-    return await this.colorManager
-      .findColorsOfFirstGroupByProductId(productId)
+      .getColors(productId)
       .then((result) => {
         if (!result) {
           res.sendStatus(404);
         } else {
-          const data: string[] = [];
-          result.forEach((e) => data.push(e.color_name));
-          return res.status(200).json(data);
-        }
-      })
-      .catch((err: any) => {
-        console.error(err);
-        res.sendStatus(500);
-      });
-  };
+          const data = [];
+          const fixed_color: any[] = result.filter((e) => e.fixed_color !== '');
 
-  public getColorsOfSecondGroup = async (req: Request, res: Response) => {
-    const productId: string = req.params.productId;
-    return await this.colorManager
-      .findColorsOfSecondGroupByProductId(productId)
-      .then((result) => {
-        if (result.length === 0) {
-          return res.status(200).json(null);
-        } else {
-          const data: string[] = [];
-          result.forEach((e) => data.push(e.color_name));
-          return res.status(200).json(data);
+          const first_group = result
+            .filter((e) => e.first_group !== '')
+            .map((el) => el.first_group);
+
+          const second_group = result
+            .filter((e) => e.second_group !== '')
+            .map((el) => el.second_group);
+
+          data.push({
+            fixed_color:
+              fixed_color.length !== 0 ? fixed_color[0].fixed_color : null,
+            first_group: first_group,
+            second_group: second_group,
+          });
+
+          return res.status(200).json(data[0]);
         }
       })
       .catch((err: any) => {

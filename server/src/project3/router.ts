@@ -29,14 +29,6 @@ Project3Router.get(
   technicalFileController.getTechnicalFiles
 );
 Project3Router.get('/option/:productId', optionController.getOption);
-Project3Router.get('/color/:productId', colorController.getFixedColor);
-Project3Router.get(
-  '/colors-first-group/:productId',
-  colorController.getColorsOfFirstGroup
-);
-Project3Router.get(
-  '/colors-second-group/:productId',
-  colorController.getColorsOfSecondGroup
-);
+Project3Router.get('/color/:productId', colorController.getColors);
 
 export default Project3Router;

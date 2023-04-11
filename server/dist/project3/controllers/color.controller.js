@@ -16,54 +16,45 @@ const color_manager_1 = __importDefault(require("../models/color.manager"));
 class ColorController {
     constructor(colorManager = new color_manager_1.default()) {
         this.colorManager = colorManager;
-        this.getFixedColor = (req, res) => __awaiter(this, void 0, void 0, function* () {
+        // public getFixedColor = async (req: Request, res: Response) => {
+        //   const productId: string = req.params.productId;
+        //   return await this.colorManager
+        //     .findFixedColor(productId)
+        //     .then((result) => {
+        //       if (result.length === 0) {
+        //         return res.status(200).json(null);
+        //       } else {
+        //         return res.status(200).json(result[0].fixed_color);
+        //       }
+        //     })
+        //     .catch((err: any) => {
+        //       console.error(err);
+        //       res.sendStatus(500);
+        //     });
+        // };
+        this.getColors = (req, res) => __awaiter(this, void 0, void 0, function* () {
             const productId = req.params.productId;
             return yield this.colorManager
-                .findFixedColor(productId)
-                .then((result) => {
-                if (result.length === 0) {
-                    return res.status(200).json(null);
-                }
-                else {
-                    return res.status(200).json(result[0].fixed_color);
-                }
-            })
-                .catch((err) => {
-                console.error(err);
-                res.sendStatus(500);
-            });
-        });
-        this.getColorsOfFirstGroup = (req, res) => __awaiter(this, void 0, void 0, function* () {
-            const productId = req.params.productId;
-            return yield this.colorManager
-                .findColorsOfFirstGroupByProductId(productId)
+                .getColors(productId)
                 .then((result) => {
                 if (!result) {
                     res.sendStatus(404);
                 }
                 else {
                     const data = [];
-                    result.forEach((e) => data.push(e.color_name));
-                    return res.status(200).json(data);
-                }
-            })
-                .catch((err) => {
-                console.error(err);
-                res.sendStatus(500);
-            });
-        });
-        this.getColorsOfSecondGroup = (req, res) => __awaiter(this, void 0, void 0, function* () {
-            const productId = req.params.productId;
-            return yield this.colorManager
-                .findColorsOfSecondGroupByProductId(productId)
-                .then((result) => {
-                if (result.length === 0) {
-                    return res.status(200).json(null);
-                }
-                else {
-                    const data = [];
-                    result.forEach((e) => data.push(e.color_name));
-                    return res.status(200).json(data);
+                    const fixed_color = result.filter((e) => e.fixed_color !== '');
+                    const first_group = result
+                        .filter((e) => e.first_group !== '')
+                        .map((el) => el.first_group);
+                    const second_group = result
+                        .filter((e) => e.second_group !== '')
+                        .map((el) => el.second_group);
+                    data.push({
+                        fixed_color: fixed_color.length !== 0 ? fixed_color[0].fixed_color : null,
+                        first_group: first_group,
+                        second_group: second_group,
+                    });
+                    return res.status(200).json(data[0]);
                 }
             })
                 .catch((err) => {
