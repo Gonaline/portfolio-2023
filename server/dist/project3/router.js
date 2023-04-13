@@ -22,12 +22,4 @@ Project3Router.get('/category/:convertName', categoryController.getProductsByCat
 Project3Router.get('/technical-files/:productId', technicalFileController.getTechnicalFiles);
 Project3Router.get('/option/:productId', optionController.getOption);
 Project3Router.get('/color/:productId', colorController.getColors);
-// Project3Router.get(
-//   '/colors-first-group/:productId',
-//   colorController.getColorsOfFirstGroup
-// );
-// Project3Router.get(
-//   '/colors-second-group/:productId',
-//   colorController.getColorsOfSecondGroup
-// );
 exports.default = Project3Router;

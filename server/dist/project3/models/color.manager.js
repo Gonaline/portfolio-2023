@@ -20,15 +20,6 @@ class ColorManager {
     constructor() {
         this.connection = database_1.default;
     }
-    // public async findFixedColor(productId: string): Promise<IColor[]> {
-    //   const sql = `SELECT IF(isnull(pc.fixed_color), "",c.color_name) AS fixed_color
-    //   FROM ${product_color} AS pc
-    //   INNER JOIN ${color} AS c ON c.id = pc.color_id
-    //   WHERE pc.fixed_color = 1
-    //   AND product_id = ?`;
-    //   const [rows] = await this.connection.execute(sql, [productId]);
-    //   return rows as IColor[];
-    // }
     getColors(productId) {
         return __awaiter(this, void 0, void 0, function* () {
             const sql = `SELECT IF(isnull(pc.fixed_color), "",c.color_name) AS fixed_color,

@@ -17,19 +17,23 @@ const table_enum_1 = require("../enums/table.enum");
 const product_option = table_enum_1.TABLE.PRODUCT_OPTION;
 const option_group = table_enum_1.TABLE.OPTION_GROUP;
 const option_detail = table_enum_1.TABLE.OPTION_DETAIL;
+const color = table_enum_1.TABLE.COLOR;
 class OptionManager {
     constructor() {
         this.connection = database_1.default;
     }
     findOne(productId) {
         return __awaiter(this, void 0, void 0, function* () {
-            const sql = `SELECT og.option_name, od.option_detail_name, od.img_code,
+            const sql = `SELECT og.option_name, od.option_detail_name, od.img_code, 
+    IF(isnull(od.color_id_to_add), null,c.color_name) AS color,
     IF(isnull(od.option_cost), 0, po.option_price) AS option_price
     FROM ${product_option} AS po
     INNER JOIN ${option_group} as og
     ON og.id = po.option_id
     INNER JOIN ${option_detail} as od
     ON od.option_id = po.option_id
+    LEFT JOIN ${color} as c
+    ON c.id = od.color_id_to_add
     WHERE po.product_id = ?;`;
             const [rows] = yield this.connection.execute(sql, [productId]);
             return rows;

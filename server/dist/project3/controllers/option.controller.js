@@ -31,6 +31,7 @@ class OptionController {
                         name: e.option_detail_name,
                         price: e.option_price,
                         img_code: e.img_code,
+                        color: e.color,
                     }));
                     data.push({ name: result[0].option_name, detail: detail });
                     return res.status(200).json(data[0]);
