@@ -1,5 +1,10 @@
-import { FunctionComponentElement, ReactElement, useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
+import {
+  FunctionComponentElement,
+  ReactElement,
+  useContext,
+  useEffect,
+} from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import project3Ctx from '../context/project3Ctx';
 import {
   CardStyle,
@@ -8,11 +13,24 @@ import {
 import { CollectionTitleStyle } from '../style/project3/collectionTitleStyle';
 
 const Project3Category = (): FunctionComponentElement<ReactElement> => {
-  const { productsByCollection, collectionName, setProductId } =
-    useContext(project3Ctx);
+  const { collection } = useParams<{ collection?: string }>();
+  const {
+    productsByCollection,
+    collectionName,
+    setProductId,
+    collectionConvertName,
+    setCollectionConvertName,
+  } = useContext(project3Ctx);
   const navigate = useNavigate();
 
   window.scrollTo(0, 0);
+
+  useEffect(() => {
+    collection &&
+      collection !== collectionConvertName &&
+      setCollectionConvertName(collection);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <>
@@ -31,7 +49,9 @@ const Project3Category = (): FunctionComponentElement<ReactElement> => {
             }}
           >
             <img
-              src={require(`../assets/pictures/project3/products/${e.first_image}`)}
+              src={require(`../assets/pictures/project3/products/${
+                e.first_image ? e.first_image : e.product_id + '.png'
+              }`)}
               alt={e.product_name}
             />
             <div className='productName'>
