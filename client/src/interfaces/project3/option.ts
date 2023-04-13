@@ -1,10 +1,6 @@
-export interface IDetail {
-  name?: string;
-  price?: number;
-  img_code?: string;
-}
+import { IOptionDetail } from './optionDetail';
 
 export default interface IOption {
   name?: string;
-  detail?: IDetail[];
+  detail?: IOptionDetail[];
 }
