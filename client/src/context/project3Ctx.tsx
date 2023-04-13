@@ -9,6 +9,7 @@ import IProduct from '../interfaces/project3/product';
 import IColor from '../interfaces/project3/color';
 import ICategoryOfProduct from '../interfaces/project3/categoryOfProduct';
 import IOption from '../interfaces/project3/option';
+import { IOptionDetail } from '../interfaces/project3/optionDetail';
 
 const project3Ctx = createContext<IProject3>({
   allCollections: [],
@@ -24,10 +25,12 @@ const project3Ctx = createContext<IProject3>({
   setIsOpen: () => {},
   productId: '',
   setProductId: () => {},
+
   productData: {
     product_id: '',
     product_name: '',
     text_introduction: '',
+    text_size: '',
     mirror: 0,
     price: 0,
     first_image: '',
@@ -35,12 +38,27 @@ const project3Ctx = createContext<IProject3>({
   setProductData: () => {},
   technicalFiles: [],
   setTechnicalFiles: () => {},
-  colors: {},
+  colors: { fixed_color: '', first_group: [], second_group: [] },
   setColors: () => {},
-  option: {},
+  option: {
+    name: '',
+    detail: [{ name: '', price: 0, img_code: '', color: '' }],
+  },
   setOption: () => {},
   categoriesOfProduct: { main_category: '', detail: [] },
   setcategoriesOfProduct: () => {},
+
+  color1Choice: '',
+  setColor1Choice: () => {},
+  color2Choice: '',
+  setColor2Choice: () => {},
+  optionChoice: {
+    name: '',
+    price: 0,
+    img_code: '',
+    color: '',
+  },
+  setOptionChoice: () => {},
 });
 
 export default project3Ctx;
@@ -62,6 +80,7 @@ export function Project3CtxProvider({ children }: any): JSX.Element {
     product_id: '',
     product_name: '',
     text_introduction: '',
+    text_size: '',
     mirror: 0,
     price: 0,
     first_image: '',
@@ -72,10 +91,7 @@ export function Project3CtxProvider({ children }: any): JSX.Element {
     first_group: [],
     second_group: [],
   });
-  const [option, setOption] = useState<IOption>({
-    name: '',
-    detail: [{ name: '', price: 0, img_code: '' }],
-  });
+  const [option, setOption] = useState<IOption | null>();
   const [categoriesOfProduct, setcategoriesOfProduct] =
     useState<ICategoryOfProduct>({ main_category: '', detail: [] });
 
@@ -86,6 +102,14 @@ export function Project3CtxProvider({ children }: any): JSX.Element {
     setCollectionName(object[0].category_name);
   };
 
+  const [color1Choice, setColor1Choice] = useState<string>('');
+  const [color2Choice, setColor2Choice] = useState<string | undefined>('');
+  const [optionChoice, setOptionChoice] = useState<IOptionDetail>({
+    name: '',
+    price: 0,
+    img_code: '',
+    color: '',
+  });
   const getProductsByCollection: any = async () => {
     const { data } = await Project3Service.getProductsByCategory(
       collectionConvertName
@@ -118,6 +142,7 @@ export function Project3CtxProvider({ children }: any): JSX.Element {
         setColors(colors);
         setOption(option);
         setcategoriesOfProduct(categories);
+        option && setOptionChoice(option.detail[0]);
       }
     );
   };
@@ -126,7 +151,7 @@ export function Project3CtxProvider({ children }: any): JSX.Element {
     getProductsByCollection();
     setIsOpen(false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [collectionConvertName]);
+  }, [collectionConvertName, collectionName]);
 
   useEffect(() => {
     setIsOpen(false);
@@ -138,6 +163,31 @@ export function Project3CtxProvider({ children }: any): JSX.Element {
     getProductById();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [productId]);
+
+  const getDefaultChoices: any = async (value: string, code: string) => {
+    colors && setColor1Choice(colors.first_group[0]);
+    colors &&
+      colors.second_group?.length &&
+      setColor2Choice(colors.second_group[0]);
+    option !== null && option?.detail?.length
+      ? setOptionChoice(option?.detail[0])
+      : setOptionChoice({
+          name: '',
+          price: 0,
+          img_code: '',
+        });
+  };
+
+  useEffect(() => {
+    getDefaultChoices();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [productData]);
+
+  console.log(`option ${JSON.stringify(option)}`);
+  console.log(`color1Choice ${color1Choice}`);
+  console.log(`color2Choice ${color2Choice}`);
+  console.log(`optionChoice ${JSON.stringify(optionChoice)}`);
+  console.log(`FixedColor ${colors.fixed_color}`);
 
   return (
     <project3Ctx.Provider
@@ -155,6 +205,7 @@ export function Project3CtxProvider({ children }: any): JSX.Element {
         setIsOpen,
         productId,
         setProductId,
+
         productData,
         setProductData,
         technicalFiles,
@@ -165,6 +216,13 @@ export function Project3CtxProvider({ children }: any): JSX.Element {
         setOption,
         categoriesOfProduct,
         setcategoriesOfProduct,
+
+        color1Choice,
+        setColor1Choice,
+        color2Choice,
+        setColor2Choice,
+        optionChoice,
+        setOptionChoice,
       }}
     >
       {children}
