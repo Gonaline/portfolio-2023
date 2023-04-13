@@ -66,7 +66,10 @@ export const CardStyle = styled.button`
 
   :hover {
     border-radius: 7vw;
-
+    h5,
+    p {
+      color: var(--white);
+    }
     img {
       border-radius: 7vw;
     }

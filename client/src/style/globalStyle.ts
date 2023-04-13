@@ -43,12 +43,12 @@ button, input[type='submit'], input[type='reset'] {
 }
 a, li, ul {
     text-decoration: none;
-    color: var(--darkColor);
     font-size: 1.6rem;
       font-weight: 300;
 }
-h1,h2,h3,h4,h5,h6, p, li{
+h1,h2,h3,h4,h5,h6,p,li,a,ul,em{
   font-family: var(--font-family);
+  color: var(--darkColor);
 }
 h1 {
     font-size: 3rem;
@@ -73,6 +73,11 @@ h1 {
   p {
     font-size: 0.9rem;
     line-height: 1.2rem;
+  }
+
+  em {
+    font-style: italic;
+    font-size: 0.9rem;
   }
 
   @media screen and (max-width: 700px) {

@@ -25,6 +25,7 @@ export default styled.header`
     justify-content: left;
     align-items: flex-end;
     h1 {
+      color: var(--white);
       margin: 0 2.5vw;
       width: 100%;
       text-align: left;
