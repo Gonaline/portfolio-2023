@@ -6,13 +6,13 @@ import project3Ctx from '../../../context/project3Ctx';
 interface OptionChoiceProps {
   option: IOption;
   code: string;
-  updateData: (arg0: string, arg1: string) => void;
+  updateOptions: (arg0: string, arg1: string) => void;
 }
 
 const OptionChoice = ({
   option,
   code,
-  updateData,
+  updateOptions,
 }: OptionChoiceProps): FunctionComponentElement<ReactElement> => {
   const { optionChoice } = useContext(project3Ctx);
 
@@ -34,7 +34,7 @@ const OptionChoice = ({
               value={option.name}
               key={option.name}
               onClick={() => {
-                updateData(JSON.stringify(option), code);
+                updateOptions(JSON.stringify(option), code);
               }}
             >
               <img

@@ -1,23 +1,23 @@
 import { FunctionComponentElement, ReactElement, useContext } from 'react';
 import { ColorChoiceStyle } from '../../../style/project3/productStyle';
 import project3Ctx from '../../../context/project3Ctx';
-import { COLOR } from '../../../enums/project3/color.enum';
+import { OPTION } from '../../../enums/project3/option.enum';
 
 interface ColorChoiceProps {
   colors: string[] | undefined;
   code: string;
-  updateData: (arg0: string, arg1: string) => void;
+  updateOptions: (arg0: string, arg1: string) => void;
 }
 
 const ColorChoice = ({
   colors,
   code,
-  updateData,
+  updateOptions,
 }: ColorChoiceProps): FunctionComponentElement<ReactElement> => {
   const { color1Choice, color2Choice } = useContext(project3Ctx);
 
-  const currentColor: string | undefined =
-    code === COLOR.CHOICE1 ? color1Choice : color2Choice;
+  const currentColor: string | null =
+    code === OPTION.COLOR1 ? color1Choice : color2Choice;
 
   return (
     <ColorChoiceStyle>
@@ -37,7 +37,7 @@ const ColorChoice = ({
               value={color}
               key={color}
               onClick={() => {
-                updateData(color, code);
+                updateOptions(color, code);
               }}
             >
               <img
