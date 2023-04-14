@@ -1,6 +1,7 @@
 import {
   FunctionComponentElement,
   ReactElement,
+  SetStateAction,
   useContext,
   useEffect,
   useState,
@@ -12,11 +13,16 @@ import {
 } from '../style/project3/productStyle';
 import ColorChoice from '../components/project3/product/colorChoice';
 import project3Ctx from '../context/project3Ctx';
-import { COLOR } from '../enums/project3/color.enum';
 import Images from '../components/project3/product/images';
 import CollectionList from '../components/project3/product/collectionList';
 import OptionChoice from '../components/project3/product/optionChoice';
 import { OPTION } from '../enums/project3/option.enum';
+
+interface IFileData {
+  name: string;
+  path: string;
+  type: string;
+}
 
 const Project3Product = (): FunctionComponentElement<ReactElement> => {
   const {
@@ -30,30 +36,66 @@ const Project3Product = (): FunctionComponentElement<ReactElement> => {
     color2Choice,
     setOptionChoice,
     optionChoice,
+    imageProduct,
+    setImageProduct,
+    technicalFiles,
   } = useContext(project3Ctx);
 
   const [bigImage, setBigImage] = useState<string>('');
+  const [filesData, setFilesData] = useState<IFileData[]>([]);
 
   const updateImage: any = async () => {
     const imageName = `${productId}${
-      option !== null ? optionChoice.img_code : ''
+      option !== null && optionChoice ? optionChoice.img_code : ''
     }${
       colors && colors.fixed_color ? '_' + colors.fixed_color : ''
     }_${color1Choice}${color2Choice ? '_' + color2Choice : ''}.png`;
-    console.log(`image ${imageName}`);
+    setImageProduct(imageName);
     setBigImage(imageName);
   };
 
-  console.log(bigImage);
-  const updateData: any = async (value: string, code: string) => {
+  const updateOptions: any = async (value: string, code: string) => {
     if (code === OPTION.OPTION) {
       setOptionChoice(JSON.parse(value));
-    } else if (code === COLOR.CHOICE1) {
+    } else if (code === OPTION.COLOR1) {
       setColor1Choice(value);
-    } else if (code === COLOR.CHOICE2) {
+    } else if (code === OPTION.COLOR2) {
       setColor2Choice(value);
     }
   };
+
+  const updateFilesData: any = async () => {
+    const productPath = '../../../assets/pictures/project3/products/';
+    const technicalFilePath =
+      '../../../assets/pictures/project3/technical-files/';
+    const filesArray: SetStateAction<IFileData[]> = [];
+
+    productData.first_image !== null &&
+      filesArray.push({
+        name: productData.product_id,
+        path: productPath + productData.first_image,
+        type: 'firstImage',
+      });
+    technicalFiles.forEach((file) => {
+      filesArray.push({
+        name: file.replaceAll('.png', ''),
+        path: technicalFilePath + file,
+        type: 'technicalFile',
+      });
+    });
+    imageProduct !== null &&
+      filesArray.push({
+        name: productData.product_name,
+        path: productPath + imageProduct,
+        type: 'productImage',
+      });
+    setFilesData(filesArray);
+  };
+
+  useEffect(() => {
+    updateFilesData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [imageProduct, technicalFiles, productData]);
 
   useEffect(() => {
     updateImage();
@@ -61,7 +103,9 @@ const Project3Product = (): FunctionComponentElement<ReactElement> => {
   }, [optionChoice, color1Choice, color2Choice]);
 
   useEffect(() => {
-    setBigImage(productData.first_image);
+    productData.first_image
+      ? setBigImage(productData.first_image)
+      : setBigImage(imageProduct);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [productData]);
 
@@ -80,15 +124,15 @@ const Project3Product = (): FunctionComponentElement<ReactElement> => {
               <>
                 {colors.first_group && (
                   <ColorChoice
-                    updateData={updateData}
-                    code={COLOR.CHOICE1}
+                    updateOptions={updateOptions}
+                    code={OPTION.COLOR1}
                     colors={colors.first_group}
                   />
                 )}
                 {colors?.second_group?.length !== 0 && (
                   <ColorChoice
-                    updateData={updateData}
-                    code={COLOR.CHOICE2}
+                    updateOptions={updateOptions}
+                    code={OPTION.COLOR2}
                     colors={colors.second_group}
                   />
                 )}
@@ -96,7 +140,7 @@ const Project3Product = (): FunctionComponentElement<ReactElement> => {
             )}
             {option && (
               <OptionChoice
-                updateData={updateData}
+                updateOptions={updateOptions}
                 code={OPTION.OPTION}
                 option={option}
               />
