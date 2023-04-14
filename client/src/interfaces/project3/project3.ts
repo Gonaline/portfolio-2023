@@ -33,8 +33,10 @@ export default interface IProject3 {
 
   color1Choice: string;
   setColor1Choice: (c: string) => void;
-  color2Choice: string | undefined;
-  setColor2Choice: (c: string | undefined) => void;
-  optionChoice: IOptionDetail;
+  color2Choice: string | null;
+  setColor2Choice: (c: string | null) => void;
+  optionChoice: IOptionDetail | null;
   setOptionChoice: (c: any) => void;
+  imageProduct: string;
+  setImageProduct: (c: any) => void;
 }

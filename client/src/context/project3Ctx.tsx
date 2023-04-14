@@ -59,6 +59,8 @@ const project3Ctx = createContext<IProject3>({
     color: '',
   },
   setOptionChoice: () => {},
+  imageProduct: '',
+  setImageProduct: () => {},
 });
 
 export default project3Ctx;
@@ -103,8 +105,8 @@ export function Project3CtxProvider({ children }: any): JSX.Element {
   };
 
   const [color1Choice, setColor1Choice] = useState<string>('');
-  const [color2Choice, setColor2Choice] = useState<string | undefined>('');
-  const [optionChoice, setOptionChoice] = useState<IOptionDetail>({
+  const [color2Choice, setColor2Choice] = useState<string | null>('');
+  const [optionChoice, setOptionChoice] = useState<IOptionDetail | null>({
     name: '',
     price: 0,
     img_code: '',
@@ -116,7 +118,18 @@ export function Project3CtxProvider({ children }: any): JSX.Element {
     );
     setProductsByCollection(data);
   };
+  const [imageProduct, setImageProduct] = useState<string>('');
 
+  const getProductImage: any = async () => {
+    const imageName = `${productId}${
+      optionChoice !== null ? optionChoice.img_code : ''
+    }${colors.fixed_color ? '_' + colors.fixed_color : ''}_${color1Choice}${
+      color2Choice ? '_' + color2Choice : ''
+    }.png`;
+    setImageProduct(imageName);
+  };
+
+  console.log(`defaultProductImage: ${imageProduct}`);
   const urlParts = [
     '/stickers-shop/product/',
     '/stickers-shop/categories-by-product/',
@@ -142,10 +155,25 @@ export function Project3CtxProvider({ children }: any): JSX.Element {
         setColors(colors);
         setOption(option);
         setcategoriesOfProduct(categories);
-        option && setOptionChoice(option.detail[0]);
+        option !== null
+          ? setOptionChoice(option.detail[0])
+          : setOptionChoice(null);
+        setColor1Choice(colors.first_group[0]);
+        colors.second_group.lenght !== 0 &&
+          setColor2Choice(colors.second_group[0]);
       }
     );
   };
+  console.log(`option ${JSON.stringify(option)}`);
+  console.log(`color1Choice ${color1Choice}`);
+  console.log(`color2Choice ${color2Choice}`);
+  optionChoice !== null && console.log(`optionChoice ${optionChoice.img_code}`);
+  console.log(`FixedColor ${colors.fixed_color}`);
+
+  useEffect(() => {
+    getProductImage();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [productData]);
 
   useEffect(() => {
     getProductsByCollection();
@@ -163,31 +191,6 @@ export function Project3CtxProvider({ children }: any): JSX.Element {
     getProductById();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [productId]);
-
-  const getDefaultChoices: any = async (value: string, code: string) => {
-    colors && setColor1Choice(colors.first_group[0]);
-    colors &&
-      colors.second_group?.length &&
-      setColor2Choice(colors.second_group[0]);
-    option !== null && option?.detail?.length
-      ? setOptionChoice(option?.detail[0])
-      : setOptionChoice({
-          name: '',
-          price: 0,
-          img_code: '',
-        });
-  };
-
-  useEffect(() => {
-    getDefaultChoices();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [productData]);
-
-  console.log(`option ${JSON.stringify(option)}`);
-  console.log(`color1Choice ${color1Choice}`);
-  console.log(`color2Choice ${color2Choice}`);
-  console.log(`optionChoice ${JSON.stringify(optionChoice)}`);
-  console.log(`FixedColor ${colors.fixed_color}`);
 
   return (
     <project3Ctx.Provider
@@ -223,6 +226,8 @@ export function Project3CtxProvider({ children }: any): JSX.Element {
         setColor2Choice,
         optionChoice,
         setOptionChoice,
+        imageProduct,
+        setImageProduct,
       }}
     >
       {children}
