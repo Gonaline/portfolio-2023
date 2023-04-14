@@ -22,7 +22,7 @@ class ProductManager {
     findOne(productId) {
         return __awaiter(this, void 0, void 0, function* () {
             const sql = `SELECT p.id AS product_id, p.product_name, p.text_introduction, p.text_size, p.mirror, p.price,
-    IFNULL(p.first_image, CONCAT(p.id, ".png")) AS first_image
+    p.first_image
     FROM ${product} AS p
     WHERE p.id = ?`;
             const [rows] = yield this.connection.execute(sql, [productId]);
@@ -31,3 +31,4 @@ class ProductManager {
     }
 }
 exports.default = ProductManager;
+//     IFNULL(p.first_image, CONCAT(p.id, ".png")) AS first_image
