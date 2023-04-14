@@ -112,13 +112,14 @@ export function Project3CtxProvider({ children }: any): JSX.Element {
     img_code: '',
     color: '',
   });
+  const [imageProduct, setImageProduct] = useState<string>('');
+
   const getProductsByCollection: any = async () => {
     const { data } = await Project3Service.getProductsByCategory(
       collectionConvertName
     );
     setProductsByCollection(data);
   };
-  const [imageProduct, setImageProduct] = useState<string>('');
 
   const getProductImage: any = async () => {
     const imageName = `${productId}${
@@ -129,7 +130,6 @@ export function Project3CtxProvider({ children }: any): JSX.Element {
     setImageProduct(imageName);
   };
 
-  console.log(`defaultProductImage: ${imageProduct}`);
   const urlParts = [
     '/stickers-shop/product/',
     '/stickers-shop/categories-by-product/',
@@ -164,11 +164,6 @@ export function Project3CtxProvider({ children }: any): JSX.Element {
       }
     );
   };
-  console.log(`option ${JSON.stringify(option)}`);
-  console.log(`color1Choice ${color1Choice}`);
-  console.log(`color2Choice ${color2Choice}`);
-  optionChoice !== null && console.log(`optionChoice ${optionChoice.img_code}`);
-  console.log(`FixedColor ${colors.fixed_color}`);
 
   useEffect(() => {
     getProductImage();
