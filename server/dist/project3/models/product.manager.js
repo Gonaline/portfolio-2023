@@ -31,4 +31,3 @@ class ProductManager {
     }
 }
 exports.default = ProductManager;
-//     IFNULL(p.first_image, CONCAT(p.id, ".png")) AS first_image

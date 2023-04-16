@@ -36,7 +36,7 @@ class ColorController {
                     data.push({
                         fixed_color: fixed_color.length !== 0 ? fixed_color[0].fixed_color : null,
                         first_group: first_group,
-                        second_group: second_group,
+                        second_group: second_group.length !== 0 ? second_group : null,
                     });
                     return res.status(200).json(data[0]);
                 }
