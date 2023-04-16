@@ -1,7 +1,7 @@
 import { FunctionComponentElement, ReactElement, useContext } from 'react';
 import { ColorChoiceStyle } from '../../../style/project3/productStyle';
-import project3Ctx from '../../../context/project3Ctx';
 import { OPTION } from '../../../enums/project3/option.enum';
+import project3ProductCtx from '../../../context/project3CtxProduct';
 
 interface ColorChoiceProps {
   colors: string[] | undefined;
@@ -14,7 +14,7 @@ const ColorChoice = ({
   code,
   updateOptions,
 }: ColorChoiceProps): FunctionComponentElement<ReactElement> => {
-  const { color1Choice, color2Choice } = useContext(project3Ctx);
+  const { color1Choice, color2Choice } = useContext(project3ProductCtx);
 
   const currentColor: string | null =
     code === OPTION.COLOR1 ? color1Choice : color2Choice;

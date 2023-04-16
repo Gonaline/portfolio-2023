@@ -1,6 +1,6 @@
 import { FunctionComponentElement, ReactElement, useContext } from 'react';
 import { ProductImgStyle } from '../../../style/project3/productStyle';
-import project3Ctx from '../../../context/project3Ctx';
+import project3ProductCtx from '../../../context/project3CtxProduct';
 
 interface ImagesProps {
   bigImage: string;
@@ -9,13 +9,13 @@ interface ImagesProps {
 const Images = ({
   bigImage,
 }: ImagesProps): FunctionComponentElement<ReactElement> => {
-  const { technicalFiles } = useContext(project3Ctx);
+  const { productData } = useContext(project3ProductCtx);
 
   return (
     <ProductImgStyle>
       <div className='technicalSheet'>
-        {technicalFiles.length !== 0 &&
-          technicalFiles.map((file) => (
+        {productData.technicalFiles.length !== 0 &&
+          productData.technicalFiles.map((file) => (
             <button
               type='button'
               key={file}

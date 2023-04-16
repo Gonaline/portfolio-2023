@@ -11,6 +11,7 @@ import {
   ListOfProductsStyle,
 } from '../style/project3/listOfProductsStyle';
 import { CollectionTitleStyle } from '../style/project3/collectionTitleStyle';
+import project3ProductCtx from '../context/project3CtxProduct';
 
 const Project3Category = (): FunctionComponentElement<ReactElement> => {
   const { collection } = useParams<{ collection?: string }>();
@@ -21,11 +22,14 @@ const Project3Category = (): FunctionComponentElement<ReactElement> => {
     collectionConvertName,
     setCollectionConvertName,
   } = useContext(project3Ctx);
+  const { resetProductData } = useContext(project3ProductCtx);
+
   const navigate = useNavigate();
 
   window.scrollTo(0, 0);
 
   useEffect(() => {
+    resetProductData();
     collection &&
       collection !== collectionConvertName &&
       setCollectionConvertName(collection);

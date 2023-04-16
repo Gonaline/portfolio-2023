@@ -1,23 +1,23 @@
 import { FunctionComponentElement, ReactElement, useContext } from 'react';
 import { CollectionListStyle } from '../../../style/project3/productStyle';
-import project3Ctx from '../../../context/project3Ctx';
 import { PAGE } from '../../../enums/page.enum';
 import { convertTextToPath } from '../../../shared/convertTextToPath';
 import { NavLink } from 'react-router-dom';
+import project3ProductCtx from '../../../context/project3CtxProduct';
 
 const CollectionList = (): FunctionComponentElement<ReactElement> => {
-  const { categoriesOfProduct } = useContext(project3Ctx);
+  const { productData } = useContext(project3ProductCtx);
 
   return (
     <>
-      {categoriesOfProduct && (
+      {productData.collections && (
         <CollectionListStyle>
           <em>
-            {categoriesOfProduct.detail.length === 1
+            {productData.collections.detail.length === 1
               ? 'Collection:'
               : 'Collections:'}
           </em>
-          {categoriesOfProduct.detail.map((e) => (
+          {productData.collections.detail.map((e) => (
             <NavLink
               key={e}
               to={`/${PAGE.PROJECT3_PATH}/${convertTextToPath(e)}`}

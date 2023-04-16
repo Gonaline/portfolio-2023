@@ -8,6 +8,7 @@ import { CombineComponents } from './shared/combineComponents';
 import { GlobalCtxProvider } from './context/globalCtx';
 import { Project1CtxProvider } from './context/project1Ctx';
 import { Project3CtxProvider } from './context/project3Ctx';
+import { Project3ProductCtxProvider } from './context/project3CtxProduct';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -15,7 +16,12 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <CombineComponents
-      components={[GlobalCtxProvider, Project1CtxProvider, Project3CtxProvider]}
+      components={[
+        GlobalCtxProvider,
+        Project1CtxProvider,
+        Project3CtxProvider,
+        Project3ProductCtxProvider,
+      ]}
     >
       <Reset />
       <BrowserRouter>

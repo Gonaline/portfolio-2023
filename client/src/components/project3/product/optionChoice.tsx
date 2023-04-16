@@ -1,7 +1,7 @@
 import { FunctionComponentElement, ReactElement, useContext } from 'react';
 import { ColorChoiceStyle } from '../../../style/project3/productStyle';
 import IOption from '../../../interfaces/project3/option';
-import project3Ctx from '../../../context/project3Ctx';
+import project3ProductCtx from '../../../context/project3CtxProduct';
 
 interface OptionChoiceProps {
   option: IOption;
@@ -14,7 +14,7 @@ const OptionChoice = ({
   code,
   updateOptions,
 }: OptionChoiceProps): FunctionComponentElement<ReactElement> => {
-  const { optionChoice } = useContext(project3Ctx);
+  const { optionChoice } = useContext(project3ProductCtx);
 
   return (
     <ColorChoiceStyle>

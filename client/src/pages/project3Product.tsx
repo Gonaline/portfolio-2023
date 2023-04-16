@@ -1,57 +1,60 @@
 import {
   FunctionComponentElement,
   ReactElement,
-  SetStateAction,
   useContext,
   useEffect,
-  useState,
 } from 'react';
 import {
   FirstPartStyle,
   PageProductStyle,
   RightStyle,
 } from '../style/project3/productStyle';
-import ColorChoice from '../components/project3/product/colorChoice';
+import project3ProductCtx from '../context/project3CtxProduct';
 import project3Ctx from '../context/project3Ctx';
 import Images from '../components/project3/product/images';
 import CollectionList from '../components/project3/product/collectionList';
-import OptionChoice from '../components/project3/product/optionChoice';
+import ColorChoice from '../components/project3/product/colorChoice';
 import { OPTION } from '../enums/project3/option.enum';
-
-interface IFileData {
-  name: string;
-  path: string;
-  type: string;
-}
+import OptionChoice from '../components/project3/product/optionChoice';
 
 const Project3Product = (): FunctionComponentElement<ReactElement> => {
   const {
     productData,
-    productId,
-    option,
-    colors,
-    setColor1Choice,
-    color1Choice,
-    setColor2Choice,
-    color2Choice,
-    setOptionChoice,
     optionChoice,
+    setOptionChoice,
+    fixedColor,
+    setFixedColor,
+    color1Choice,
+    setColor1Choice,
+    color2Choice,
+    setColor2Choice,
     imageProduct,
     setImageProduct,
-    technicalFiles,
-  } = useContext(project3Ctx);
+  } = useContext(project3ProductCtx);
+  const { productId } = useContext(project3Ctx);
 
-  const [bigImage, setBigImage] = useState<string>('');
-  const [filesData, setFilesData] = useState<IFileData[]>([]);
+  const getDefaultData: any = async () => {
+    productData.option !== null &&
+      (await setOptionChoice(productData.option.detail[0]));
+    productData.colors.fixed_color &&
+      (await setFixedColor(productData.colors.fixed_color));
+    productData.colors.first_group[0] &&
+      (await setColor1Choice(productData.colors.first_group[0]));
+    productData.colors.second_group &&
+      (await setColor2Choice(productData.colors.second_group[0]));
+  };
 
-  const updateImage: any = async () => {
+  const updateImage: any = () => {
     const imageName = `${productId}${
-      option !== null && optionChoice ? optionChoice.img_code : ''
-    }${
-      colors && colors.fixed_color ? '_' + colors.fixed_color : ''
-    }_${color1Choice}${color2Choice ? '_' + color2Choice : ''}.png`;
-    setImageProduct(imageName);
-    setBigImage(imageName);
+      optionChoice ? optionChoice.img_code : ''
+    }${fixedColor ? '_' + fixedColor : ''}_${color1Choice}${
+      color2Choice ? '_' + color2Choice : ''
+    }.png`;
+    if (imageName.includes('undefined') || imageName.includes('null')) {
+      return undefined;
+    } else {
+      return imageName;
+    }
   };
 
   const updateOptions: any = async (value: string, code: string) => {
@@ -64,48 +67,13 @@ const Project3Product = (): FunctionComponentElement<ReactElement> => {
     }
   };
 
-  const updateFilesData: any = async () => {
-    const productPath = '../../../assets/pictures/project3/products/';
-    const technicalFilePath =
-      '../../../assets/pictures/project3/technical-files/';
-    const filesArray: SetStateAction<IFileData[]> = [];
-
-    productData.first_image !== null &&
-      filesArray.push({
-        name: productData.product_id,
-        path: productPath + productData.first_image,
-        type: 'firstImage',
-      });
-    technicalFiles.forEach((file) => {
-      filesArray.push({
-        name: file.replaceAll('.png', ''),
-        path: technicalFilePath + file,
-        type: 'technicalFile',
-      });
-    });
-    imageProduct !== null &&
-      filesArray.push({
-        name: productData.product_name,
-        path: productPath + imageProduct,
-        type: 'productImage',
-      });
-    setFilesData(filesArray);
-  };
-
   useEffect(() => {
-    updateFilesData();
+    setImageProduct(updateImage());
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [imageProduct, technicalFiles, productData]);
+  }, [color1Choice, color2Choice, optionChoice]);
 
   useEffect(() => {
-    updateImage();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [optionChoice, color1Choice, color2Choice]);
-
-  useEffect(() => {
-    productData.first_image
-      ? setBigImage(productData.first_image)
-      : setBigImage(imageProduct);
+    getDefaultData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [productData]);
 
@@ -113,50 +81,48 @@ const Project3Product = (): FunctionComponentElement<ReactElement> => {
     <PageProductStyle>
       {productData && (
         <FirstPartStyle>
-          <Images bigImage={bigImage} />
+          {imageProduct && <Images bigImage={imageProduct} />}
 
           <RightStyle>
             <h4>{productData.product_name}</h4>
             <CollectionList />
             <h5 className='introduction'>{productData.text_introduction}</h5>
 
-            {colors && (
-              <>
-                {colors.first_group && (
-                  <ColorChoice
-                    updateOptions={updateOptions}
-                    code={OPTION.COLOR1}
-                    colors={colors.first_group}
-                  />
-                )}
-                {colors?.second_group?.length !== 0 && (
-                  <ColorChoice
-                    updateOptions={updateOptions}
-                    code={OPTION.COLOR2}
-                    colors={colors.second_group}
-                  />
-                )}
-              </>
-            )}
-            {option && (
+            <>
+              {productData.colors.first_group && (
+                <ColorChoice
+                  updateOptions={updateOptions}
+                  code={OPTION.COLOR1}
+                  colors={productData.colors.first_group}
+                />
+              )}
+              {productData.colors.second_group && (
+                <ColorChoice
+                  updateOptions={updateOptions}
+                  code={OPTION.COLOR2}
+                  colors={productData.colors.second_group}
+                />
+              )}
+            </>
+
+            {productData.option && (
               <OptionChoice
                 updateOptions={updateOptions}
                 code={OPTION.OPTION}
-                option={option}
+                option={productData.option}
               />
             )}
             <em className='size'>{`Format: ${productData.text_size}`}</em>
-            {colors && (
-              <em>
-                {colors.second_group &&
-                  `Choix des coloris: ${colors.fixed_color
-                    ?.replaceAll('_', ', ')
-                    .replaceAll('-', ' ')}`}
-              </em>
-            )}
+
+            <em>
+              {productData.colors.second_group &&
+                `Choix des coloris: ${productData.colors.fixed_color
+                  ?.replaceAll('_', ', ')
+                  .replaceAll('-', ' ')}`}
+            </em>
 
             <h5 className='price'>
-              {option // à compléter
+              {productData.option // à compléter
                 ? `Prix: ${productData.price} €`
                 : `Prix: ${productData.price} €`}
             </h5>
