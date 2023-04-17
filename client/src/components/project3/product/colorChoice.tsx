@@ -23,9 +23,11 @@ const ColorChoice = ({
     <ChoiceStyle>
       {currentColor && (
         <h5>
-          <em>{`Coloris: ${currentColor
-            .replaceAll('-', ' ')
-            .replaceAll('_', ', ')}`}</em>
+          <em>{`Coloris : ${
+            currentColor === 'x'
+              ? 'sans'
+              : currentColor.replaceAll('-', ' ').replaceAll('_', ', ')
+          }`}</em>
         </h5>
       )}
       <div className='choice'>

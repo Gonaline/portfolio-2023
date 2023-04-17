@@ -40,6 +40,7 @@ const Project3Product = (): FunctionComponentElement<ReactElement> => {
 
   const [filesData, setFilesData] = useState<IFile[]>([]);
   const [isMirror, setIsMirror] = useState<string>('');
+  const [summaryText, setSummaryText] = useState<string>('');
 
   const updateFilesData: any = async () => {
     const filesArray: IFile[] = [];
@@ -84,12 +85,38 @@ const Project3Product = (): FunctionComponentElement<ReactElement> => {
       optionChoice ? optionChoice.img_code : ''
     }${fixedColor ? '_' + fixedColor : ''}_${color1Choice}${
       color2Choice ? '_' + color2Choice : ''
-    }${optionChoice ? '_' + optionChoice.color : ''}.png`;
+    }${optionChoice && optionChoice.color ? '_' + optionChoice.color : ''}.png`;
     if (imageName.includes('undefined') || imageName.includes('null')) {
       return undefined;
     } else {
       return imageName;
     }
+  };
+
+  const updateSummaryText: any = () => {
+    let colors = '';
+    let option = '';
+    if (imageProduct && imageProduct !== null) {
+      const stringArray = imageProduct
+        .replaceAll('-', ' ')
+        .replaceAll('_', ', ')
+        .replaceAll('.png', '')
+        .split(',')
+        .slice(1)
+        .filter((e) => e !== ' x');
+
+      if (optionChoice) {
+        colors = `Coloris : ${stringArray.slice(1).join(',')}`;
+        option = `Option : ${optionChoice.name}. `;
+      } else {
+        colors = `Coloris : ${stringArray.join(',')}`;
+      }
+    }
+    setSummaryText(
+      `${productData.product_name} ${
+        isMirror === OPTION.MIRROR ? 'inversé.' : 'non inversé.'
+      } ${option}${colors}`
+    );
   };
 
   const updateOptions: any = async (value: string, code: string) => {
@@ -109,6 +136,7 @@ const Project3Product = (): FunctionComponentElement<ReactElement> => {
 
   useEffect(() => {
     updateFilesData();
+    updateSummaryText();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [imageProduct]);
 
@@ -158,13 +186,13 @@ const Project3Product = (): FunctionComponentElement<ReactElement> => {
 
             <em className='size'>{`Format: ${productData.text_size}`}</em>
 
-            <em>
-              {productData.colors.second_group &&
-                `Choix des coloris: ${productData.colors.fixed_color
-                  ?.replaceAll('_', ', ')
-                  .replaceAll('-', ' ')}`}
-            </em>
-
+            <div className='summary'>
+              <em>Résumé :</em>
+              {summaryText &&
+                summaryText
+                  .split('.')
+                  .map((text) => <p key={text}>- {text}</p>)}
+            </div>
             <h5 className='price'>
               {productData.option === null && `Prix: ${productData.price} €`}
               {productData.option !== null &&

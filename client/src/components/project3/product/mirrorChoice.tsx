@@ -16,7 +16,7 @@ const MirrorChoice = ({
   return (
     <ChoiceStyle>
       <h5>
-        <em>{`Orientation ? : ${
+        <em>{`Orientation : ${
           isMirror === OPTION.MIRROR ? 'inversée' : 'non inversée'
         }`}</em>
       </h5>

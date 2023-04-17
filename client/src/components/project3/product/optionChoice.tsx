@@ -20,7 +20,7 @@ const OptionChoice = ({
     <ChoiceStyle>
       {option && (
         <h5>
-          <em>{`${option.name} : to do`}</em>
+          <em>{`${option.name} ${optionChoice?.name}`}</em>
         </h5>
       )}
       <div className='choice'>
