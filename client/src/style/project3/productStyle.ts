@@ -30,7 +30,7 @@ export const ProductImgStyle = styled.div`
   justify-content: right;
   align-items: flex-end;
 
-  .technicalSheet {
+  .file {
     margin: 0 1vw;
     display: flex;
     flex-direction: column;
@@ -41,7 +41,6 @@ export const ProductImgStyle = styled.div`
       aspect-ratio: 1/1;
       margin-top: 2vh;
       background-size: contain;
-
       border-radius: var(--border-radius);
       img {
         height: 100%;
@@ -54,6 +53,9 @@ export const ProductImgStyle = styled.div`
         }
       }
     }
+  }
+  .selected {
+    display: none;
   }
   .bigImage {
     height: 53vh;
@@ -99,27 +101,6 @@ export const RightStyle = styled.section`
   .price {
     padding-top: 2.5vh;
   }
-
-  /* .option {
-    h5 {
-      padding-bottom: 1vh;
-    }
-    width: 30vw;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    background-color: var(--white-opacity50);
-    border-radius: calc(var(--border-radius) / 2);
-    padding: 1vh 1vw 0vh 1vw;
-
-    .choice {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: flex-start;
-      align-items: flex-start;
-    }
-  } */
 
   @media screen and (max-width: 700px) {
   }

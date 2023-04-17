@@ -1,43 +1,73 @@
-import { FunctionComponentElement, ReactElement, useContext } from 'react';
+import {
+  FunctionComponentElement,
+  ReactElement,
+  useEffect,
+  useState,
+} from 'react';
 import { ProductImgStyle } from '../../../style/project3/productStyle';
-import project3ProductCtx from '../../../context/project3CtxProduct';
+import IFile from '../../../interfaces/project3/file';
+import { PAGE } from '../../../enums/page.enum';
+import { FILE } from '../../../enums/project3/file.enum';
 
 interface ImagesProps {
-  bigImage: string;
+  filesData: IFile[];
 }
 
 const Images = ({
-  bigImage,
+  filesData,
 }: ImagesProps): FunctionComponentElement<ReactElement> => {
-  const { productData } = useContext(project3ProductCtx);
+  const [activePicture, setActivePicture] = useState<string>('');
+
+  useEffect(() => {
+    const defaultImageData = filesData.filter(
+      (e) => e.type === FILE.PRODUCT_IMAGE
+    );
+    if (defaultImageData.length) {
+      setActivePicture(defaultImageData[0].name);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [filesData]);
 
   return (
     <ProductImgStyle>
-      <div className='technicalSheet'>
-        {productData.technicalFiles.length !== 0 &&
-          productData.technicalFiles.map((file) => (
-            <button
-              type='button'
-              key={file}
-              value={file}
-              onClick={() => {
-                console.log('coucou');
-              }}
-            >
-              <img
-                src={require(`../../../assets/pictures/project3/technical-files/${file}`)}
-                alt={file}
-              />
-            </button>
-          ))}
-      </div>
+      {filesData.length !== 0 && (
+        <>
+          <div className='file'>
+            {filesData.map((file) => (
+              <>
+                <button
+                  className={
+                    activePicture === file.name ? 'selected' : 'notSelected'
+                  }
+                  type='button'
+                  key={file.name}
+                  value={file.name}
+                  onClick={() => {
+                    setActivePicture(file.name);
+                  }}
+                >
+                  {file.folder && file.name && (
+                    <img
+                      src={require(`../../../assets/pictures/${PAGE.PROJECT3}/${file.folder}/${file.name}`)}
+                      alt={file.name}
+                    />
+                  )}
+                </button>
+              </>
+            ))}
+          </div>
+        </>
+      )}
       <div className='bigImage'>
-        {bigImage && (
-          <img
-            src={require(`../../../assets/pictures/project3/products/${bigImage}`)}
-            alt={bigImage}
-          />
-        )}
+        {activePicture &&
+          filesData
+            .filter((e) => e.name === activePicture)
+            .map((file) => (
+              <img
+                src={require(`../../../assets/pictures/${PAGE.PROJECT3}/${file.folder}/${file.name}`)}
+                alt={file.name}
+              />
+            ))}
       </div>
     </ProductImgStyle>
   );

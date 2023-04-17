@@ -3,6 +3,7 @@ import {
   ReactElement,
   useContext,
   useEffect,
+  useState,
 } from 'react';
 import {
   FirstPartStyle,
@@ -16,6 +17,9 @@ import CollectionList from '../components/project3/product/collectionList';
 import ColorChoice from '../components/project3/product/colorChoice';
 import { OPTION } from '../enums/project3/option.enum';
 import OptionChoice from '../components/project3/product/optionChoice';
+import { FILE } from '../enums/project3/file.enum';
+import IFile from '../interfaces/project3/file';
+import { FOLDER } from '../enums/project3/folder.enum';
 
 const Project3Product = (): FunctionComponentElement<ReactElement> => {
   const {
@@ -33,6 +37,36 @@ const Project3Product = (): FunctionComponentElement<ReactElement> => {
   } = useContext(project3ProductCtx);
   const { productId } = useContext(project3Ctx);
 
+  const [filesData, setFilesData] = useState<IFile[]>([]);
+
+  const updateFilesData: any = async () => {
+    const filesArray: IFile[] = [];
+
+    productData.first_image !== null &&
+      filesArray.push({
+        name: productData.first_image,
+        type: FILE.FIRST_IMAGE,
+        folder: FOLDER.FIRST_IMAGE,
+      });
+
+    productData.technicalFiles.forEach((file) => {
+      filesArray.push({
+        name: file,
+        type: FILE.TECHNICAL_FILE,
+        folder: FOLDER.TECHNICAL_FILE,
+      });
+    });
+
+    imageProduct &&
+      filesArray.push({
+        name: imageProduct,
+        type: FILE.PRODUCT_IMAGE,
+        folder: FOLDER.PRODUCT_IMAGE,
+      });
+    setFilesData(filesArray);
+  };
+
+  // console.log(JSON.stringify(filesData));
   const getDefaultData: any = async () => {
     productData.option !== null &&
       (await setOptionChoice(productData.option.detail[0]));
@@ -73,6 +107,11 @@ const Project3Product = (): FunctionComponentElement<ReactElement> => {
   }, [color1Choice, color2Choice, optionChoice]);
 
   useEffect(() => {
+    updateFilesData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [imageProduct]);
+
+  useEffect(() => {
     getDefaultData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [productData]);
@@ -81,7 +120,7 @@ const Project3Product = (): FunctionComponentElement<ReactElement> => {
     <PageProductStyle>
       {productData && (
         <FirstPartStyle>
-          {imageProduct && <Images bigImage={imageProduct} />}
+          {imageProduct && <Images filesData={filesData} />}
 
           <RightStyle>
             <h4>{productData.product_name}</h4>
