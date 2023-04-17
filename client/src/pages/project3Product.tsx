@@ -84,7 +84,7 @@ const Project3Product = (): FunctionComponentElement<ReactElement> => {
       optionChoice ? optionChoice.img_code : ''
     }${fixedColor ? '_' + fixedColor : ''}_${color1Choice}${
       color2Choice ? '_' + color2Choice : ''
-    }.png`;
+    }${optionChoice ? '_' + optionChoice.color : ''}.png`;
     if (imageName.includes('undefined') || imageName.includes('null')) {
       return undefined;
     } else {
@@ -166,9 +166,10 @@ const Project3Product = (): FunctionComponentElement<ReactElement> => {
             </em>
 
             <h5 className='price'>
-              {productData.option // à compléter
-                ? `Prix: ${productData.price} €`
-                : `Prix: ${productData.price} €`}
+              {productData.option === null && `Prix: ${productData.price} €`}
+              {productData.option !== null &&
+                optionChoice &&
+                `Prix: ${productData.price + optionChoice.price} €`}
             </h5>
           </RightStyle>
         </FirstPartStyle>
