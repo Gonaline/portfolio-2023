@@ -11,10 +11,12 @@ import { FILE } from '../../../enums/project3/file.enum';
 
 interface ImagesProps {
   filesData: IFile[];
+  isMirror: string;
 }
 
 const Images = ({
   filesData,
+  isMirror,
 }: ImagesProps): FunctionComponentElement<ReactElement> => {
   const [activePicture, setActivePicture] = useState<string>('');
 
@@ -64,6 +66,7 @@ const Images = ({
             .filter((e) => e.name === activePicture)
             .map((file) => (
               <img
+                className={`${file.type !== FILE.TECHNICAL_FILE && isMirror}`}
                 src={require(`../../../assets/pictures/${PAGE.PROJECT3}/${file.folder}/${file.name}`)}
                 alt={file.name}
               />

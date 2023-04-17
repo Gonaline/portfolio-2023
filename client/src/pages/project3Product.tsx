@@ -20,6 +20,7 @@ import OptionChoice from '../components/project3/product/optionChoice';
 import { FILE } from '../enums/project3/file.enum';
 import IFile from '../interfaces/project3/file';
 import { FOLDER } from '../enums/project3/folder.enum';
+import MirrorChoice from '../components/project3/product/mirrorChoice';
 
 const Project3Product = (): FunctionComponentElement<ReactElement> => {
   const {
@@ -38,6 +39,7 @@ const Project3Product = (): FunctionComponentElement<ReactElement> => {
   const { productId } = useContext(project3Ctx);
 
   const [filesData, setFilesData] = useState<IFile[]>([]);
+  const [isMirror, setIsMirror] = useState<string>('');
 
   const updateFilesData: any = async () => {
     const filesArray: IFile[] = [];
@@ -66,7 +68,6 @@ const Project3Product = (): FunctionComponentElement<ReactElement> => {
     setFilesData(filesArray);
   };
 
-  // console.log(JSON.stringify(filesData));
   const getDefaultData: any = async () => {
     productData.option !== null &&
       (await setOptionChoice(productData.option.detail[0]));
@@ -113,6 +114,7 @@ const Project3Product = (): FunctionComponentElement<ReactElement> => {
 
   useEffect(() => {
     getDefaultData();
+    setIsMirror(OPTION.NO_MIRROR);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [productData]);
 
@@ -120,7 +122,7 @@ const Project3Product = (): FunctionComponentElement<ReactElement> => {
     <PageProductStyle>
       {productData && (
         <FirstPartStyle>
-          {imageProduct && <Images filesData={filesData} />}
+          {imageProduct && <Images filesData={filesData} isMirror={isMirror} />}
 
           <RightStyle>
             <h4>{productData.product_name}</h4>
@@ -142,15 +144,18 @@ const Project3Product = (): FunctionComponentElement<ReactElement> => {
                   colors={productData.colors.second_group}
                 />
               )}
+              {productData.option && (
+                <OptionChoice
+                  updateOptions={updateOptions}
+                  code={OPTION.OPTION}
+                  option={productData.option}
+                />
+              )}
+              {productData.mirror === 1 && (
+                <MirrorChoice setIsMirror={setIsMirror} isMirror={isMirror} />
+              )}
             </>
 
-            {productData.option && (
-              <OptionChoice
-                updateOptions={updateOptions}
-                code={OPTION.OPTION}
-                option={productData.option}
-              />
-            )}
             <em className='size'>{`Format: ${productData.text_size}`}</em>
 
             <em>
