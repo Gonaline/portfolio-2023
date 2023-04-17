@@ -1,5 +1,5 @@
 import { FunctionComponentElement, ReactElement } from 'react';
-import { ColorChoiceStyle } from '../../../style/project3/productStyle';
+import { ChoiceStyle } from '../../../style/project3/productStyle';
 import { FOLDER } from '../../../enums/project3/folder.enum';
 import { PAGE } from '../../../enums/page.enum';
 import { OPTION } from '../../../enums/project3/option.enum';
@@ -14,7 +14,7 @@ const MirrorChoice = ({
   isMirror,
 }: MirrorChoiceProps): FunctionComponentElement<ReactElement> => {
   return (
-    <ColorChoiceStyle>
+    <ChoiceStyle>
       <h5>
         <em>{`Orientation ? : ${
           isMirror === OPTION.MIRROR ? 'inversée' : 'non inversée'
@@ -51,7 +51,7 @@ const MirrorChoice = ({
           />
         </button>
       </div>
-    </ColorChoiceStyle>
+    </ChoiceStyle>
   );
 };
 export default MirrorChoice;

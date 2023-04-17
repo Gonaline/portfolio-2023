@@ -1,5 +1,5 @@
 import { FunctionComponentElement, ReactElement, useContext } from 'react';
-import { ColorChoiceStyle } from '../../../style/project3/productStyle';
+import { ChoiceStyle } from '../../../style/project3/productStyle';
 import { OPTION } from '../../../enums/project3/option.enum';
 import project3ProductCtx from '../../../context/project3CtxProduct';
 
@@ -20,7 +20,7 @@ const ColorChoice = ({
     code === OPTION.COLOR1 ? color1Choice : color2Choice;
 
   return (
-    <ColorChoiceStyle>
+    <ChoiceStyle>
       {currentColor && (
         <h5>
           <em>{`Coloris: ${currentColor
@@ -47,7 +47,7 @@ const ColorChoice = ({
             </button>
           ))}
       </div>
-    </ColorChoiceStyle>
+    </ChoiceStyle>
   );
 };
 export default ColorChoice;

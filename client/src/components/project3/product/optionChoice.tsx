@@ -1,5 +1,5 @@
 import { FunctionComponentElement, ReactElement, useContext } from 'react';
-import { ColorChoiceStyle } from '../../../style/project3/productStyle';
+import { ChoiceStyle } from '../../../style/project3/productStyle';
 import IOption from '../../../interfaces/project3/option';
 import project3ProductCtx from '../../../context/project3CtxProduct';
 
@@ -17,7 +17,7 @@ const OptionChoice = ({
   const { optionChoice } = useContext(project3ProductCtx);
 
   return (
-    <ColorChoiceStyle>
+    <ChoiceStyle>
       {option && (
         <h5>
           <em>{`${option.name} : to do`}</em>
@@ -44,7 +44,7 @@ const OptionChoice = ({
             </button>
           ))}
       </div>
-    </ColorChoiceStyle>
+    </ChoiceStyle>
   );
 };
 export default OptionChoice;

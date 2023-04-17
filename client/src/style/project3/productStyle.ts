@@ -108,7 +108,7 @@ export const RightStyle = styled.section`
   }
 `;
 
-export const ColorChoiceStyle = styled.div`
+export const ChoiceStyle = styled.div`
   h5 {
     padding-bottom: 1vh;
   }
