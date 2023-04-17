@@ -29,7 +29,9 @@ export const ProductImgStyle = styled.div`
   display: flex;
   justify-content: right;
   align-items: flex-end;
-
+  .mirror {
+    transform: scaleX(-1);
+  }
   .file {
     margin: 0 1vw;
     display: flex;
