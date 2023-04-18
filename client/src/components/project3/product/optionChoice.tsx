@@ -2,6 +2,8 @@ import { FunctionComponentElement, ReactElement, useContext } from 'react';
 import { ChoiceStyle } from '../../../style/project3/productStyle';
 import IOption from '../../../interfaces/project3/option';
 import project3ProductCtx from '../../../context/project3CtxProduct';
+import { FOLDER } from '../../../enums/project3/folder.enum';
+import { PAGE } from '../../../enums/page.enum';
 
 interface OptionChoiceProps {
   option: IOption;
@@ -38,7 +40,7 @@ const OptionChoice = ({
               }}
             >
               <img
-                src={require(`../../../assets/pictures/project3/options/${option.img_code}.png`)}
+                src={require(`../../../assets/pictures/${PAGE.PROJECT3}/${FOLDER.OPTIONS}/${option.img_code}.png`)}
                 alt={option.name}
               />
             </button>
