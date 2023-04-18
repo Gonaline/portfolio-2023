@@ -40,7 +40,6 @@ const Project3Product = (): FunctionComponentElement<ReactElement> => {
 
   const [filesData, setFilesData] = useState<IFile[]>([]);
   const [isMirror, setIsMirror] = useState<string>('');
-  const [summaryText, setSummaryText] = useState<string>('');
 
   const updateFilesData: any = async () => {
     const filesArray: IFile[] = [];
@@ -93,32 +92,6 @@ const Project3Product = (): FunctionComponentElement<ReactElement> => {
     }
   };
 
-  const updateSummaryText: any = () => {
-    let colors = '';
-    let option = '';
-    if (imageProduct && imageProduct !== null) {
-      const stringArray = imageProduct
-        .replaceAll('-', ' ')
-        .replaceAll('_', ', ')
-        .replaceAll('.png', '')
-        .split(',')
-        .slice(1)
-        .filter((e) => e !== ' x');
-
-      if (optionChoice) {
-        colors = `Coloris : ${stringArray.slice(1).join(',')}`;
-        option = `Option : ${optionChoice.name}. `;
-      } else {
-        colors = `Coloris : ${stringArray.join(',')}`;
-      }
-    }
-    setSummaryText(
-      `${productData.product_name} ${
-        isMirror === OPTION.MIRROR ? 'inversé.' : 'non inversé.'
-      } ${option}${colors}`
-    );
-  };
-
   const updateOptions: any = async (value: string, code: string) => {
     if (code === OPTION.OPTION) {
       setOptionChoice(JSON.parse(value));
@@ -136,7 +109,6 @@ const Project3Product = (): FunctionComponentElement<ReactElement> => {
 
   useEffect(() => {
     updateFilesData();
-    updateSummaryText();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [imageProduct]);
 
@@ -153,11 +125,26 @@ const Project3Product = (): FunctionComponentElement<ReactElement> => {
           {imageProduct && <Images filesData={filesData} isMirror={isMirror} />}
 
           <RightStyle>
-            <h4>{productData.product_name}</h4>
+            <div className='titleAndPrice'>
+              <div className='title'>
+                <h4>{productData.product_name}</h4>
+              </div>
+
+              <div className='price'>
+                <h5>
+                  {productData.option !== null && optionChoice
+                    ? `Prix: ${productData.price + optionChoice.price} €`
+                    : `Prix: ${productData.price} €`}
+                </h5>
+              </div>
+            </div>
             <CollectionList />
             <h5 className='introduction'>{productData.text_introduction}</h5>
-
+            <h5 className='size'>
+              <em>{`Format: ${productData.text_size}`}</em>
+            </h5>
             <>
+              <h5 className='custom'>Personnalisez-le !</h5>
               {productData.colors.first_group && (
                 <ColorChoice
                   updateOptions={updateOptions}
@@ -183,22 +170,6 @@ const Project3Product = (): FunctionComponentElement<ReactElement> => {
                 <MirrorChoice setIsMirror={setIsMirror} isMirror={isMirror} />
               )}
             </>
-
-            <em className='size'>{`Format: ${productData.text_size}`}</em>
-
-            <div className='summary'>
-              <em>Résumé :</em>
-              {summaryText &&
-                summaryText
-                  .split('.')
-                  .map((text) => <p key={text}>- {text}</p>)}
-            </div>
-            <h5 className='price'>
-              {productData.option === null && `Prix: ${productData.price} €`}
-              {productData.option !== null &&
-                optionChoice &&
-                `Prix: ${productData.price + optionChoice.price} €`}
-            </h5>
           </RightStyle>
         </FirstPartStyle>
       )}
