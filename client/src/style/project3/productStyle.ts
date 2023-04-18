@@ -43,10 +43,10 @@ export const ProductImgStyle = styled.div`
       aspect-ratio: 1/1;
       margin-top: 2vh;
       background-size: contain;
-      border-radius: var(--border-radius);
+      border-radius: calc(var(--border-radius) / 2);
       img {
         height: 100%;
-        border-radius: var(--border-radius);
+        border-radius: calc(var(--border-radius) / 2);
       }
       :hover {
         background-color: var(--buttonOnHoverColor);
@@ -86,22 +86,43 @@ export const RightStyle = styled.section`
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-
+  .titleAndPrice {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .title,
+    .price {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .price {
+      border-radius: calc(var(--border-radius) / 4);
+      transform: rotate(12deg);
+      background-color: var(--darkColor);
+      display: flex;
+      h5 {
+        color: var(--white);
+        padding: 6px;
+      }
+    }
+  }
   h5 {
     font-size: 1rem;
     line-height: 1.3rem;
   }
 
   .introduction {
-    padding-bottom: 2vh;
+    padding-bottom: 0.5vh;
   }
 
   .size {
-    padding-top: 2vh;
-    padding-bottom: 1vh;
+    padding-bottom: 2vh;
   }
-  .price {
-    padding-top: 2.5vh;
+  .custom {
+    color: var(--buttonOnHoverColor);
+    margin-bottom: 0.5vh;
   }
 
   @media screen and (max-width: 700px) {
@@ -110,7 +131,7 @@ export const RightStyle = styled.section`
 
 export const ChoiceStyle = styled.div`
   h5 {
-    padding-bottom: 1vh;
+    padding-bottom: 0.8vh;
   }
   width: 30vw;
   display: flex;
@@ -119,9 +140,8 @@ export const ChoiceStyle = styled.div`
   align-items: flex-start;
   background-color: var(--white-opacity50);
   border-radius: calc(var(--border-radius) / 2);
-  padding: 1vh 1vw 0vh 1vw;
-  margin-bottom: 2vh;
-
+  padding: 0.8vh 0.8vw 0vh 0.8vw;
+  margin-bottom: 1.2vh;
   .choice {
     display: flex;
     flex-wrap: wrap;
