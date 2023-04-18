@@ -3,12 +3,13 @@ import { NavLink } from 'react-router-dom';
 import { PAGE } from '../enums/page.enum';
 import { COLLECTION } from '../enums/project3/collection.enum';
 import project3Ctx from '../context/project3Ctx';
-
+import { NavbarStyle } from '../style/navbarStyle';
 const Navbar = (): FunctionComponentElement<ReactElement> => {
   const { setCollectionConvertName, setCollectionName } =
     useContext(project3Ctx);
+
   return (
-    <nav>
+    <NavbarStyle>
       <li>
         <NavLink to={PAGE.ABOUT_PATH} className='link mainLink'>
           {[PAGE.ABOUT.toLocaleUpperCase()]}
@@ -36,7 +37,7 @@ const Navbar = (): FunctionComponentElement<ReactElement> => {
           </NavLink>
         </ul>
       </li>
-    </nav>
+    </NavbarStyle>
   );
 };
 export default Navbar;
