@@ -4,6 +4,9 @@ export default styled.section`
   width: 70vw;
   height: 75vh;
   background-color: var(--backgroundColor);
+  position: fixed;
+  top: 15vh;
+  left: 30vw;
   .empty {
     height: 10vh;
   }

@@ -1,6 +1,9 @@
 import styled from 'styled-components';
 
 export default styled.section`
+  position: fixed;
+  top: 15vh;
+  left: 30vw;
   width: 70vw;
   height: 75vh;
   background-color: var(--backgroundColor);

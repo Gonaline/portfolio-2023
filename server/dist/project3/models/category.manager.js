@@ -33,7 +33,8 @@ class CategoryManager {
         return __awaiter(this, void 0, void 0, function* () {
             let sql = '';
             if (convertName === collection_enum_1.COLLECTION.ALL_COLLECTIONS_CONVERT_NAME) {
-                sql = `SELECT DISTINCT(pc.product_id), c.id AS category_id, c.category_name, p.product_name, IFNULL(p.first_image, CONCAT(pc.product_id, ".png")) AS first_image
+                sql = `SELECT pc.product_id, c.id AS category_id, c.category_name, p.product_name,
+      IFNULL(p.first_image, CONCAT(pc.product_id, ".png")) AS first_image
       FROM ${product_category} AS pc
       INNER JOIN ${category} AS c
       ON pc.category_id = c.id
@@ -44,7 +45,8 @@ class CategoryManager {
                 return rows;
             }
             else {
-                sql = `SELECT pc.product_id, c.id AS category_id, c.category_name, p.product_name, IFNULL(p.first_image, CONCAT(pc.product_id, ".png")) AS first_image
+                sql = `SELECT pc.product_id, c.id AS category_id, c.category_name, p.product_name,
+      IFNULL(p.first_image, CONCAT(pc.product_id, ".png")) AS first_image
       FROM ${product_category} AS pc
       INNER JOIN ${category} AS c
       ON pc.category_id = c.id
@@ -55,6 +57,21 @@ class CategoryManager {
                 const [rows] = yield this.connection.execute(sql, [id]);
                 return rows;
             }
+        });
+    }
+    findCategoriesOfProduct(productId) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const sql = `SELECT c.category_name,
+    IF(pc.main_category = 1, c.category_name,"") AS main_category
+    FROM ${product_category} AS pc
+    INNER JOIN ${product} AS p
+    ON p.id = pc.product_id
+    INNER JOIN ${category} AS c
+    ON c.id = pc.category_id
+    WHERE p.id = ?
+    ORDER BY pc.main_category DESC;`;
+            const [rows] = yield this.connection.execute(sql, [productId]);
+            return rows;
         });
     }
 }

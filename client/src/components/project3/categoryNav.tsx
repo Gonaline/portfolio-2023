@@ -2,59 +2,75 @@ import {
   FunctionComponentElement,
   ReactElement,
   useEffect,
-  useState,
+  useContext,
 } from 'react';
 import {
-  ButtonStyle,
+  CollectionButtonStyle,
   CategoryNavStyle,
-  CategoryStyle,
+  ChoiceButtonStyle,
   SubmenuStyle,
 } from '../../style/project3/categoryNavStyle';
 import { Project3Service } from '../../services/project3';
-import { NavLink } from 'react-router-dom';
-import ICategory from '../../interfaces/project3/category';
-import { PAGE } from '../../enums/page.enum';
+import { useNavigate } from 'react-router-dom';
+import project3Ctx from '../../context/project3Ctx';
 
 const CategoryNav = (): FunctionComponentElement<ReactElement> => {
-  const [categories, setCategories] = useState<ICategory[]>([]);
-  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const {
+    isOpen,
+    setIsOpen,
+    setCollectionConvertName,
+    allCollections,
+    setAllCollections,
+  } = useContext(project3Ctx);
+  const navigate = useNavigate();
 
   const getData: any = async () => {
     const { data } = await Project3Service.getAllCategories();
-    setCategories(data);
+    setAllCollections(data);
+  };
+
+  const updateCollection: any = async (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    const { value } = event.currentTarget;
+    setCollectionConvertName(value);
+    navigate(value);
   };
 
   useEffect(() => {
     void getData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <CategoryNavStyle>
       <div className={`menu ${isOpen && 'isOpen'}`}>
-        <ButtonStyle
+        <CollectionButtonStyle
           type='button'
           onClick={() => {
             setIsOpen(!isOpen);
           }}
         >
+          <div>
+            {isOpen ? <p className='off'>-</p> : <p className='on'>+</p>}
+          </div>
           <h4>COLLECTIONS</h4>
-        </ButtonStyle>
+        </CollectionButtonStyle>
         {isOpen && (
-          <SubmenuStyle className='submenu'>
-            {categories.map((e) => (
-              <NavLink
-                to={`/${PAGE.PROJECT3_PATH}/${e.convert_category_name}`}
-                className='link'
+          <SubmenuStyle>
+            {allCollections.map((e) => (
+              <ChoiceButtonStyle
                 key={e.id.toString()}
+                type='button'
+                value={e.convert_category_name}
+                onClick={updateCollection}
               >
-                <CategoryStyle key={e.convert_category_name}>
-                  <img
-                    src={require(`../../assets/pictures/project3/categories/${e.img}`)}
-                    alt={e.category_name}
-                  />
-                  <p>{e.category_name}</p>
-                </CategoryStyle>
-              </NavLink>
+                <img
+                  src={require(`../../assets/pictures/project3/categories/${e.img}`)}
+                  alt={e.category_name}
+                />
+                <p>{e.category_name}</p>
+              </ChoiceButtonStyle>
             ))}
           </SubmenuStyle>
         )}

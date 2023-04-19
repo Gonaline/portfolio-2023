@@ -19,17 +19,13 @@ class ProductManager {
     constructor() {
         this.connection = database_1.default;
     }
-    findAll() {
+    findOne(productId) {
         return __awaiter(this, void 0, void 0, function* () {
-            const sql = `SELECT id, product_name, first_image FROM ${product} ORDER BY product_order`;
-            const [rows] = yield this.connection.execute(sql);
-            return rows;
-        });
-    }
-    findOne(id) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const sql = `SELECT * FROM ${product} WHERE id = ?`;
-            const [rows] = yield this.connection.execute(sql, [id]);
+            const sql = `SELECT p.id AS product_id, p.product_name, p.text_introduction, p.text_size, p.mirror, p.price,
+    p.first_image
+    FROM ${product} AS p
+    WHERE p.id = ?`;
+            const [rows] = yield this.connection.execute(sql, [productId]);
             return rows;
         });
     }

@@ -62,7 +62,13 @@ class CategoryController {
                         res.sendStatus(404);
                     }
                     else {
-                        res.status(200).json(result);
+                        const data = result.filter((data, index, self) => index ===
+                            self.findIndex((t) => t.product_id === data.product_id));
+                        data.forEach((e) => {
+                            e.convert_category_name = (0, convertText_1.convertText)(e.category_name);
+                            e.convert_product_name = (0, convertText_1.convertText)(e.product_name);
+                        });
+                        res.status(200).json(data);
                     }
                 })
                     .catch((err) => {
@@ -70,6 +76,27 @@ class CategoryController {
                     res.sendStatus(500);
                 });
             }
+        });
+        this.findCategoriesOfProduct = (req, res) => __awaiter(this, void 0, void 0, function* () {
+            const productId = req.params.productId;
+            return yield this.categoryManager
+                .findCategoriesOfProduct(productId)
+                .then((result) => {
+                if (!result) {
+                    res.sendStatus(404);
+                }
+                else {
+                    const data = [];
+                    const detail = [];
+                    result.forEach((e) => detail.push(e.category_name));
+                    data.push({ main_category: result[0].main_category, detail: detail });
+                    return res.status(200).json(data[0]);
+                }
+            })
+                .catch((err) => {
+                console.error(err);
+                res.sendStatus(500);
+            });
         });
     }
 }

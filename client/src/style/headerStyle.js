@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export default styled.header`
-  position: relative;
+  position: fixed;
   z-index: 1;
   width: 100vw;
   height: 15vh;
@@ -10,15 +10,10 @@ export default styled.header`
   flex-wrap: nowrap;
   justify-content: space-between;
   align-items: center;
-  .link {
-    color: var(--white);
-    text-decoration: none;
+  .mobile {
+    display: none;
   }
-  nav {
-    display: flex;
-    margin-right: 3vw;
-  }
-  .me {
+  .desktop {
     height: 15vh;
     width: 30vw;
     background-color: var(--darkColor);
@@ -26,62 +21,35 @@ export default styled.header`
     justify-content: left;
     align-items: flex-end;
     h1 {
-      margin: 0 15%;
+      color: var(--white);
+      margin: 0 2.5vw;
       width: 100%;
       text-align: left;
       padding-bottom: 1.5vh;
     }
   }
 
-  li {
-    height: 15vh;
-    width: 15vw;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: left;
-    .mainLink {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 2.2rem;
-      font-weight: 400;
-    }
-    ul {
+  @media screen and (max-width: 700px) {
+    background-color: var(--darkColor);
+    .desktop {
       display: none;
     }
-  }
-
-  li:hover {
-    background: var(--darkColor);
-    ul {
-      margin: auto;
+    .mobile {
+      width: 20vw;
+      height: 100%;
+      aspect-ratio: 1/1;
+      padding-left: 6vw;
       display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
-      flex-wrap: wrap;
-      width: 15vw;
-      background: var(--darkColor);
-      position: absolute;
-      top: 15vh;
-      padding-bottom: 2vh;
-      .link {
-        width: 90%;
-        height: 8vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border-radius: 10px;
-        font-size: 1.5rem;
-      }
-      .link:hover {
-        color: var(--mainColor);
-        background: var(--white-opacity50);
+      img {
+        width: 100%;
+        aspect-ratio: 1/1;
+        object-fit: contain;
+        background: var(--mainColor);
+        border-radius: 5vh;
+        margin: 2vh 0;
       }
     }
-  }
-  @media screen and (max-width: 700px) {
-    display: none;
   }
 `;

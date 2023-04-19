@@ -16,37 +16,16 @@ const product_manager_1 = __importDefault(require("../models/product.manager"));
 class ProductController {
     constructor(productManager = new product_manager_1.default()) {
         this.productManager = productManager;
-        this.getProducts = (_req, res) => __awaiter(this, void 0, void 0, function* () {
-            return yield this.productManager
-                .findAll()
-                .then((result) => {
-                if (!result) {
-                    res.sendStatus(404);
-                }
-                else {
-                    const product = result.forEach((e) => {
-                        if (!e.first_image) {
-                            e.first_image = e.id + '.png';
-                        }
-                    });
-                    res.status(200).json(result);
-                }
-            })
-                .catch((err) => {
-                console.error(err);
-                res.sendStatus(500);
-            });
-        });
         this.getProductById = (req, res) => __awaiter(this, void 0, void 0, function* () {
-            const id = req.params.id;
+            const productId = req.params.productId;
             return yield this.productManager
-                .findOne(id)
+                .findOne(productId)
                 .then((result) => {
                 if (!result) {
                     res.sendStatus(404);
                 }
                 else {
-                    res.status(200).json(result[0]);
+                    return res.status(200).json(result[0]);
                 }
             })
                 .catch((err) => {

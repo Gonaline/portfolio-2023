@@ -4,10 +4,11 @@ import {
   useContext,
   useEffect,
 } from 'react';
-import Left from '../components/left';
+import { Outlet } from 'react-router-dom';
 import GlobalCtx from '../context/globalCtx';
 import pageData from '../data/pages';
 import { PAGE } from '../enums/page.enum';
+import Left from '../components/left';
 import CategoryNav from '../components/project3/categoryNav';
 import Project3Style from '../style/project3/project3Style';
 
@@ -24,6 +25,7 @@ const Project3 = (): FunctionComponentElement<ReactElement> => {
       <Left />
       <Project3Style>
         <CategoryNav />
+        <Outlet />
       </Project3Style>
     </>
   );

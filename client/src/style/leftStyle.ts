@@ -2,16 +2,19 @@ import styled from 'styled-components';
 
 export default styled.section`
   background-color: var(--darkColor);
-  width: 30vw;
+  max-width: 30vw;
   height: 75vh;
   display: flex;
   align-items: center;
+  position: fixed;
+  top: 15vh;
   div {
     margin-bottom: 10vh;
   }
   p,
   h2,
-  h4 {
+  h4,
+  h5 {
     margin: 0 2.5vw 0 2.5vw;
   }
   .subTitle {
@@ -19,7 +22,8 @@ export default styled.section`
     opacity: 0.5;
   }
   p,
-  h4 {
+  h4,
+  h5 {
     color: var(--white);
   }
   h2 {

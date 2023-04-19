@@ -1,7 +1,8 @@
-import IProduct from '../interfaces/product';
 import connection from '../database';
 import { Pool } from 'mysql2/promise';
 import { TABLE } from '../enums/table.enum';
+import IProduct from '../interfaces/product';
+
 const product = TABLE.PRODUCT;
 
 class ProductManager {
@@ -10,16 +11,14 @@ class ProductManager {
     this.connection = connection;
   }
 
-  public async findAll(): Promise<IProduct[]> {
-    const sql = `SELECT id, product_name, first_image FROM ${product} ORDER BY product_order`;
-    const [rows] = await this.connection.execute(sql);
-    return rows as IProduct[];
-  }
+  public async findOne(productId: string): Promise<IProduct[]> {
+    const sql = `SELECT p.id AS product_id, p.product_name, p.text_introduction, p.text_size, p.mirror, p.price,
+    p.first_image
+    FROM ${product} AS p
+    WHERE p.id = ?`;
 
-  public async findOne(id: string): Promise<IProduct[]> {
-    const sql = `SELECT * FROM ${product} WHERE id = ?`;
-    const [rows] = await this.connection.execute(sql, [id]);
-    return rows as IProduct[];
+    const [rows] = await this.connection.execute(sql, [productId]);
+    return rows as any[];
   }
 }
 

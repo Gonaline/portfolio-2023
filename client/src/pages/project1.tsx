@@ -8,7 +8,6 @@ import {
 import Left from '../components/left';
 import Counter from '../components/project1/counter';
 import Game from '../components/project1/game';
-import ProjectTitle from '../components/projectTitle';
 import project1Ctx from '../context/project1Ctx';
 import pageData from '../data/pages';
 import dataGame from '../data/project1';
@@ -20,7 +19,7 @@ import ReplayButton from '../style/project1/replayStyle';
 
 const Project1 = (): FunctionComponentElement<ReactElement> => {
   const { userChoice, computer, isClick, setIsClick } = useContext(project1Ctx);
-  const { setPageData } = useContext(GlobalCtx);
+  const { setPageData, title } = useContext(GlobalCtx);
 
   const [computerCounter, setComputerCounter] = useState<number>(0);
   const [userCounter, setUserCounter] = useState<number>(0);
@@ -65,7 +64,9 @@ const Project1 = (): FunctionComponentElement<ReactElement> => {
     <>
       <Left />
       <Project1Style>
-        <ProjectTitle />
+        <div className='title'>
+          <h2>{title}</h2>
+        </div>
         {userCounter + computerCounter !== 0 ? (
           <Counter
             userCounter={userCounter}

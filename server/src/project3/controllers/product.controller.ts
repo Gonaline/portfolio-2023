@@ -4,36 +4,15 @@ import ProductManager from '../models/product.manager';
 class ProductController {
   constructor(private productManager = new ProductManager()) {}
 
-  public getProducts = async (_req: Request, res: Response) => {
-    return await this.productManager
-      .findAll()
-      .then((result) => {
-        if (!result) {
-          res.sendStatus(404);
-        } else {
-          const product = result.forEach((e) => {
-            if (!e.first_image) {
-              e.first_image = e.id + '.png';
-            }
-          });
-          res.status(200).json(result);
-        }
-      })
-      .catch((err: any) => {
-        console.error(err);
-        res.sendStatus(500);
-      });
-  };
-
   public getProductById = async (req: Request, res: Response) => {
-    const id: string = req.params.id;
+    const productId: string = req.params.productId;
     return await this.productManager
-      .findOne(id)
+      .findOne(productId)
       .then((result) => {
         if (!result) {
           res.sendStatus(404);
         } else {
-          res.status(200).json(result[0]);
+          return res.status(200).json(result[0]);
         }
       })
       .catch((err: any) => {
