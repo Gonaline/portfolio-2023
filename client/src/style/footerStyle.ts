@@ -28,13 +28,11 @@ export default styled.footer`
   }
 
   @media screen and (max-width: 700px) {
-    position: fixed;
-    height: 9vh;
-    width: 100%;
-    bottom: 0;
-    left: 0;
     a {
       margin-left: 4vw;
+    }
+    a:first-child {
+      margin-left: 6vw;
     }
     .left {
       display: none;
