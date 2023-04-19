@@ -6,6 +6,11 @@ export default styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  .verticalLine {
+    width: 0.15vw;
+    height: 3vh;
+    background-color: var(--darkColor);
+  }
   .you,
   .computer {
     min-width: 20vw;
@@ -21,48 +26,56 @@ export default styled.div`
   .computer {
     justify-content: left;
     padding-left: 1vw;
+    img {
+      width: 3vw;
+      padding-left: 1vw;
+    }
   }
   .points {
-    min-height: 2vw;
+    min-width: 4vw;
     aspect-ratio: 2/1;
-    border-radius: var(--border-radius);
-    background-color: var(--otherColor);
+    border-radius: calc(var(--border-radius) / 2);
+    background-color: var(--mainColor);
     color: var(--white);
     display: flex;
     justify-content: center;
     align-items: center;
     font-weight: bold;
+    p {
+      color: var(--white);
+    }
   }
   h4 {
     margin: 0px 10px 0 10px;
     font-size: 2em;
   }
   @media screen and (max-width: 700px) {
-    height: 8vh;
+    height: 6vh;
     width: 100vw;
-    .you,
-    .computer {
-      width: 50%;
-      flex-direction: column;
+    background-color: var(--white-opacity50);
+    margin: 2vh 0;
+
+    .verticalLine {
+      margin: 0 4vw;
     }
     .you {
-      flex-direction: column-reverse;
-      margin-right: 1vw;
-      align-items: flex-end;
+      padding-right: 1vw;
+      h4 {
+        margin-right: 2vw;
+        font-size: 1.2rem;
+      }
     }
-
     .computer {
-      margin-left: 1vw;
-      align-items: flex-start;
+      padding-left: 1vw;
+      img {
+        width: 7vw;
+        padding-left: 3vw;
+      }
     }
     .points {
-      width: 15vw;
-      aspect-ratio: 4/1;
-      color: var(--white);
-    }
-    h4 {
-      margin: 0;
-      font-size: 2em;
+      min-width: 16vw;
+      aspect-ratio: 2.5/1;
+      border-radius: var(--border-radius);
     }
   }
 `;

@@ -1,12 +1,24 @@
 import styled from 'styled-components';
 
-export default styled.section`
+export const Project1Style = styled.section`
   width: 70vw;
-  height: 75vh;
-  background-color: var(--backgroundColor);
-  position: fixed;
+  min-height: 85vh;
+  position: absolute;
   top: 15vh;
   left: 30vw;
+  background-color: var(--backgroundColor);
+
+  .title {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    height: 12vh;
+    width: 100%;
+    h2 {
+      font-weight: bold;
+      padding-left: 2vw;
+    }
+  }
   .empty {
     height: 10vh;
   }
@@ -23,8 +35,30 @@ export default styled.section`
   }
 
   @media screen and (max-width: 700px) {
+    position: relative;
+
     width: 100vw;
-    min-height: 77vh;
-    padding-bottom: 9vh;
+    height: 75vh;
+    top: 90vh;
+    left: 0;
+    .title {
+      justify-content: flex-start;
+      margin: auto;
+      width: 100%;
+      h2 {
+        text-align: center;
+        padding-left: 0;
+        padding-top: 2vh;
+      }
+    }
+
+    .bottom {
+      width: 100%;
+      height: 8vh;
+      justify-content: center;
+      .countdown {
+        margin-right: 1vw;
+      }
+    }
   }
 `;

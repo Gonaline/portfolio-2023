@@ -11,11 +11,11 @@ import Game from '../components/project1/game';
 import project1Ctx from '../context/project1Ctx';
 import pageData from '../data/pages';
 import dataGame from '../data/project1';
-import Project1Style from '../style/project1/project1Style';
 import Result from '../components/project1/result';
 import GlobalCtx from '../context/globalCtx';
 import { PAGE } from '../enums/page.enum';
-import ReplayButton from '../style/project1/replayStyle';
+import { Project1Style } from '../style/project1/project1Style';
+import { ReplayStyle } from '../style/project1/replayStyle';
 
 const Project1 = (): FunctionComponentElement<ReactElement> => {
   const { userChoice, computer, isClick, setIsClick } = useContext(project1Ctx);
@@ -95,14 +95,14 @@ const Project1 = (): FunctionComponentElement<ReactElement> => {
             </div>
           ) : (
             userCounter + computerCounter !== 0 && (
-              <ReplayButton
+              <ReplayStyle
                 type='button'
                 onClick={() => {
                   resetCounter();
                 }}
               >
-                NEW GAME
-              </ReplayButton>
+                <p>NEW GAME</p>
+              </ReplayStyle>
             )
           )}
         </div>
