@@ -2,50 +2,60 @@ import styled from 'styled-components';
 
 export default styled.section`
   background-color: var(--darkColor);
-  max-width: 30vw;
+  width: 30vw;
   height: 75vh;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
   position: fixed;
   top: 15vh;
-  div {
-    margin-bottom: 10vh;
-  }
-  p,
   h2,
   h4,
   h5 {
-    margin: 0 2.5vw 0 2.5vw;
+    margin-left: 2.5vw;
+    margin-right: 2.5vw;
+  }
+  h2,
+  h5 {
+    margin-bottom: 6vh;
   }
   .subTitle {
     margin-bottom: 2vh;
     opacity: 0.5;
   }
-  p,
   h4,
   h5 {
     color: var(--white);
   }
   h2 {
     color: var(--mainColor);
-    margin-bottom: 6vh;
+  }
+  button {
+    display: none;
   }
   @media screen and (max-width: 700px) {
-    flex-direction: column;
     width: 100vw;
-    min-height: 77vh;
-    margin-top: 14vh;
-    align-items: flex-end;
-    justify-content: space-between;
-    h2 {
-      padding-top: 2vh;
+    position: absolute;
+    h4 {
+      margin-top: 4vh;
     }
     h2,
-    p,
-    h4 {
-      margin-top: 6vw;
-      margin-right: 6vw;
+    h4,
+    h5 {
       margin-left: 6vw;
+      margin-right: 6vw;
+    }
+    button {
+      margin: auto;
+      margin-top: 15vh;
+      width: 15vw;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      img {
+        width: 100%;
+      }
     }
   }
 `;
