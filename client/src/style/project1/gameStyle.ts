@@ -4,7 +4,7 @@ export const ButtonGame = styled.button`
   aspect-ratio: 1/1;
   height: 28%;
   border: none;
-  border-radius: var(--border-radius);
+  border-radius: calc(var(--border-radius) / 2);
   display: flex;
   align-items: center;
   box-shadow: var(--box-shadow);
@@ -21,6 +21,7 @@ export const ButtonGame = styled.button`
     background-color: var(--otherColor);
   }
   @media screen and (max-width: 700px) {
+    border-radius: var(--border-radius);
   }
 `;
 
@@ -37,30 +38,27 @@ export const GameStyle = styled.section`
     justify-content: space-between;
   }
   .text {
+    height: 100%;
     margin: 0 9vw 0 3vw;
     display: flex;
     flex-direction: column;
     align-items: left;
     justify-content: center;
   }
-  h3 {
-    font-weight: bold;
-  }
   @media screen and (max-width: 700px) {
-    height: 50vh;
+    height: 45vh;
     width: 90vw;
-    margin: auto;
-    margin-bottom: 10vh;
 
     .userChoice {
       order: 2;
     }
     button {
-      margin: 0 4vw 0 4vw;
+      margin-left: 4vw;
     }
     .text {
       order: 1;
       text-align: right;
+      margin-right: 3vw;
     }
   }
 `;

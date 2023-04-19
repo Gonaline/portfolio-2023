@@ -7,6 +7,7 @@ export const ResultStyle = styled.section`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
   .result {
     height: 35vh;
     display: flex;
@@ -17,7 +18,7 @@ export const ResultStyle = styled.section`
     margin: 0 1vw 0 1vw;
     border-radius: var(--border-radius);
     background-color: var(--buttonColor);
-    height: 35vh;
+    width: 18vw;
     aspect-ratio: 1/1;
     img {
       width: 100%;
@@ -41,24 +42,37 @@ export const ResultStyle = styled.section`
     }
   }
   .onePoint {
-    height: 4vh;
+    width: 3vw;
     aspect-ratio: 1.5/1;
-    margin: auto;
-    border-radius: var(--border-radius);
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: var(--otherColor);
-    color: var(--white);
-    text-align: center;
-    animation-duration: 2s;
-    animation-iteration-count: 1;
-    font-weight: bold;
+    div {
+      width: 100%;
+      height: 100%;
+      border-radius: calc(var(--border-radius) / 2);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: var(--otherColor);
+      p {
+        color: var(--white);
+        font-weight: bold;
+      }
+    }
+    .none {
+      display: none;
+    }
+    .userWin {
+      animation-name: userWin;
+      animation-duration: 3s;
+    }
+    .computerWin {
+      animation-name: computerWin;
+      animation-duration: 3s;
+    }
   }
-  .userWin {
-    animation-name: userWin;
-    animation-duration: 3s;
-  }
+
   @keyframes userWin {
     from {
       transform: translate(5vw, 0px);
@@ -69,10 +83,7 @@ export const ResultStyle = styled.section`
       opacity: 1;
     }
   }
-  .computerWin {
-    animation-name: computerWin;
-    animation-duration: 3s;
-  }
+
   @keyframes computerWin {
     from {
       transform: translate(-5vw, 0px);
@@ -82,10 +93,6 @@ export const ResultStyle = styled.section`
       transform: translate(0px, 0);
       opacity: 1;
     }
-  }
-
-  .none {
-    background: none;
   }
   .message {
     height: 10vh;
@@ -97,10 +104,6 @@ export const ResultStyle = styled.section`
     animation-name: appear;
     animation-duration: 3s;
     animation-iteration-count: none;
-
-    h3 {
-      font-weight: bold;
-    }
   }
   @keyframes appear {
     from {
@@ -110,38 +113,71 @@ export const ResultStyle = styled.section`
       opacity: 1;
     }
   }
+  .none {
+    display: none;
+  }
 
   @media screen and (max-width: 700px) {
-    height: 30vh;
+    height: 40vh;
     width: 100vw;
-    margin: auto;
-    justify-content: space-between;
-    align-items: center;
+    display: flex;
 
     .result {
-      height: 18vh;
-      width: 100%;
-      justify-content: center;
-    }
-    .onePoint {
-      height: 3vh;
-      aspect-ratio: 1.5/1;
-      margin: 1vw;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      font-weight: bold;
+      height: 100%;
+      width: 80vw;
+      flex-wrap: wrap;
+      align-items: flex-end;
+      justify-content: space-between;
+      .order1 {
+        order: 1;
+      }
+      .order2 {
+        order: 2;
+      }
+      .order3 {
+        order: 3;
+      }
+      .order4 {
+        order: 4;
+      }
     }
     .choice {
-      height: 15vh;
+      margin: 0;
+      width: 36vw;
     }
+
+    .onePoint {
+      width: 36vw;
+      div {
+        width: 12vw;
+        height: 4vh;
+      }
+    }
+    @keyframes userWin {
+      from {
+        transform: translate(0, 5vh);
+        opacity: 0;
+      }
+      to {
+        transform: translate(0, 0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes computerWin {
+      from {
+        transform: translate(0, 5vh);
+        opacity: 0;
+      }
+      to {
+        transform: translate(0, 0);
+        opacity: 1;
+      }
+    }
+
     .message {
-      height: 10vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
+      width: 85%;
+      padding: 3vh 0;
     }
   }
 `;

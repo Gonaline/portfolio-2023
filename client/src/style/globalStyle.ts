@@ -8,6 +8,7 @@ const GlobalStyle = createGlobalStyle`
   --darkColor: #0e1217;
   --activeLink: #0e121754;
   --white: rgb(245, 244, 242);
+  --white-opacity20: #ffffff20;
   --white-opacity50: #ffffff50;
   --white-opacity80: #ffffff80;
   --border-radius: 1.2vw;
@@ -25,12 +26,15 @@ const GlobalStyle = createGlobalStyle`
 body {
   display: flex;
   flex-direction: column;
-  height: 100vh;
-  width: 100vw;
+  min-height: 100vh;
+  max-width: 100vw;
 }
 main {
+  width: 100vw;
+  min-height: 75vh;
   display: flex;
-  height: 75vh;
+  justify-content: flex-start;
+  align-items: center;
 }
 button, input[type='submit'], input[type='reset'] {
 	background: none;
@@ -82,21 +86,19 @@ h1 {
 
   @media screen and (max-width: 700px) {
   body {
-    flex-direction: column;
-    width: 100vw;
-    align-items: center;
+
   }
   main {
-    display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
   }
   h2 {
     font-size: 2rem;
-    line-height: 3rem;
+    line-height: 2.5rem;
   }
   h3 {
     font-size: 2rem;
-    line-height: 3rem;
+    line-height: 2.5rem;
   }
   h4 {
     font-size: 1.5rem;

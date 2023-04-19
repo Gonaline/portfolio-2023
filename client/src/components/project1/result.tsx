@@ -19,16 +19,14 @@ const Result = ({
   return (
     <ResultStyle>
       <div className='result'>
-        {userPoint === 0 ? (
-          <div className='onePoint none' />
-        ) : (
-          <div className='onePoint userWin'>
+        <div className='onePoint order1'>
+          <div className={`${userPoint === 1 ? 'userWin' : 'none'}`}>
             <p>+1</p>
           </div>
-        )}
+        </div>
 
         <div
-          className={`user choice ${
+          className={`user choice order3 ${
             userPoint === 0 && computerPoint === 1 ? 'delete' : ''
           } 
             `}
@@ -37,7 +35,7 @@ const Result = ({
         </div>
 
         <div
-          className={`computer choice ${
+          className={`computer choice order4 ${
             userPoint === 1 && computerPoint === 0 ? 'delete' : ''
           } 
             `}
@@ -45,13 +43,11 @@ const Result = ({
           <img src={findImage(computer)} alt='computer' />
         </div>
 
-        {computerPoint === 0 ? (
-          <div className='onePoint none' />
-        ) : (
-          <div className='onePoint computerWin'>
+        <div className='onePoint order2'>
+          <div className={`${computerPoint === 1 ? 'computerWin' : 'none'}`}>
             <p>+1</p>
           </div>
-        )}
+        </div>
       </div>
       <div className='message'>
         <h3>{message}</h3>

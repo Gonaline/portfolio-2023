@@ -1,5 +1,6 @@
 import { FunctionComponentElement, ReactElement } from 'react';
 import CounterStyle from '../../style/project1/counterStyle';
+import Computer from '../../assets/pictures/project1/computer.svg';
 
 interface CounterProps {
   userCounter: number;
@@ -19,13 +20,14 @@ const Counter = ({
           </p>
         </div>
       </div>
+      <div className='verticalLine'></div>
       <div className='computer'>
         <div className='points'>
           <p>
             {computerCounter} {computerCounter > 1 ? 'pts' : 'pt'}
           </p>
         </div>
-        <h4>COMPUTER</h4>
+        <img src={Computer} alt='computer' />
       </div>
     </CounterStyle>
   );
