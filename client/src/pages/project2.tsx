@@ -8,7 +8,7 @@ import Left from '../components/left';
 import GlobalCtx from '../context/globalCtx';
 import pageData from '../data/pages';
 import { PAGE } from '../enums/page.enum';
-import Project2Style from '../style/project2Style';
+import Project2Style from '../style/project2/project2Style';
 
 const Project2 = (): FunctionComponentElement<ReactElement> => {
   const { setPageData } = useContext(GlobalCtx);
