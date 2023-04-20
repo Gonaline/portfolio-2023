@@ -31,6 +31,8 @@ const project3ProductCtx = createContext<IProject3Product>({
   setOptionChoice: () => {},
   imageProduct: null,
   setImageProduct: () => {},
+  isMirror: '',
+  setIsMirror: () => {},
 
   resetProductData: () => {},
 });
@@ -59,6 +61,7 @@ export function Project3ProductCtxProvider({ children }: any): JSX.Element {
   const [color2Choice, setColor2Choice] = useState<string | null>(null);
   const [optionChoice, setOptionChoice] = useState<IOptionDetail | null>(null);
   const [imageProduct, setImageProduct] = useState<string | null>(null);
+  const [isMirror, setIsMirror] = useState<string>('');
 
   const urlParts = [
     '/stickers-shop/product/',
@@ -135,6 +138,8 @@ export function Project3ProductCtxProvider({ children }: any): JSX.Element {
 
         imageProduct,
         setImageProduct,
+        isMirror,
+        setIsMirror,
 
         resetProductData,
       }}
