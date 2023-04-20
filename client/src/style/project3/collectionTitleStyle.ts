@@ -9,7 +9,7 @@ export const CollectionTitleStyle = styled.div`
   h4 {
     padding-left: 2vw;
   }
-  div {
+  .collectionImage {
     display: none;
   }
 
@@ -18,7 +18,7 @@ export const CollectionTitleStyle = styled.div`
     width: 100vw;
     flex-direction: column;
     justify-content: center;
-    div {
+    .collectionImage {
       width: 12vw;
       aspect-ratio: 1/1;
       display: flex;

@@ -18,7 +18,7 @@ export const PersonalizationStyle = styled.section`
 
   @media screen and (max-width: 700px) {
     width: 90vw;
-    padding: 2vh 0 12vh 0;
+    padding: 2vh 0 3vh 0;
     h5 {
       font-size: 1.3rem;
     }
