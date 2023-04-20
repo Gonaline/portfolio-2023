@@ -25,9 +25,9 @@ const ListOfProducts = (): FunctionComponentElement<ReactElement> => {
           type='button'
           key={e.product_id}
           value={[e.convert_product_name, e.product_id]}
-          onClick={() => {
-            resetProductData();
-            setProductId(e.product_id);
+          onClick={async () => {
+            await resetProductData();
+            await setProductId(e.product_id);
             productId
               ? window.history.replaceState(
                   null,
