@@ -28,6 +28,7 @@ export default styled.div`
     padding-left: 1vw;
     img {
       width: 3vw;
+      max-height: 6vh;
       padding-left: 1vw;
     }
   }
@@ -45,9 +46,8 @@ export default styled.div`
       color: var(--white);
     }
   }
-  h4 {
+  h3 {
     margin: 0px 10px 0 10px;
-    font-size: 2em;
   }
   @media screen and (max-width: 700px) {
     height: 6vh;
@@ -60,9 +60,9 @@ export default styled.div`
     }
     .you {
       padding-right: 1vw;
-      h4 {
+      h3 {
         margin-right: 2vw;
-        font-size: 1.2rem;
+        font-size: 1.4rem;
       }
     }
     .computer {

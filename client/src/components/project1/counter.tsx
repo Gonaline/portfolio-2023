@@ -13,7 +13,7 @@ const Counter = ({
   return (
     <CounterStyle>
       <div className='you'>
-        <h4>YOU</h4>
+        <h3>YOU</h3>
         <div className='points'>
           <p>
             {userCounter} {userCounter > 1 ? 'pts' : 'pt'}
