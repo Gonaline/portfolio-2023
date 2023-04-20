@@ -1,24 +1,55 @@
 import {
   FunctionComponentElement,
   ReactElement,
+  useContext,
   useEffect,
   useState,
 } from 'react';
-import { ProductImgStyle } from '../../../style/project3/productStyle';
 import IFile from '../../../interfaces/project3/file';
 import { PAGE } from '../../../enums/page.enum';
 import { FILE } from '../../../enums/project3/file.enum';
+import project3ProductCtx from '../../../context/project3CtxProduct';
+import { FOLDER } from '../../../enums/project3/folder.enum';
+import { ProductImgStyle } from '../../../style/project3/productImgStyle';
 
-interface ImagesProps {
-  filesData: IFile[];
-  isMirror: string;
-}
+const Images = (): FunctionComponentElement<ReactElement> => {
+  const { isMirror, productData, imageProduct } =
+    useContext(project3ProductCtx);
 
-const Images = ({
-  filesData,
-  isMirror,
-}: ImagesProps): FunctionComponentElement<ReactElement> => {
   const [activePicture, setActivePicture] = useState<string>('');
+  const [filesData, setFilesData] = useState<IFile[]>([]);
+
+  const updateFilesData: any = async () => {
+    const filesArray: IFile[] = [];
+
+    productData.first_image !== null &&
+      filesArray.push({
+        name: productData.first_image,
+        type: FILE.FIRST_IMAGE,
+        folder: FOLDER.FIRST_IMAGE,
+      });
+
+    productData.technicalFiles.forEach((file) => {
+      filesArray.push({
+        name: file,
+        type: FILE.TECHNICAL_FILE,
+        folder: FOLDER.TECHNICAL_FILE,
+      });
+    });
+
+    imageProduct &&
+      filesArray.push({
+        name: imageProduct,
+        type: FILE.PRODUCT_IMAGE,
+        folder: FOLDER.PRODUCT_IMAGE,
+      });
+    setFilesData(filesArray);
+  };
+
+  useEffect(() => {
+    updateFilesData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [imageProduct]);
 
   useEffect(() => {
     const defaultImageData = filesData.filter(

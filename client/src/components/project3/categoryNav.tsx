@@ -4,15 +4,13 @@ import {
   useEffect,
   useContext,
 } from 'react';
-import {
-  CollectionButtonStyle,
-  CategoryNavStyle,
-  ChoiceButtonStyle,
-  SubmenuStyle,
-} from '../../style/project3/categoryNavStyle';
+import { CategoryNavStyle } from '../../style/project3/categoryNavStyle';
 import { Project3Service } from '../../services/project3';
 import { useNavigate } from 'react-router-dom';
 import project3Ctx from '../../context/project3Ctx';
+import { CollectionButtonStyle } from '../../style/project3/collectionButtonStyle';
+import { SubmenuStyle } from '../../style/project3/submenuStyle';
+import { ChoiceButtonStyle } from '../../style/project3/choiceButtonStyle';
 
 const CategoryNav = (): FunctionComponentElement<ReactElement> => {
   const {
@@ -51,7 +49,7 @@ const CategoryNav = (): FunctionComponentElement<ReactElement> => {
             setIsOpen(!isOpen);
           }}
         >
-          <div>
+          <div className='onOff'>
             {isOpen ? <p className='off'>-</p> : <p className='on'>+</p>}
           </div>
           <h4>COLLECTIONS</h4>
