@@ -16,7 +16,12 @@ const Project3Category = (): FunctionComponentElement<ReactElement> => {
     useContext(project3Ctx);
   const { resetProductData } = useContext(project3ProductCtx);
 
-  window.scrollTo(0, 0);
+  window.innerHeight > 1000 &&
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
+    });
 
   useEffect(() => {
     resetProductData();

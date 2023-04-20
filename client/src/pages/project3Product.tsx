@@ -19,10 +19,17 @@ import { COLLECTION } from '../enums/project3/collection.enum';
 
 const Project3Product = (): FunctionComponentElement<ReactElement> => {
   const { productData } = useContext(project3ProductCtx);
-  const { productsByCollection, collectionName, setProductId, productId } =
+  const { productsByCollection, collectionName, setProductId } =
     useContext(project3Ctx);
 
   const { id } = useParams<{ id?: string }>();
+
+  window.innerHeight > 1000 &&
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
+    });
 
   const searchProductIdByConvertProductName: any = async (
     convertProductName: string
