@@ -15,6 +15,8 @@ const project3Ctx = createContext<IProject3>({
   setCollectionConvertName: () => {},
   collectionName: COLLECTION.ALL_COLLECTIONS,
   setCollectionName: () => {},
+  collectionImage: COLLECTION.ALL_COLLECTIONS_IMAGE,
+  setCollectionImage: () => {},
   isOpen: false,
   setIsOpen: () => {},
   productId: '',
@@ -31,6 +33,9 @@ export function Project3CtxProvider({ children }: any): JSX.Element {
   const [collectionName, setCollectionName] = useState<string>(
     COLLECTION.ALL_COLLECTIONS
   );
+  const [collectionImage, setCollectionImage] = useState<string>(
+    COLLECTION.ALL_COLLECTIONS_IMAGE
+  );
   const [productsByCollection, setProductsByCollection] = useState<
     IProductsByCollection[]
   >([]);
@@ -42,6 +47,7 @@ export function Project3CtxProvider({ children }: any): JSX.Element {
       (e) => e.convert_category_name === collectionConvertName
     );
     setCollectionName(object[0].category_name);
+    setCollectionImage(object[0].img);
   };
 
   const getProductsByCollection: any = async () => {
@@ -75,6 +81,8 @@ export function Project3CtxProvider({ children }: any): JSX.Element {
         setCollectionConvertName,
         collectionName,
         setCollectionName,
+        collectionImage,
+        setCollectionImage,
         isOpen,
         setIsOpen,
         productId,
