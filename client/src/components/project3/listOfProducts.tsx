@@ -5,9 +5,16 @@ import { useNavigate } from 'react-router-dom';
 import { PAGE } from '../../enums/page.enum';
 import { FOLDER } from '../../enums/project3/folder.enum';
 import { CardStyle } from '../../style/project3/cardStyle';
+import project3ProductCtx from '../../context/project3CtxProduct';
 
 const ListOfProducts = (): FunctionComponentElement<ReactElement> => {
-  const { productsByCollection, setProductId } = useContext(project3Ctx);
+  const {
+    productsByCollection,
+    setProductId,
+    productId,
+    collectionConvertName,
+  } = useContext(project3Ctx);
+  const { resetProductData } = useContext(project3ProductCtx);
 
   const navigate = useNavigate();
 
@@ -19,8 +26,15 @@ const ListOfProducts = (): FunctionComponentElement<ReactElement> => {
           key={e.product_id}
           value={[e.convert_product_name, e.product_id]}
           onClick={() => {
+            resetProductData();
             setProductId(e.product_id);
-            navigate(e.convert_product_name);
+            productId
+              ? window.history.replaceState(
+                  null,
+                  `/${e.convert_product_name}`,
+                  `/${PAGE.PROJECT3_PATH}/${collectionConvertName}/${e.convert_product_name}`
+                )
+              : navigate(e.convert_product_name);
           }}
         >
           <img
