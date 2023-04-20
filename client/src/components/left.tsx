@@ -6,7 +6,11 @@ import Arrow from '../assets/pictures/arrow.svg';
 const Left = (): FunctionComponentElement<ReactElement> => {
   const { title, subtitle, description } = useContext(GlobalCtx);
   const scroll = () => {
-    window.scrollTo(0, 1000);
+    window.scrollTo({
+      top: window.innerHeight * 0.75,
+      left: 0,
+      behavior: 'smooth',
+    });
   };
   return (
     <LeftStyle>
