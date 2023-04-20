@@ -1,9 +1,9 @@
 import { FunctionComponentElement, ReactElement, useContext } from 'react';
-import { CollectionListStyle } from '../../../style/project3/productStyle';
 import { PAGE } from '../../../enums/page.enum';
 import { convertTextToPath } from '../../../shared/convertTextToPath';
 import { NavLink } from 'react-router-dom';
 import project3ProductCtx from '../../../context/project3CtxProduct';
+import { CollectionListStyle } from '../../../style/project3/collectionListStyle';
 
 const CollectionList = (): FunctionComponentElement<ReactElement> => {
   const { productData } = useContext(project3ProductCtx);
