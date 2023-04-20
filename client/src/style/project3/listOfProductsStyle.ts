@@ -13,5 +13,6 @@ export const ListOfProductsStyle = styled.section`
     justify-content: space-evenly;
     align-items: center;
     padding-bottom: 0;
+    margin-bottom: 22vw;
   }
 `;

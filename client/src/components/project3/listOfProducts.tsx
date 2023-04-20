@@ -38,6 +38,7 @@ const ListOfProducts = (): FunctionComponentElement<ReactElement> => {
           }}
         >
           <img
+            className='image'
             src={require(`../../assets/pictures/${PAGE.PROJECT3}/${
               FOLDER.PRODUCT_IMAGE
             }/${e.first_image ? e.first_image : e.product_id + '.png'}`)}
@@ -45,11 +46,9 @@ const ListOfProducts = (): FunctionComponentElement<ReactElement> => {
           />
           <div className='productName'>
             <div className='name'>
-              <h5>{e.product_name}</h5>
-            </div>
-
-            <div className='add'>
-              <p>+</p>
+              <div className='title'>
+                <h5>{e.product_name}</h5>
+              </div>
             </div>
           </div>
         </CardStyle>

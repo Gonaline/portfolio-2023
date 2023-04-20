@@ -15,10 +15,12 @@ import { useParams } from 'react-router-dom';
 import { convertTextToPath } from '../shared/convertTextToPath';
 import project3Ctx from '../context/project3Ctx';
 import IProductsByCollection from '../interfaces/project3/productsByCollection';
+import { COLLECTION } from '../enums/project3/collection.enum';
 
 const Project3Product = (): FunctionComponentElement<ReactElement> => {
   const { productData } = useContext(project3ProductCtx);
-  const { productsByCollection, setProductId } = useContext(project3Ctx);
+  const { productsByCollection, collectionName, setProductId, productId } =
+    useContext(project3Ctx);
 
   const { id } = useParams<{ id?: string }>();
 
@@ -29,7 +31,7 @@ const Project3Product = (): FunctionComponentElement<ReactElement> => {
       (e: IProductsByCollection) =>
         e.convert_product_name === convertProductName
     );
-    setProductId(data[0].product_id);
+    await setProductId(data[0].product_id);
   };
 
   useEffect(() => {
@@ -37,7 +39,7 @@ const Project3Product = (): FunctionComponentElement<ReactElement> => {
       id !== convertTextToPath(productData.product_name) &&
       searchProductIdByConvertProductName(id);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [id]);
 
   return (
     <PageProductStyle>
@@ -60,10 +62,15 @@ const Project3Product = (): FunctionComponentElement<ReactElement> => {
 
           <section className='secondPart'>
             <div>
-              <h4>
-                Découvrez les autres stickers de la collection
-                <em> {productData.collections.main_category}</em>
-              </h4>
+              {collectionName === COLLECTION.ALL_COLLECTIONS ? (
+                <h5>Découvrez les autres stickers</h5>
+              ) : (
+                <h5>
+                  Découvrez les autres stickers de la collection
+                  <br className='mobile' />
+                  <em> {collectionName}</em>
+                </h5>
+              )}
             </div>
             <ListOfProducts />
           </section>

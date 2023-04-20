@@ -63,7 +63,7 @@ export const ChoiceStyle = styled.div`
       button {
         width: 9vw;
         border-radius: 4.5vw;
-        margin-right: 2vw;
+        margin-right: 3vw;
         margin-bottom: 1vh;
       }
       .selected {

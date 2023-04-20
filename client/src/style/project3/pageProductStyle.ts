@@ -9,33 +9,41 @@ export const PageProductStyle = styled.section`
   align-items: center;
   .secondPart {
     div {
-      h4 {
+      display: flex;
+      h5 {
         padding: 4vh 0 6vh 2vw;
-        color: var(--buttonOnHoverColor);
         em {
+          font-size: 1.2rem;
+          color: var(--buttonOnHoverColor);
+        }
+        .mobile {
+          display: none;
         }
       }
     }
-
     background-color: var(--white-opacity50);
   }
+
   @media screen and (max-width: 700px) {
     width: 100vw;
 
     .secondPart {
       div {
-        display: flex;
         justify-content: center;
         align-items: center;
-        h4 {
+        h5 {
           width: 90vw;
           text-align: center;
           padding: 4vh 0 5vh 0;
-          font-size: 1.2rem;
+          font-size: 1rem;
+          em {
+            font-size: 1.2rem;
+          }
+          .mobile {
+            display: flex;
+          }
         }
       }
-
-      background-color: var(--white-opacity50);
     }
   }
 `;

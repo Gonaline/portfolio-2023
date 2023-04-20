@@ -1,122 +1,104 @@
 import styled from 'styled-components';
 
 export const CardStyle = styled.button`
-  border: none;
   width: 14vw;
   aspect-ratio: 1/1;
-  margin: 0 1.5vw -22.5vh 1.5vw;
-  border-radius: var(--border-radius);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  position: relative;
+  margin: 1.5vw;
 
+  .productName,
   img {
     border-radius: var(--border-radius);
+    display: flex;
+    flex-direction: column;
     width: 100%;
     aspect-ratio: 1/1;
   }
 
   .productName {
-    position: relative;
-    bottom: 14vw;
-    left: 0;
-    border-radius: var(--border-radius);
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
     width: 100%;
-    aspect-ratio: 1/1;
+    height: 100%;
+    border-radius: var(--border-radius);
+    background-color: var(--otherColor);
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: var(--white);
-    text-align: center;
-    .name {
-      position: relative;
-      top: 2vh;
-      width: 80%;
-      height: 5vw;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      display: none;
-      h4 {
-        font-size: 1.3rem;
-      }
-    }
-    .add {
-      position: relative;
-      top: 9vh;
-      width: 2vw;
-      aspect-ratio: 1/1;
-      border-radius: 1vw;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background-color: var(--buttonOnHoverColor);
-      display: none;
+    transition: 0.5s ease;
+    transform: translate(-50%, -50%);
 
-      p {
-        font-size: 1.5rem;
-        padding-bottom: 0.2rem;
+    .name {
+      height: 100%;
+      width: 100%;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      .title {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+
+        h5 {
+          display: block;
+          width: 90%;
+          color: var(--white);
+        }
       }
     }
   }
 
   :hover {
-    border-radius: 7vw;
-    h5,
-    p {
-      color: var(--white);
-    }
-    img {
-      border-radius: 7vw;
-    }
     .productName {
-      border-radius: 7vw;
-      background-color: var(--otherColor);
-      .name,
-      .add {
-        display: flex;
-      }
-      .add {
-        :hover {
-          display: flex;
-          -ms-transform: scale(1.5);
-          -webkit-transform: scale(1.5);
-          transform: scale(1.5);
-        }
+      opacity: 1;
+      .image {
+        opacity: 0;
       }
     }
   }
+
+  .image {
+    transition: 0.5s ease;
+  }
+
   @media screen and (max-width: 700px) {
-    width: 44vw;
-    margin: auto;
-    margin-bottom: 3vh;
-    border-radius: 3vh 3vh 0 0;
-    :last-child {
-      padding-bottom: 13vh;
-    }
+    width: 45vw;
+    position: static;
+    margin-bottom: 3vw;
+
+    .productName,
     img {
-      border-radius: 3vh 3vh 0 0;
+      border-radius: 4vw 4vw 0 0;
+      display: flex;
     }
 
     .productName {
-      background-color: var(--mainColor);
+      opacity: 1;
       position: static;
-      border-radius: 0 0 3vh 3vh; //
-      width: 100%;
-      aspect-ratio: 4/1;
-      display: flex;
+      height: 6vh;
+      border-radius: 0 0 4vw 4vw;
+      background-color: var(--white-opacity80);
+      transition: none;
+      transform: none;
+
       .name {
-        position: static;
-        top: 0vh;
-        width: 80%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        h5 {
-          font-size: 0.9rem;
-          line-height: 1rem;
+        height: 6vh;
+        .title {
+          h5 {
+            display: inline-block;
+            color: var(--darkColor);
+            font-weight: 0;
+            font-size: 1rem;
+            line-height: 1.1rem;
+            width: 90%;
+            padding: 0;
+          }
         }
       }
     }
