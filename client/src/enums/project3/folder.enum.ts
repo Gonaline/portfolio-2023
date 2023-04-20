@@ -4,4 +4,5 @@ export enum FOLDER {
   FIRST_IMAGE = 'products',
   OPTIONS = 'options',
   COLORS = 'colors',
+  CATEGORIES = 'categories',
 }
