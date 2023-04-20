@@ -12,8 +12,6 @@ export const NavbarStyle = styled.nav`
   li {
     text-decoration: none;
     color: var(--white);
-    font-size: 1.6rem;
-    font-weight: 300;
     text-align: center;
     height: 15vh;
     width: 15vw;
