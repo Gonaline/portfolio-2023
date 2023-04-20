@@ -39,10 +39,10 @@ export default styled.section`
   }
 
   @media screen and (max-width: 700px) {
+    position: static;
     width: 100vw;
-    min-height: 77vh;
-    padding-bottom: 9vh;
-
+    height: 75vh;
+    margin-bottom: 10vh;
     .container {
       flex-direction: column;
     }
