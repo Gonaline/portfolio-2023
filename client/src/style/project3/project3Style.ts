@@ -11,12 +11,10 @@ export default styled.section`
   position: absolute;
   top: 15vh;
   left: 30vw;
-  /* padding-bottom: 10vh; */
 
   @media screen and (max-width: 700px) {
     position: static;
     width: 100vw;
-    height: 75vh;
-    padding-bottom: 10vh;
+    min-height: 75vh;
   }
 `;

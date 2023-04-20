@@ -4,7 +4,7 @@ export const CardStyle = styled.button`
   width: 14vw;
   aspect-ratio: 1/1;
   position: relative;
-  margin: 1.5vw;
+  margin: 0.5vh 1.5vw 5.5vh 1.5vw;
 
   .productName,
   img {
@@ -70,7 +70,7 @@ export const CardStyle = styled.button`
   @media screen and (max-width: 700px) {
     width: 45vw;
     position: static;
-    margin-bottom: 3vw;
+    margin-bottom: 3vh;
 
     .productName,
     img {

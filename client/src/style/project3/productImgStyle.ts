@@ -65,7 +65,7 @@ export const ProductImgStyle = styled.div`
       position: relative;
       bottom: 1.5vh;
       height: 4vh;
-      margin: 1vh 0;
+      margin: 0 0 1vh 0;
       flex-direction: row;
 
       button {
