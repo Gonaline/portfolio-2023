@@ -30,13 +30,6 @@ body {
   max-width: 100vw;
   background-color: var(--backgroundColor);
 }
-main {
-  /* width: 100vw;
-  min-height: 75vh;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center; */
-}
 button, input[type='submit'], input[type='reset'] {
 	background: none;
 	color: inherit;
@@ -65,7 +58,7 @@ h1 {
   }
   h3 {
     font-size: 2rem;
-    font-weight: 500;
+    font-weight: 300;
     line-height: 2.5rem;
   }
   h4 {
