@@ -15,6 +15,8 @@ export default interface IProject3Product {
   setOptionChoice: (c: any) => void;
   imageProduct: string | null;
   setImageProduct: (c: any) => void;
+  isMirror: string;
+  setIsMirror: (c: string) => void;
 
   resetProductData: () => void;
 }

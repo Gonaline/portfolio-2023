@@ -43,11 +43,11 @@ export default styled.header`
       justify-content: center;
       align-items: center;
       img {
-        width: 100%;
+        width: 20vw;
         aspect-ratio: 1/1;
         object-fit: contain;
         background: var(--mainColor);
-        border-radius: 5vh;
+        border-radius: 10vw;
         margin: 2vh 0;
       }
     }

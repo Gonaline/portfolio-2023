@@ -28,13 +28,14 @@ body {
   flex-direction: column;
   min-height: 100vh;
   max-width: 100vw;
+  background-color: var(--backgroundColor);
 }
 main {
-  width: 100vw;
+  /* width: 100vw;
   min-height: 75vh;
   display: flex;
   justify-content: flex-start;
-  align-items: center;
+  align-items: center; */
 }
 button, input[type='submit'], input[type='reset'] {
 	background: none;
@@ -89,8 +90,8 @@ h1 {
 
   }
   main {
-    flex-direction: column;
-    flex-wrap: wrap;
+    /* flex-direction: column;
+    flex-wrap: wrap; */
   }
   h2 {
     font-size: 2rem;

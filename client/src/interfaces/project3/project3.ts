@@ -11,6 +11,8 @@ export default interface IProject3 {
   setCollectionConvertName: (c: string) => void;
   collectionName: string;
   setCollectionName: (c: string) => void;
+  collectionImage: string;
+  setCollectionImage: (c: any) => void;
   isOpen: boolean;
   setIsOpen: (c: boolean) => void;
   productId: string;

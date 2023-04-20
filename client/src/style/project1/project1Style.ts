@@ -35,12 +35,9 @@ export const Project1Style = styled.section`
   }
 
   @media screen and (max-width: 700px) {
-    position: relative;
-
+    position: static;
     width: 100vw;
     height: 75vh;
-    top: 90vh;
-    left: 0;
     .title {
       justify-content: flex-start;
       margin: auto;

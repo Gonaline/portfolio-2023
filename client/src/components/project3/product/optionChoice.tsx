@@ -1,5 +1,5 @@
 import { FunctionComponentElement, ReactElement, useContext } from 'react';
-import { ChoiceStyle } from '../../../style/project3/productStyle';
+import { ChoiceStyle } from '../../../style/project3/choiceStyle';
 import IOption from '../../../interfaces/project3/option';
 import project3ProductCtx from '../../../context/project3CtxProduct';
 import { FOLDER } from '../../../enums/project3/folder.enum';
