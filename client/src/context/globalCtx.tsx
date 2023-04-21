@@ -22,7 +22,7 @@ export function GlobalCtxProvider({ children }: any): JSX.Element {
   const [pageData, setPageData] = useState<any>(page.about);
   const [title, setTitle] = useState<string>(page.about.title);
   const [subtitle, setSubtitle] = useState<string>(page.about.subtitle);
-  const [description, setDescription] = useState<string>(
+  const [description, setDescription] = useState<string[]>(
     page.about.description
   );
   const [theme, setTheme] = useState<ITheme>(page.about.theme);
