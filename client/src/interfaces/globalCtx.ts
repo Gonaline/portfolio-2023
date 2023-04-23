@@ -7,8 +7,8 @@ export default interface IGlobalCtx {
   setTitle: (c: string) => void;
   subtitle: string;
   setSubtitle: (c: string) => void;
-  description: string;
-  setDescription: (c: string) => void;
+  description: string[];
+  setDescription: (c: any) => void;
   theme: ITheme;
   setTheme: (c: any) => void;
 }
