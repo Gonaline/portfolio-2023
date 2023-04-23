@@ -23,14 +23,12 @@ const Left = (): FunctionComponentElement<ReactElement> => {
       </div>
       <div className='description'>
         {description.map((e) => (
-          <>
-            <h5>
-              {e
-                .replaceAll('&#039', "'")
-                .replaceAll('&apos;', '.')
-                .replaceAll('&#44;', ',')}
-            </h5>
-          </>
+          <h5 key={e}>
+            {e
+              .replaceAll('&#039', "'")
+              .replaceAll('&apos;', '.')
+              .replaceAll('&#44;', ',')}
+          </h5>
         ))}
       </div>
       {subtitle !== dataPage.about.subtitle && (
