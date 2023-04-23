@@ -55,11 +55,13 @@ export const BurgerStyle = styled.div`
         display: flex;
         flex-direction: column;
         justify-content: center;
-        color: var(--white);
-        text-align: right;
         padding-right: 10vw;
         background-color: var(--white-opacity20);
         border-bottom: 0.6vh solid var(--darkColor);
+        p {
+          color: var(--backgroundColor);
+          text-align: right;
+        }
         :hover {
           color: var(--mainColor);
         }

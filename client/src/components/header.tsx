@@ -13,9 +13,6 @@ const Header = (): FunctionComponentElement<ReactElement> => {
         <div className='logo'>
           <img src={Logo} alt='logo' />
         </div>
-        <div className='title'>
-          <h1>Aline Gonce</h1>
-        </div>
       </NavLink>
       <Navbar />
       <Burger />

@@ -22,7 +22,7 @@ const About = (): FunctionComponentElement<ReactElement> => {
   return (
     <>
       <Left />
-      <Draw />
+      {window.innerWidth > 1000 && <Draw />}
     </>
   );
 };

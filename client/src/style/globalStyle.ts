@@ -84,8 +84,8 @@ h1 {
     font-size: 1.8rem;
   }
   h2 {
-    font-size: 2rem;
-    line-height: 2.5rem;
+    font-size: 1.8rem;
+    line-height: 2.3rem;
   }
   h3 {
     font-size: 2rem;

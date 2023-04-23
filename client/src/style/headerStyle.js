@@ -46,12 +46,13 @@ export default styled.header`
   @media screen and (max-width: 700px) {
     background-color: var(--darkColor);
     .me {
-      width: 82vw; // - 18
+      width: 82vw;
 
       .logo {
         margin: 0 3vw 0 6vw;
       }
       .title {
+        display: none;
       }
     }
   }

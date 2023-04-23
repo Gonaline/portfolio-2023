@@ -34,21 +34,21 @@ const Burger = (): FunctionComponentElement<ReactElement> => {
             className='link'
             onClick={() => setBurgerOpen(false)}
           >
-            {[dataPage.about.title.toLocaleUpperCase()]}
+            <p>{[dataPage.about.subtitle.toLocaleUpperCase()]}</p>
           </NavLink>
           <NavLink
             to={PAGE.PROJECT1_PATH}
             className='link'
             onClick={() => setBurgerOpen(false)}
           >
-            {[dataPage.project1.title.toLocaleUpperCase()]}
+            <p>{[dataPage.project1.title.toLocaleUpperCase()]}</p>
           </NavLink>
           <NavLink
             to={PAGE.PROJECT2_PATH}
             className='link'
             onClick={() => setBurgerOpen(false)}
           >
-            {[dataPage.project2.title.toLocaleUpperCase()]}
+            <p>{[dataPage.project2.title.toLocaleUpperCase()]}</p>
           </NavLink>
           <NavLink
             to={`${PAGE.PROJECT3_PATH}/${COLLECTION.ALL_COLLECTIONS_CONVERT_NAME}`}
@@ -59,7 +59,7 @@ const Burger = (): FunctionComponentElement<ReactElement> => {
               setCollectionName(COLLECTION.ALL_COLLECTIONS);
             }}
           >
-            {[dataPage.project3.title.toLocaleUpperCase()]}
+            <p>{[dataPage.project3.title.toLocaleUpperCase()]}</p>
           </NavLink>
         </li>
       )}
