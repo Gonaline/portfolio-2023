@@ -46,15 +46,19 @@ export function StickersShopCtxProvider({ children }: any): JSX.Element {
     const object = allCollections.filter(
       (e) => e.convert_category_name === collectionConvertName
     );
-    setCollectionName(object[0].category_name);
-    setCollectionImage(object[0].img);
+    if (object.length > 0) {
+      setCollectionName(object[0].category_name);
+      setCollectionImage(object[0].img);
+    }
   };
 
   const getProductsByCollection: any = async () => {
-    const { data } = await Project3Service.getProductsByCategory(
-      collectionConvertName
-    );
-    setProductsByCollection(data);
+    if (collectionConvertName) {
+      const { data } = await Project3Service.getProductsByCategory(
+        collectionConvertName
+      );
+      await setProductsByCollection(data);
+    }
   };
 
   useEffect(() => {
