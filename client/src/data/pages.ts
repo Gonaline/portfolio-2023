@@ -1,19 +1,20 @@
 const page = {
   about: {
-    title: 'DÉVELOPPEUSE WEB JS',
+    title: 'DÉVELOPPEUSE WEB & WEB MOBILE',
     subtitle: 'À PROPOS',
     description: [
       'Initialement graphiste&#44; j&#039ai toujours porté beaucoup d&#039intérêt aux algorithmes et à la résolution de problèmes&apos;',
       'Mes dernières missions professionnelles m’ont permis de comprendre que le développement serait un excellent moyen de conjuguer créativité&#44; réflexion et travail en équipe&apos;',
-      'J&#039ai donc choisi de me former au langage JAVASCRIPT en intégrant&#44; début 2023&#44; une formation de Développement Web & mobile FullStack React & Node&apos;js&apos;',
+      'J&#039ai donc choisi de me former au langage JAVASCRIPT en intégrant&#44; début 2023&#44; la formation de Développement Web & mobile React & Node&apos;js à la Wild Code School de Lille&apos;',
     ],
     theme: {
-      mainColor: 'orange',
+      mainColor: '#D49B7E',
       opacityColor: '#0e1217',
-      backgroundColor: '#0e1217',
+      backgroundColor: '#DDB8A6',
       buttonColor: '',
       buttonOnHoverColor: '',
       otherColor: '',
+      titleColor: '#C67F43',
     },
   },
   project1: {
@@ -29,7 +30,8 @@ const page = {
       backgroundColor: '#97EAD5',
       buttonColor: '#00cc99',
       buttonOnHoverColor: '#F36653',
-      otherColor: '#ED3A2B',
+      otherColor: '#FF647F',
+      titleColor: '#00cc99',
     },
   },
   project2: {
@@ -47,6 +49,7 @@ const page = {
       buttonColor: '#E0B62B',
       buttonOnHoverColor: '',
       otherColor: '',
+      titleColor: '#E0B62B',
     },
   },
   project3: {
@@ -63,6 +66,7 @@ const page = {
       buttonColor: '#B2B200',
       buttonOnHoverColor: '#5800b3',
       otherColor: '#5800b380',
+      titleColor: '#C1C132',
     },
   },
 };

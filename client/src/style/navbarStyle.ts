@@ -53,7 +53,7 @@ export const NavbarStyle = styled.nav`
         font-size: 1.4rem;
       }
       .link:hover {
-        color: var(--mainColor);
+        color: var(--titleColor);
         background: var(--white-opacity50);
       }
     }
