@@ -35,9 +35,9 @@ const ListOfProducts = (): FunctionComponentElement<ReactElement> => {
                   `/${PAGE.PROJECT3_PATH}/${collectionConvertName}/${e.convert_product_name}`
                 )
               : navigate(e.convert_product_name);
-            window.innerHeight > 1000
+            window.innerWidth > 1000
               ? window.scrollTo({
-                  top: 0,
+                  top: 0 - window.innerHeight,
                   left: 0,
                   behavior: 'smooth',
                 })
