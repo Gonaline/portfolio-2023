@@ -50,7 +50,7 @@ export const NavbarStyle = styled.nav`
         justify-content: center;
         align-items: center;
         border-radius: 10px;
-        font-size: 1.4rem;
+        font-size: 1rem;
       }
       .link:hover {
         color: var(--titleColor);

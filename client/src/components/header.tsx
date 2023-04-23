@@ -2,9 +2,9 @@ import { FunctionComponentElement, ReactElement } from 'react';
 import { NavLink } from 'react-router-dom';
 import Navbar from './navbar';
 import HeaderStyle from '../style/headerStyle';
-import { PAGE } from '../enums/page.enum';
 import Logo from '../assets/pictures/logo.svg';
 import Burger from './burger';
+import { PAGE } from '../enums/page.enum';
 
 const Header = (): FunctionComponentElement<ReactElement> => {
   return (

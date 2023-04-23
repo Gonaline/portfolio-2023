@@ -6,9 +6,9 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { CombineComponents } from './shared/combineComponents';
 import { GlobalCtxProvider } from './context/globalCtx';
-import { Project1CtxProvider } from './context/project1Ctx';
-import { Project3CtxProvider } from './context/project3Ctx';
-import { Project3ProductCtxProvider } from './context/project3CtxProduct';
+import { RockPaperScissorsCtxProvider } from './context/rockPaperScissorsCtx';
+import { StickersShopCtxProvider } from './context/stickersShopCtx';
+import { StickersShopProductCtxProvider } from './context/stickersShopProductCtx';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -18,9 +18,9 @@ root.render(
     <CombineComponents
       components={[
         GlobalCtxProvider,
-        Project1CtxProvider,
-        Project3CtxProvider,
-        Project3ProductCtxProvider,
+        RockPaperScissorsCtxProvider,
+        StickersShopCtxProvider,
+        StickersShopProductCtxProvider,
       ]}
     >
       <Reset />
