@@ -10,20 +10,36 @@ export default styled.section`
   align-items: flex-start;
   position: fixed;
   top: 15vh;
-
-  h4 {
-    color: var(--white);
-    opacity: 0.5;
-    margin: 15vh 2.5vw 3vh 2.5vw;
+  .subTitle,
+  .title,
+  .description {
+    padding: 0 1.5vw 0 2.5vw;
   }
-  h2 {
-    color: var(--mainColor);
-    margin: 0 2.5vw 5vh 2.5vw;
+  .subTitle {
+    display: flex;
+    height: 13vh;
+    align-items: flex-end;
+    h4 {
+      color: var(--white);
+      opacity: 0.5;
+    }
   }
-
-  h5 {
-    color: var(--white);
-    margin: 0 2.5vw 0 2.5vw;
+  .title {
+    display: flex;
+    height: 20vh;
+    align-items: center;
+    h2 {
+      color: var(--titleColor);
+    }
+  }
+  .description {
+    height: 42vh;
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    h5 {
+      color: var(--white);
+    }
   }
 
   button {
@@ -33,24 +49,21 @@ export default styled.section`
     width: 100vw;
     position: static;
     margin-top: 15vh;
-    h4 {
-      margin-top: 10vh;
-    }
     h2,
     h4,
     h5 {
-      margin-left: 6vw;
-      margin-right: 6vw;
+      padding: 0 1.5vw 0 5vw;
     }
-
+    .description {
+      height: 35vh;
+    }
     button {
-      margin: auto;
-      width: 15vw;
       display: flex;
-      justify-content: center;
-      align-items: center;
+      margin: auto;
+      height: 4vh;
+      margin-bottom: 3vh;
       img {
-        width: 100%;
+        height: 100%;
       }
     }
   }
