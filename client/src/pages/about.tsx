@@ -1,11 +1,17 @@
-import { useContext, useEffect } from 'react';
+import {
+  FunctionComponentElement,
+  ReactElement,
+  useContext,
+  useEffect,
+} from 'react';
 import pageData from '../data/pages';
 
 import GlobalCtx from '../context/globalCtx';
 import { PAGE } from '../enums/page.enum';
 import Left from '../components/left';
+import Draw from '../components/about/draw';
 
-const About = (): any => {
+const About = (): FunctionComponentElement<ReactElement> => {
   const { setPageData } = useContext(GlobalCtx);
 
   useEffect(() => {
@@ -16,6 +22,7 @@ const About = (): any => {
   return (
     <>
       <Left />
+      <Draw />
     </>
   );
 };
