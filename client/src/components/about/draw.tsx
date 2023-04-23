@@ -1,16 +1,9 @@
 import { FunctionComponentElement, ReactElement, useState } from 'react';
 import { DrawStyle } from '../../style/about/drawStyle';
 
-const width = Math.floor((window.innerWidth * 1) / 1);
-const height = Math.floor((window.innerHeight * 1) / 1);
-console.log(width);
-console.log(height);
-
 let array: any[] = [];
-
 for (let i = 0; i < 800; i++) {
   const object = { id: i, className: 'yes' };
-
   array.push(object);
 }
 
@@ -25,7 +18,6 @@ const Draw = (): FunctionComponentElement<ReactElement> => {
         return e;
       }
     });
-    console.log(JSON.stringify(newResult));
     await setResult(newResult);
   }
 
@@ -41,9 +33,7 @@ const Draw = (): FunctionComponentElement<ReactElement> => {
             onMouseOver={() => {
               onHover(e.id);
             }}
-          >
-            {/* <p>{e.className}</p> */}
-          </button>
+          ></button>
         ))}
       </section>
       <section className='welcome'>

@@ -22,10 +22,10 @@ const Navbar = (): FunctionComponentElement<ReactElement> => {
         PROJETS
         <ul>
           <NavLink to={PAGE.PROJECT1_PATH} className='link'>
-            {dataPage.project1.title}
+            <p>{dataPage.project1.title}</p>
           </NavLink>
           <NavLink to={PAGE.PROJECT2_PATH} className='link'>
-            {dataPage.project2.title}
+            <p>{dataPage.project2.title}</p>
           </NavLink>
           <NavLink
             to={`${PAGE.PROJECT3_PATH}/${COLLECTION.ALL_COLLECTIONS_CONVERT_NAME}`}
@@ -35,7 +35,7 @@ const Navbar = (): FunctionComponentElement<ReactElement> => {
               setCollectionName(COLLECTION.ALL_COLLECTIONS);
             }}
           >
-            {dataPage.project3.title}
+            <p>{dataPage.project3.title}</p>
           </NavLink>
         </ul>
       </li>

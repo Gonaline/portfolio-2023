@@ -17,7 +17,9 @@ export const DrawStyle = styled.section`
     justify-content: center;
     align-items: center;
     h2 {
+      color: var(--titleColor);
       margin-bottom: 5vh;
+      font-size: 4rem;
     }
   }
   .scraping {

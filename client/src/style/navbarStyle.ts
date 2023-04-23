@@ -44,6 +44,10 @@ export const NavbarStyle = styled.nav`
       top: 15vh;
       padding-bottom: 2vh;
       .link {
+        p {
+          color: var(--titleColor);
+          margin: 0 1vw;
+        }
         width: 90%;
         height: 8vh;
         display: flex;
@@ -53,8 +57,10 @@ export const NavbarStyle = styled.nav`
         font-size: 1rem;
       }
       .link:hover {
-        color: var(--titleColor);
-        background: var(--white-opacity50);
+        p {
+          color: var(--darkColor);
+        }
+        background: var(--titleColor);
       }
     }
   }

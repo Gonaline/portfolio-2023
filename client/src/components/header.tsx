@@ -2,18 +2,20 @@ import { FunctionComponentElement, ReactElement } from 'react';
 import { NavLink } from 'react-router-dom';
 import Navbar from './navbar';
 import HeaderStyle from '../style/headerStyle';
+import { PAGE } from '../enums/page.enum';
 import Logo from '../assets/pictures/logo.svg';
 import Burger from './burger';
-import { PAGE } from '../enums/page.enum';
 
 const Header = (): FunctionComponentElement<ReactElement> => {
   return (
     <HeaderStyle>
-      <NavLink to={PAGE.ABOUT_PATH} className='desktop'>
-        <h1>Aline Gonce</h1>
-      </NavLink>
-      <NavLink to={PAGE.ABOUT_PATH} className='mobile'>
-        <img src={Logo} alt='logo' />
+      <NavLink to={PAGE.ABOUT_PATH} className='me'>
+        <div className='logo'>
+          <img src={Logo} alt='logo' />
+        </div>
+        <div className='title'>
+          <h1>Aline Gonce</h1>
+        </div>
       </NavLink>
       <Navbar />
       <Burger />

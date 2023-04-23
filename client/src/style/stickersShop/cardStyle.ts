@@ -91,12 +91,10 @@ export const CardStyle = styled.button`
         height: 6vh;
         .title {
           h5 {
-            display: inline-block;
             color: var(--darkColor);
             font-weight: 0;
             font-size: 1rem;
             line-height: 1.1rem;
-            width: 90%;
             padding: 0;
           }
         }
