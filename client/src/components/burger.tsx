@@ -5,14 +5,15 @@ import {
   useState,
 } from 'react';
 import { NavLink } from 'react-router-dom';
-import { PAGE } from '../enums/page.enum';
-import { COLLECTION } from '../enums/project3/collection.enum';
-import project3Ctx from '../context/project3Ctx';
+import { COLLECTION } from '../enums/stickersShop/collection.enum';
+import stickersShopCtx from '../context/stickersShopCtx';
 import { BurgerStyle } from '../style/burgerStyle';
+import dataPage from '../data/pages';
+import { PAGE } from '../enums/page.enum';
 
 const Burger = (): FunctionComponentElement<ReactElement> => {
   const { setCollectionConvertName, setCollectionName } =
-    useContext(project3Ctx);
+    useContext(stickersShopCtx);
   const [burgerOpen, setBurgerOpen] = useState(false);
 
   return (
@@ -33,21 +34,21 @@ const Burger = (): FunctionComponentElement<ReactElement> => {
             className='link'
             onClick={() => setBurgerOpen(false)}
           >
-            {[PAGE.ABOUT.toLocaleUpperCase()]}
+            <p>{[dataPage.about.subtitle.toLocaleUpperCase()]}</p>
           </NavLink>
           <NavLink
             to={PAGE.PROJECT1_PATH}
             className='link'
             onClick={() => setBurgerOpen(false)}
           >
-            {[PAGE.PROJECT1.toLocaleUpperCase()]}
+            <p>{[dataPage.project1.title.toLocaleUpperCase()]}</p>
           </NavLink>
           <NavLink
             to={PAGE.PROJECT2_PATH}
             className='link'
             onClick={() => setBurgerOpen(false)}
           >
-            {[PAGE.PROJECT2.toLocaleUpperCase()]}
+            <p>{[dataPage.project2.title.toLocaleUpperCase()]}</p>
           </NavLink>
           <NavLink
             to={`${PAGE.PROJECT3_PATH}/${COLLECTION.ALL_COLLECTIONS_CONVERT_NAME}`}
@@ -58,7 +59,7 @@ const Burger = (): FunctionComponentElement<ReactElement> => {
               setCollectionName(COLLECTION.ALL_COLLECTIONS);
             }}
           >
-            {[PAGE.PROJECT3.toLocaleUpperCase()]}
+            <p>{[dataPage.project3.title.toLocaleUpperCase()]}</p>
           </NavLink>
         </li>
       )}

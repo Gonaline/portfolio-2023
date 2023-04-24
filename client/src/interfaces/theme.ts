@@ -5,4 +5,5 @@ export interface ITheme {
   buttonColor: string | undefined;
   buttonOnHoverColor: string | undefined;
   otherColor: string | undefined;
+  titleColor: string | undefined;
 }

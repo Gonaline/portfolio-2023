@@ -2,6 +2,7 @@ import { FunctionComponentElement, ReactElement, useContext } from 'react';
 import LeftStyle from '../style/leftStyle';
 import GlobalCtx from '../context/globalCtx';
 import Arrow from '../assets/pictures/arrow.svg';
+import dataPage from '../data/pages';
 
 const Left = (): FunctionComponentElement<ReactElement> => {
   const { title, subtitle, description } = useContext(GlobalCtx);
@@ -22,19 +23,19 @@ const Left = (): FunctionComponentElement<ReactElement> => {
       </div>
       <div className='description'>
         {description.map((e) => (
-          <>
-            <h5>
-              {e
-                .replaceAll('&#039', "'")
-                .replaceAll('&apos;', '.')
-                .replaceAll('&#44;', ',')}
-            </h5>
-          </>
+          <h5 key={e}>
+            {e
+              .replaceAll('&#039', "'")
+              .replaceAll('&apos;', '.')
+              .replaceAll('&#44;', ',')}
+          </h5>
         ))}
       </div>
-      <button className='arrow' type='button' onClick={scroll}>
-        <img src={Arrow} alt='arrow' />
-      </button>
+      {subtitle !== dataPage.about.subtitle && (
+        <button className='arrow' type='button' onClick={scroll}>
+          <img src={Arrow} alt='arrow' />
+        </button>
+      )}
     </LeftStyle>
   );
 };

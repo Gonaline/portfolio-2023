@@ -22,6 +22,7 @@ const GlobalStyle = createGlobalStyle`
   --buttonOnHoverColor: ${({ theme }: ThemeProps<ITheme>): any =>
     theme.buttonOnHoverColor};
   --otherColor: ${({ theme }: ThemeProps<ITheme>): any => theme.otherColor};
+  --titleColor: ${({ theme }: ThemeProps<ITheme>): any => theme.titleColor};
 }
 body {
   display: flex;
@@ -49,12 +50,12 @@ h1,h2,h3,h4,h5,h6,p,li,a,ul,em{
   color: var(--darkColor);
 }
 h1 {
-    font-size: 3rem;
+    font-size: 2.8rem;
     font-weight: 400;
   }
   h2 {
-    font-size: 2.5rem;
-    font-weight: 500;
+    font-size: 2.4rem;
+    font-weight: 350;
   }
   h3 {
     font-size: 2rem;
@@ -66,11 +67,11 @@ h1 {
   }
   h5 {
     font-size: 1.1rem;
-    line-height: 1.5rem;
+    line-height: 1.4rem;
   }
   p {
-    font-size: 0.9rem;
-    line-height: 1.2rem;
+    font-size: 1rem;
+    line-height: 1.4rem;
   }
 
   em {
@@ -79,16 +80,12 @@ h1 {
   }
 
   @media screen and (max-width: 700px) {
-  body {
-
-  }
-  main {
-    /* flex-direction: column;
-    flex-wrap: wrap; */
+  h1 {
+    font-size: 1.8rem;
   }
   h2 {
-    font-size: 2rem;
-    line-height: 2.5rem;
+    font-size: 1.8rem;
+    line-height: 2.3rem;
   }
   h3 {
     font-size: 2rem;
@@ -96,9 +93,6 @@ h1 {
   }
   h4 {
     font-size: 1.5rem;
-  }
-  p {
-    font-size: 1rem;
   }
 }
 `;

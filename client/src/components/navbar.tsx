@@ -1,29 +1,31 @@
 import { FunctionComponentElement, ReactElement, useContext } from 'react';
 import { NavLink } from 'react-router-dom';
-import { PAGE } from '../enums/page.enum';
-import { COLLECTION } from '../enums/project3/collection.enum';
-import project3Ctx from '../context/project3Ctx';
+import { COLLECTION } from '../enums/stickersShop/collection.enum';
+import stickersShopCtx from '../context/stickersShopCtx';
 import { NavbarStyle } from '../style/navbarStyle';
+import dataPage from '../data/pages';
+import { PAGE } from '../enums/page.enum';
+
 const Navbar = (): FunctionComponentElement<ReactElement> => {
   const { setCollectionConvertName, setCollectionName } =
-    useContext(project3Ctx);
+    useContext(stickersShopCtx);
 
   return (
     <NavbarStyle>
       <li>
         <NavLink to={PAGE.ABOUT_PATH} className='link mainLink'>
-          {[PAGE.ABOUT.toLocaleUpperCase()]}
+          {dataPage.about.subtitle}
         </NavLink>
       </li>
 
       <li>
-        {[PAGE.PROJECTS.toLocaleUpperCase()]}
+        PROJETS
         <ul>
           <NavLink to={PAGE.PROJECT1_PATH} className='link'>
-            {[PAGE.PROJECT1.toLocaleUpperCase()]}
+            <p>{dataPage.project1.title}</p>
           </NavLink>
           <NavLink to={PAGE.PROJECT2_PATH} className='link'>
-            {[PAGE.PROJECT2.toLocaleUpperCase()]}
+            <p>{dataPage.project2.title}</p>
           </NavLink>
           <NavLink
             to={`${PAGE.PROJECT3_PATH}/${COLLECTION.ALL_COLLECTIONS_CONVERT_NAME}`}
@@ -33,7 +35,7 @@ const Navbar = (): FunctionComponentElement<ReactElement> => {
               setCollectionName(COLLECTION.ALL_COLLECTIONS);
             }}
           >
-            {[PAGE.PROJECT3.toLocaleUpperCase()]}
+            <p>{dataPage.project3.title}</p>
           </NavLink>
         </ul>
       </li>

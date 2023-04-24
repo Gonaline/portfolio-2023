@@ -9,11 +9,10 @@ import Burger from './burger';
 const Header = (): FunctionComponentElement<ReactElement> => {
   return (
     <HeaderStyle>
-      <NavLink to={PAGE.ABOUT_PATH} className='desktop'>
-        <h1>Aline Gonce</h1>
-      </NavLink>
-      <NavLink to={PAGE.ABOUT_PATH} className='mobile'>
-        <img src={Logo} alt='logo' />
+      <NavLink to={PAGE.ABOUT_PATH} className='me'>
+        <div className='logo'>
+          <img src={Logo} alt='logo' />
+        </div>
       </NavLink>
       <Navbar />
       <Burger />

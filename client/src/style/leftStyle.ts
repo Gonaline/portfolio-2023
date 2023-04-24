@@ -49,13 +49,23 @@ export default styled.section`
     width: 100vw;
     position: static;
     margin-top: 15vh;
+    .subTitle {
+      display: flex;
+      height: 8vh;
+    }
     h2,
     h4,
     h5 {
       padding: 0 1.5vw 0 5vw;
     }
+    h2 {
+      padding-right: 8vw;
+    }
     .description {
       height: 35vh;
+      h5 {
+        font-size: 1rem;
+      }
     }
     button {
       display: flex;
