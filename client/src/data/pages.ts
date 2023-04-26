@@ -18,8 +18,8 @@ const page = {
     },
   },
   cv: {
-    title: 'DÉVELOPPEUSE WEB & WEB MOBILE',
-    subtitle: 'ALINE GONCE',
+    title: 'ALINE GONCE, DÉVELOPPEUSE WEB & WEB MOBILE',
+    subtitle: 'CURRICULUM VITAE',
     description: ['Contactez-moi !', 'gonaline@yahoo.fr / 06.63.95.98.53'],
     theme: {
       mainColor: '#95A595',
@@ -36,7 +36,7 @@ const page = {
     subtitle: 'PROJECT #1',
     description: [
       'Pendant des années, le modelage de figurines en pâte polymère était une véritable passion.',
-      'le but de cet exercice était simplement de présenter quelques détails de mes figurine en m&#039amusant avec le style.',
+      'Le but de cet exercice était simplement de présenter quelques détails de mes figurines en m&#039amusant avec le style.',
     ],
     theme: {
       mainColor: '#E0B62B',
@@ -52,7 +52,7 @@ const page = {
     title: 'PIERRE, FEUILLE OU CISEAUX?',
     subtitle: 'PROJECT #2',
     description: [
-      'L&#039objet de ce projet était la manipulation des props, des states & du context',
+      'L&#039objet de ce projet était la manipulation des props, des states & du context.',
     ],
     theme: {
       mainColor: '#66cdaa',
@@ -68,7 +68,7 @@ const page = {
     title: 'PERSONNALISEZ VOTRE STICKER!',
     subtitle: 'PROJECT #3',
     description: [
-      'is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&rsquo;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
+      'Ce projet est inspiré par l&#039auto-entreprise que j&#039avais développée en 2013 &#039Saut de Mouton&#039 proposait une collection de stickers personnalisables et était la création et la fabrication de stickers sur-mesure.',
     ],
     theme: {
       mainColor: '#C1C132',

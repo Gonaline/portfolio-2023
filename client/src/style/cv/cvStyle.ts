@@ -24,6 +24,9 @@ export const CvStyle = styled.section`
     align-items: flex-start;
     .jobs {
       width: 80%;
+      em {
+        line-height: 1.2rem;
+      }
     }
     .technos {
       width: 20%;
@@ -128,6 +131,43 @@ export const CvStyle = styled.section`
   @media screen and (max-width: 700px) {
     position: static;
     width: 100vw;
-    height: 75vh;
+
+    .text {
+      margin-top: 1vh;
+      margin-bottom: 3vh;
+    }
+    .jobsTechnos {
+      flex-direction: column;
+      .jobs {
+        width: 97%;
+      }
+      .technos {
+        order: -1;
+        width: 100%;
+        background-color: var(--white-opacity80);
+        border-radius: var(--border-radius);
+        justify-content: space-between;
+        div {
+          .square {
+            width: 10vw;
+          }
+          .rectangle {
+            width: 25vw;
+          }
+        }
+        margin-bottom: 2vh;
+      }
+    }
+    .skills {
+      .text {
+        flex-wrap: wrap;
+        div {
+          width: 45%;
+          p {
+            margin-left: 5vw;
+          }
+        }
+      }
+    }
   }
 `;

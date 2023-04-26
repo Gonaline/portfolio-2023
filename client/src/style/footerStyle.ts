@@ -15,12 +15,14 @@ export default styled.footer`
   .links {
     display: flex;
     align-items: center;
+    justify-content: center;
     margin-left: 1vw;
   }
-
   a {
     margin-left: 1vw;
+    display: flex;
     align-items: center;
+    justify-content: center;
     img {
       height: 6vh;
       aspect-ratio: 1/1;
