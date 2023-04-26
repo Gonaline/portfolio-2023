@@ -12,6 +12,7 @@ import GlobalStyle from './style/globalStyle';
 import StickersShopCategory from './pages/stickersShopCategory';
 import StickersShopProduct from './pages/stickersShopProduct';
 import { PAGE } from './enums/page.enum';
+import Cv from './pages/cv';
 
 const App = () => {
   const { theme } = useContext(GlobalCtx);
@@ -24,7 +25,7 @@ const App = () => {
           <Header />
           <main>
             <Routes>
-              <Route path='/' element={<About />} />
+              <Route path='*' element={<About />} />
               <Route path={PAGE.ABOUT_PATH} element={<About />} />
               <Route path={PAGE.PROJECT1_PATH} element={<ModellingGallery />} />
               <Route
@@ -38,6 +39,7 @@ const App = () => {
                   element={<StickersShopProduct />}
                 />
               </Route>
+              <Route path={PAGE.CV_PATH} element={<Cv />} />
             </Routes>
           </main>
           <Footer />

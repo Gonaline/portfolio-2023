@@ -15,6 +15,9 @@ export default styled.section`
   .description {
     padding: 0 1.5vw 0 2.5vw;
   }
+  .title {
+    padding-right: 3vw;
+  }
   .subTitle {
     display: flex;
     height: 13vh;
