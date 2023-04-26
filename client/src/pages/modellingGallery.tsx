@@ -40,9 +40,8 @@ const ModellingGallery = (): FunctionComponentElement<ReactElement> => {
       <Project2Style>
         <div className='container'>
           {imgList.map((image) => (
-            <div className='box'>
+            <div key={image} className='box'>
               <img
-                key={image}
                 src={require(`../assets/pictures/${PAGE.PROJECT1_PATH}/${image}`)}
                 alt={image}
               />
