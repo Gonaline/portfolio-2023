@@ -1,11 +1,11 @@
 const page = {
   about: {
-    title: 'DÉVELOPPEUSE WEB & WEB MOBILE',
+    title: 'ALINE GONCE, DÉVELOPPEUSE WEB & WEB MOBILE',
     subtitle: 'À PROPOS',
     description: [
-      'Initialement graphiste&#44; j&#039ai toujours porté beaucoup d&#039intérêt aux algorithmes et à la résolution de problèmes&apos;',
-      'Mes dernières missions professionnelles m’ont permis de comprendre que le développement serait un excellent moyen de conjuguer créativité&#44; réflexion et travail en équipe&apos;',
-      'J&#039ai donc choisi de me former au langage JAVASCRIPT en intégrant&#44; début 2023&#44; la formation de Développement Web & mobile React & Node&apos;js à la Wild Code School de Lille&apos;',
+      'Initialement graphiste, j&#039ai toujours porté beaucoup d&#039intérêt aux algorithmes et à la résolution de problèmes.',
+      'Mes dernières missions professionnelles m’ont permis de comprendre que le développement serait un excellent moyen de conjuguer créativité&#44; réflexion et travail en équipe.',
+      'J&#039ai donc choisi de me former au langage JAVASCRIPT en intégrant, début 2022, la formation de Développement Web & mobile React & Node.js à la Wild Code School de Lille.',
     ],
     theme: {
       mainColor: '#D49B7E',
@@ -15,6 +15,20 @@ const page = {
       buttonOnHoverColor: '',
       otherColor: '',
       titleColor: '#C67F43',
+    },
+  },
+  cv: {
+    title: 'DÉVELOPPEUSE WEB & WEB MOBILE',
+    subtitle: 'ALINE GONCE',
+    description: ['Contactez-moi !', 'gonaline@yahoo.fr / 06.63.95.98.53'],
+    theme: {
+      mainColor: '#95A595',
+      opacityColor: '#95A59550',
+      backgroundColor: '#dfe4df',
+      buttonColor: '',
+      buttonOnHoverColor: '#DE431D',
+      otherColor: '#6C7C59',
+      titleColor: '#95A595',
     },
   },
   project1: {
@@ -41,13 +55,13 @@ const page = {
       'L&#039objet de ce projet était la manipulation des props, des states & du context',
     ],
     theme: {
-      mainColor: '#00cc99',
-      opacityColor: '#00cc9973',
-      backgroundColor: '#97EAD5',
-      buttonColor: '#00cc99',
-      buttonOnHoverColor: '#F36653',
-      otherColor: '#FF647F',
-      titleColor: '#00cc99',
+      mainColor: '#66cdaa',
+      opacityColor: '#66cdaa73',
+      backgroundColor: '#a0e0ca',
+      buttonColor: '#66cdaa',
+      buttonOnHoverColor: '#F54E48',
+      otherColor: '#F54E48',
+      titleColor: '#66cdaa',
     },
   },
   project3: {
