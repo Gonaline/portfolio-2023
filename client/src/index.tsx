@@ -4,18 +4,30 @@ import { Reset } from 'styled-reset';
 import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import GlobalStyle from './style/globalStyle';
+import { CombineComponents } from './shared/combineComponents';
+import { GlobalCtxProvider } from './context/globalCtx';
+import { RockPaperScissorsCtxProvider } from './context/rockPaperScissorsCtx';
+import { StickersShopCtxProvider } from './context/stickersShopCtx';
+import { StickersShopProductCtxProvider } from './context/stickersShopProductCtx';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <Reset />
-    <GlobalStyle />
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <CombineComponents
+      components={[
+        GlobalCtxProvider,
+        RockPaperScissorsCtxProvider,
+        StickersShopCtxProvider,
+        StickersShopProductCtxProvider,
+      ]}
+    >
+      <Reset />
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </CombineComponents>
   </React.StrictMode>
 );
 

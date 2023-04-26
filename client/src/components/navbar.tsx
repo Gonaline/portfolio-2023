@@ -1,32 +1,45 @@
-import { FunctionComponentElement, ReactElement } from 'react';
+import { FunctionComponentElement, ReactElement, useContext } from 'react';
 import { NavLink } from 'react-router-dom';
+import { COLLECTION } from '../enums/stickersShop/collection.enum';
+import stickersShopCtx from '../context/stickersShopCtx';
+import { NavbarStyle } from '../style/navbarStyle';
+import dataPage from '../data/pages';
+import { PAGE } from '../enums/page.enum';
 
 const Navbar = (): FunctionComponentElement<ReactElement> => {
+  const { setCollectionConvertName, setCollectionName } =
+    useContext(stickersShopCtx);
+
   return (
-    <nav>
+    <NavbarStyle>
       <li>
-        <NavLink to='/about' className='link mainLink'>
-          ABOUT
+        <NavLink to={PAGE.ABOUT_PATH} className='link mainLink'>
+          {dataPage.about.subtitle}
         </NavLink>
       </li>
 
       <li>
-        <NavLink to='/rock-paper-or-scissors' className='link mainLink'>
-          PROJECTS
-          <ul>
-            <NavLink to='/rock-paper-or-scissors' className='link'>
-              PROJECT#1
-            </NavLink>
-            <NavLink to='/modeling-gallery' className='link'>
-              PROJECT#2
-            </NavLink>
-            <NavLink to='/stickers-shop' className='link'>
-              PROJECT#3
-            </NavLink>
-          </ul>
-        </NavLink>
+        PROJETS
+        <ul>
+          <NavLink to={PAGE.PROJECT1_PATH} className='link'>
+            <p>{dataPage.project1.title}</p>
+          </NavLink>
+          <NavLink to={PAGE.PROJECT2_PATH} className='link'>
+            <p>{dataPage.project2.title}</p>
+          </NavLink>
+          <NavLink
+            to={`${PAGE.PROJECT3_PATH}/${COLLECTION.ALL_COLLECTIONS_CONVERT_NAME}`}
+            className='link'
+            onClick={() => {
+              setCollectionConvertName(COLLECTION.ALL_COLLECTIONS_CONVERT_NAME);
+              setCollectionName(COLLECTION.ALL_COLLECTIONS);
+            }}
+          >
+            <p>{dataPage.project3.title}</p>
+          </NavLink>
+        </ul>
       </li>
-    </nav>
+    </NavbarStyle>
   );
 };
 export default Navbar;

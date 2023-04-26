@@ -5,45 +5,79 @@ export default styled.section`
   width: 30vw;
   height: 75vh;
   display: flex;
-  align-items: center;
-  div {
-    margin-bottom: 10vh;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  position: fixed;
+  top: 15vh;
+  .subTitle,
+  .title,
+  .description {
+    padding: 0 1.5vw 0 2.5vw;
   }
-  p,
-  h2,
-  h4 {
-    margin: 0 2.5vw 0 2.5vw;
+  .title {
+    padding-right: 3vw;
   }
   .subTitle {
-    margin-bottom: 2vh;
-    opacity: 0.5;
+    display: flex;
+    height: 13vh;
+    align-items: flex-end;
+    h4 {
+      color: var(--white);
+      opacity: 0.5;
+    }
   }
-  p,
-  h4 {
-    color: var(--white);
+  .title {
+    display: flex;
+    height: 20vh;
+    align-items: center;
+    h2 {
+      color: var(--titleColor);
+    }
   }
-  h2 {
-    color: ${(props: any): string | undefined => {
-      return `${props.color}`;
-    }};
-    margin-bottom: 6vh;
+  .description {
+    height: 42vh;
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    h5 {
+      color: var(--white);
+    }
+  }
+
+  button {
+    display: none;
   }
   @media screen and (max-width: 700px) {
-    flex-direction: column;
     width: 100vw;
-    min-height: 77vh;
-    margin-top: 14vh;
-    align-items: flex-end;
-    justify-content: space-between;
-    h2 {
-      padding-top: 2vh;
+    position: static;
+    margin-top: 15vh;
+    .subTitle {
+      display: flex;
+      height: 8vh;
     }
     h2,
-    p,
-    h4 {
-      margin-top: 6vw;
-      margin-right: 6vw;
-      margin-left: 6vw;
+    h4,
+    h5 {
+      padding: 0 1.5vw 0 5vw;
+    }
+    h2 {
+      padding-right: 8vw;
+    }
+    .description {
+      height: 35vh;
+      h5 {
+        font-size: 1rem;
+      }
+    }
+    button {
+      display: flex;
+      margin: auto;
+      height: 4vh;
+      margin-bottom: 3vh;
+      img {
+        height: 100%;
+      }
     }
   }
 `;

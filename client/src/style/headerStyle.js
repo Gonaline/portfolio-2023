@@ -1,85 +1,59 @@
 import styled from 'styled-components';
 
 export default styled.header`
+  position: fixed;
+  z-index: 1;
   width: 100vw;
   height: 15vh;
-  background-color: #cccc66;
+  background-color: var(--mainColor);
   display: flex;
   flex-wrap: nowrap;
   justify-content: space-between;
   align-items: center;
-  .link {
-    color: var(--white);
-    text-decoration: none;
-  }
-  nav {
-    display: flex;
-    margin-right: 3vw;
-  }
   .me {
     height: 15vh;
     width: 30vw;
     background-color: var(--darkColor);
     display: flex;
-    justify-content: left;
-    align-items: flex-end;
-    h1 {
-      margin: 0 15%;
-      width: 100%;
-      text-align: left;
-      padding-bottom: 1.5vh;
-    }
-  }
-
-  li {
-    height: 15vh;
-    width: 15vw;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: left;
-    .mainLink {
+    align-items: center;
+    .logo {
+      margin: 0 1vw 0 1.5vw;
+      height: 60%;
+      aspect-ratio: 1/1;
       display: flex;
       justify-content: center;
       align-items: center;
-      font-size: 2.2rem;
-      font-weight: 400;
+      img {
+        width: 100%;
+        border-radius: 50%;
+        aspect-ratio: 1/1;
+        object-fit: contain;
+        background: var(--mainColor);
+      }
     }
-    ul {
-      display: none;
+    .title {
+      display: flex;
+      justify-content: left;
+      align-items: center;
+
+      h1 {
+        color: var(--white);
+        text-align: left;
+      }
     }
   }
 
-  li:hover {
-    background: var(--darkColor);
-    ul {
-      margin: auto;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
-      width: 15vw;
-      background: var(--darkColor);
-      position: absolute;
-      top: 15vh;
-      padding-bottom: 2vh;
-      .link {
-        width: 90%;
-        height: 8vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border-radius: 10px;
-        font-size: 1.5rem;
-      }
-      .link:hover {
-        color: #cccc66;
-        background: #ffffff50;
-      }
-    }
-  }
   @media screen and (max-width: 700px) {
-    display: none;
+    background-color: var(--darkColor);
+    .me {
+      width: 82vw;
+
+      .logo {
+        margin: 0 3vw 0 6vw;
+      }
+      .title {
+        display: none;
+      }
+    }
   }
 `;
