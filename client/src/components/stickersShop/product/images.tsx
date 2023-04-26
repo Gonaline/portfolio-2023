@@ -68,13 +68,12 @@ const Images = (): FunctionComponentElement<ReactElement> => {
         <>
           <div className='file'>
             {filesData.map((file) => (
-              <>
+              <div key={file.name}>
                 <button
                   className={
                     activePicture === file.name ? 'selected' : 'notSelected'
                   }
                   type='button'
-                  key={file.name}
                   value={file.name}
                   onClick={() => {
                     setActivePicture(file.name);
@@ -87,7 +86,7 @@ const Images = (): FunctionComponentElement<ReactElement> => {
                     />
                   )}
                 </button>
-              </>
+              </div>
             ))}
           </div>
         </>
@@ -98,6 +97,7 @@ const Images = (): FunctionComponentElement<ReactElement> => {
             .filter((e) => e.name === activePicture)
             .map((file) => (
               <img
+                key={file.name}
                 className={`${file.type !== FILE.TECHNICAL_FILE && isMirror}`}
                 src={require(`../../../assets/pictures/${PAGE.PROJECT3_PATH}/${file.folder}/${file.name}`)}
                 alt={file.name}
