@@ -43,7 +43,7 @@ button, input[type='submit'], input[type='reset'] {
 a, li, ul {
     text-decoration: none;
     font-size: 1.6rem;
-      font-weight: 300;
+    font-weight: 300;
 }
 h1,h2,h3,h4,h5,h6,p,li,a,ul,em{
   font-family: var(--font-family);

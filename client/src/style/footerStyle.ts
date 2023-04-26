@@ -17,6 +17,7 @@ export default styled.footer`
     align-items: center;
     margin-left: 1vw;
   }
+
   a {
     margin-left: 1vw;
     align-items: center;
@@ -24,6 +25,19 @@ export default styled.footer`
       height: 6vh;
       aspect-ratio: 1/1;
       background-size: contain;
+    }
+  }
+  .cv {
+    background-color: var(--darkColor);
+    height: 6vh;
+    aspect-ratio: 1/1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    p {
+      color: var(--mainColor);
+      font-size: 1.3rem;
     }
   }
 
