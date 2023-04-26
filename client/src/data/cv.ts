@@ -31,7 +31,7 @@ const cvData = {
       dates: '2013 - 2018',
       location: 'SAUT DE MOUTON',
       assignments:
-        'Création des collections, charte graphique, catalogue, documents techniques ; Fabrication ; Réalisation et maintenance du e-shop (wordPress).',
+        'Création des collections, charte graphique, catalogue, documents techniques; Fabrication; Réalisation et maintenance du e-shop (wordPress).',
       languages: '',
     },
     {
@@ -40,7 +40,7 @@ const cvData = {
       dates: '09/2019 - 08/2022',
       location: 'VOLMA SAS - HARNES',
       assignments:
-        'Déploiement du configurateur de produits ; Définition des besoins fonctionnels ; Écriture des traitements ; Tests, mises à jour & gestion des évolutions.',
+        'Déploiement du configurateur de produits; Définition des besoins fonctionnels; Écriture des traitements; Tests, mises à jour & gestion des évolutions.',
       languages: '',
     },
     {
@@ -48,7 +48,7 @@ const cvData = {
       name: 'GESTIONNAIRE DE BASES DE DONNÉES',
       dates: '2017 - 08/2022',
       assignments:
-        'Mise en place et administration des bases de données techniques, tarifaires & visuelles ; Rédaction des procédures ; Développement des bases de calcul des prix de revient / chiffrage de l’inventaire.',
+        'Mise en place et administration des bases de données techniques, tarifaires & visuelles; Rédaction des procédures; Développement des bases de calcul des prix de revient / chiffrage de l’inventaire.',
       languages: '',
     },
     {
@@ -56,7 +56,7 @@ const cvData = {
       name: 'GRAPHISTE',
       dates: '2005 - 08/2022',
       assignments:
-        'Mise en page des tarifs de vente (synchronisation Excel / InDesign) ; Refonte du logo et du site internet (contenu & graphisme) ; Photomontages ; Création & dépôt de modèles auprès de l’INPI ; Réalisation de catalogues, dépliants... ; Illustration des produits, fiches techniques, plans ; Étude de faisabilité.',
+        'Mise en page des tarifs de vente (synchronisation Excel / InDesign); Refonte du logo et du site internet (contenu & graphisme); Photomontages; Création & dépôt de modèles auprès de l’INPI; Réalisation de catalogues, dépliants...; Illustration des produits, fiches techniques, plans; Étude de faisabilité.',
       languages: '',
     },
     {

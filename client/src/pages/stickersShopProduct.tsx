@@ -16,6 +16,7 @@ import stickersShopCtx from '../context/stickersShopCtx';
 import IProductsByCollection from '../interfaces/stickersShop/productsByCollection';
 import { COLLECTION } from '../enums/stickersShop/collection.enum';
 import ListOfProducts from '../components/stickersShop/listOfProducts';
+import Arrow from '../assets/pictures/arrow.svg';
 
 const StickersShopProduct = (): FunctionComponentElement<ReactElement> => {
   const { productData } = useContext(stickersShopProductCtx);
@@ -48,6 +49,14 @@ const StickersShopProduct = (): FunctionComponentElement<ReactElement> => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
+  const scroll = () => {
+    window.scrollTo({
+      top: window.innerHeight * 0.75,
+      left: 0,
+      behavior: 'smooth',
+    });
+  };
+
   return (
     <PageProductStyle>
       {productData && (
@@ -65,6 +74,11 @@ const StickersShopProduct = (): FunctionComponentElement<ReactElement> => {
               <Images />
               <Personalization />
             </section>
+            <div className='arrow'>
+              <button type='button' onClick={scroll}>
+                <img src={Arrow} alt='arrow' />
+              </button>
+            </div>
           </FirstPartStyle>
 
           <section className='secondPart'>
