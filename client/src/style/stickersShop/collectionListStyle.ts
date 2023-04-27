@@ -16,5 +16,5 @@ export const CollectionListStyle = styled.div`
       }
     }
   }
-  padding-bottom: 1.5vh;
+  padding-bottom: 1vh;
 `;

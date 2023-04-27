@@ -52,7 +52,7 @@ const page = {
     title: 'PIERRE, FEUILLE OU CISEAUX?',
     subtitle: 'PROJECT #2',
     description: [
-      'L&#039objet de ce projet était la manipulation des props, des states & du context.',
+      'L&#039objet de cet exercice était la manipulation des props, des states & du context.',
     ],
     theme: {
       mainColor: '#66cdaa',
@@ -68,7 +68,9 @@ const page = {
     title: 'PERSONNALISEZ VOTRE STICKER!',
     subtitle: 'PROJECT #3',
     description: [
-      'Ce projet est inspiré par l&#039auto-entreprise que j&#039avais développée en 2013 &#039Saut de Mouton&#039 proposait une collection de stickers personnalisables et était la création et la fabrication de stickers sur-mesure.',
+      'Ce projet est un extrait du e-shop que j&#039avais réalisé sur wordpress en 2013.',
+      'Mon auto-entreprise &#039Saut de Mouton&#039 proposait la création et la fabrication de stickers sur-mesure.',
+      '> REACTJS / EXPRESSJS / API REST / MYSQL',
     ],
     theme: {
       mainColor: '#C1C132',

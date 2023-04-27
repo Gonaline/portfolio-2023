@@ -13,7 +13,6 @@ export const PersonalizationStyle = styled.section`
   }
   .custom {
     color: var(--buttonOnHoverColor);
-    margin-bottom: 0.5vh;
   }
 
   @media screen and (max-width: 700px) {
