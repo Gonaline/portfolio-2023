@@ -7,6 +7,7 @@
     "build": "concurrently -n front,back -c green,yellow,cyan -t \"HH:mm:ss\" -p \"{name} {time}\" \"npm --prefix ./client run build\" \"npm --prefix ./server run build\""
   },
   "dependencies": {
-    "concurrently": "^8.0.1"
+    "concurrently": "^8.0.1",
+    "typescript": "^5.0.4"
   }
 }
