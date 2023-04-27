@@ -54,7 +54,8 @@ h1 {
     font-weight: 400;
   }
   h2 {
-    font-size: 2.4rem;
+    font-size: 2.2rem;
+    line-height:2.5rem;
     font-weight: 350;
   }
   h3 {

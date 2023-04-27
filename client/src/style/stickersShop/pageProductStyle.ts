@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const PageProductStyle = styled.section`
   width: 70vw;
-  min-height: 75vw;
+  min-height: 75vh;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -26,7 +26,6 @@ export const PageProductStyle = styled.section`
 
   @media screen and (max-width: 700px) {
     width: 100vw;
-
     .secondPart {
       div {
         justify-content: center;

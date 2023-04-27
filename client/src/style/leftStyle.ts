@@ -17,10 +17,12 @@ export default styled.section`
   }
   .title {
     padding-right: 3vw;
+    margin: 1vh 0 1vh 0;
   }
   .subTitle {
     display: flex;
-    height: 13vh;
+    min-height: 10vh;
+    max-height: 13vh;
     align-items: flex-end;
     h4 {
       color: var(--white);
@@ -29,7 +31,7 @@ export default styled.section`
   }
   .title {
     display: flex;
-    height: 20vh;
+    min-height: 20vh;
     align-items: center;
     h2 {
       color: var(--titleColor);
@@ -54,7 +56,8 @@ export default styled.section`
     margin-top: 15vh;
     .subTitle {
       display: flex;
-      height: 8vh;
+      min-height: 8vh;
+      max-height: 8vh;
     }
     h2,
     h4,
