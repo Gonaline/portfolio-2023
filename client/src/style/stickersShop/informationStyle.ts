@@ -32,7 +32,7 @@ export const InformationStyle = styled.section`
   }
   h5 {
     font-size: 1rem;
-    line-height: 1.3rem;
+    line-height: 1.2rem;
   }
 
   .introduction {
@@ -40,7 +40,8 @@ export const InformationStyle = styled.section`
   }
 
   .size {
-    padding-bottom: 2vh;
+    padding-bottom: 1vh;
+    line-height: 1rem;
   }
 
   @media screen and (max-width: 700px) {

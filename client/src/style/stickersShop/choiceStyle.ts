@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const ChoiceStyle = styled.div`
   h5 {
-    padding-bottom: 0.8vh;
+    padding-bottom: 0.5vh;
   }
   width: 95%;
   display: flex;
@@ -12,7 +12,7 @@ export const ChoiceStyle = styled.div`
   background-color: var(--white-opacity50);
   border-radius: calc(var(--border-radius) / 2);
   padding: 0.8vh 0.8vw 0vh 0.8vw;
-  margin-bottom: 1.2vh;
+  margin-top: 1vh;
   .choice {
     display: flex;
     flex-wrap: wrap;
