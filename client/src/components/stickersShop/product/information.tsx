@@ -23,9 +23,9 @@ const Information = (): FunctionComponentElement<ReactElement> => {
       </div>
       <CollectionList />
       <h5 className='introduction'>{productData.text_introduction}</h5>
-      <h5 className='size'>
+      <p className='size'>
         <em>{`Format: ${productData.text_size}`}</em>
-      </h5>
+      </p>
     </InformationStyle>
   );
 };
