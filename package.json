@@ -1,0 +1,12 @@
+{
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently -n front,back -c green,yellow,cyan -t \"HH:mm:ss\" -p \"{name} {time}\" \"npm --prefix ./client run start\" \"npm --prefix ./server run start\"",
+    "dev-front": "npm --prefix ./client run start",
+    "dev-back": "npm --prefix ./server run start",
+    "build": "concurrently -n front,back -c green,yellow,cyan -t \"HH:mm:ss\" -p \"{name} {time}\" \"npm --prefix ./client run build\" \"npm --prefix ./server run build\""
+  },
+  "dependencies": {
+    "concurrently": "^8.0.1"
+  }
+}
